@@ -19,8 +19,8 @@ Para posteriormente mostrar los datos en el php de su perfil de usuario:
 
 ## Archivos adjuntos
 
-- Práctica wireframe aplicación con arrays del sistema.pdf
+- [Práctica wireframe aplicación con arrays del sistema.pdf](2026-10-26%20-%20Pr%C3%A1ctica%20%24_SESION/Pr%C3%A1ctica%20wireframe%20aplicaci%C3%B3n%20con%20arrays%20del%20sistema.pdf)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `2026-10-26 - Práctica $_SESION/`, junto a los adjuntos._

@@ -15,8 +15,8 @@
 
 ## Archivos adjuntos
 
-- Práctica Arrays con php.pdf
+- [Práctica Arrays con php.pdf](2026-10-01%20-%20Pr%C3%A1ctica%20Arrays/Pr%C3%A1ctica%20Arrays%20con%20php.pdf)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `2026-10-01 - Práctica Arrays/`, junto a los adjuntos._

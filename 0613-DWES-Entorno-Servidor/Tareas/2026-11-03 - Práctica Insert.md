@@ -15,8 +15,8 @@
 
 ## Archivos adjuntos
 
-- Práctica Insert.pdf
+- [Práctica Insert.pdf](2026-11-03%20-%20Pr%C3%A1ctica%20Insert/Pr%C3%A1ctica%20Insert.pdf)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `2026-11-03 - Práctica Insert/`, junto a los adjuntos._

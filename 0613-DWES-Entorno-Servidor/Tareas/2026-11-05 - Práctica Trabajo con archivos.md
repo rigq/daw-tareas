@@ -15,8 +15,8 @@
 
 ## Archivos adjuntos
 
-- Práctica Gestión de archivos con PHP.pdf
+- [Práctica Gestión de archivos con PHP.pdf](2026-11-05%20-%20Pr%C3%A1ctica%20Trabajo%20con%20archivos/Pr%C3%A1ctica%20Gesti%C3%B3n%20de%20archivos%20con%20PHP.pdf)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `2026-11-05 - Práctica Trabajo con archivos/`, junto a los adjuntos._

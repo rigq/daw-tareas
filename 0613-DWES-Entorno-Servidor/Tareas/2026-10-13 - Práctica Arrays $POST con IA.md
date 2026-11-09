@@ -15,8 +15,8 @@
 
 ## Archivos adjuntos
 
-- Práctica PHP $POST IA.pdf
+- [Práctica PHP $POST IA.pdf](2026-10-13%20-%20Pr%C3%A1ctica%20Arrays%20%24POST%20con%20IA/Pr%C3%A1ctica%20PHP%20%24POST%20IA.pdf)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `2026-10-13 - Práctica Arrays $POST con IA/`, junto a los adjuntos._

@@ -15,8 +15,8 @@
 
 ## Archivos adjuntos
 
-- Practica Buscador Select II.pdf
+- [Practica Buscador Select II.pdf](2026-10-29%20-%20Pr%C3%A1ctica%20Select%20buscador%20II/Practica%20Buscador%20Select%20II.pdf)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `2026-10-29 - Práctica Select buscador II/`, junto a los adjuntos._

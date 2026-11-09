@@ -15,8 +15,8 @@
 
 ## Archivos adjuntos
 
-- Práctica Gestión de pedidos con Arrays.pdf
+- [Práctica Gestión de pedidos con Arrays.pdf](2026-10-05%20-%20Pr%C3%A1ctica%20Arrays%20II/Pr%C3%A1ctica%20Gesti%C3%B3n%20de%20pedidos%20con%20Arrays.pdf)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `2026-10-05 - Práctica Arrays II/`, junto a los adjuntos._

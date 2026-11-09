@@ -27,12 +27,12 @@
 
 ## Archivos adjuntos
 
-- figura1.jpg
-- figura2.jpg
-- figura3.jpg
-- figura4.jpg
-- figura5.jpg
+- [figura1.jpg](2026-10-08%20-%20Pr%C3%A1ctica%20Arrays%20%24GET/figura1.jpg)
+- [figura2.jpg](2026-10-08%20-%20Pr%C3%A1ctica%20Arrays%20%24GET/figura2.jpg)
+- [figura3.jpg](2026-10-08%20-%20Pr%C3%A1ctica%20Arrays%20%24GET/figura3.jpg)
+- [figura4.jpg](2026-10-08%20-%20Pr%C3%A1ctica%20Arrays%20%24GET/figura4.jpg)
+- [figura5.jpg](2026-10-08%20-%20Pr%C3%A1ctica%20Arrays%20%24GET/figura5.jpg)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `2026-10-08 - Práctica Arrays $GET/`, junto a los adjuntos._

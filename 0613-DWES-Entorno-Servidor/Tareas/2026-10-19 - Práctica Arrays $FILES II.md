@@ -15,8 +15,8 @@
 
 ## Archivos adjuntos
 
-- Práctica II SFILES,include y required.pdf
+- [Práctica II SFILES,include y required.pdf](2026-10-19%20-%20Pr%C3%A1ctica%20Arrays%20%24FILES%20II/Pr%C3%A1ctica%20II%20SFILES%2Cinclude%20y%20required.pdf)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `2026-10-19 - Práctica Arrays $FILES II/`, junto a los adjuntos._

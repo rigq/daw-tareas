@@ -15,8 +15,8 @@
 
 ## Archivos adjuntos
 
-- Proyecto FORO.pdf
+- [Proyecto FORO.pdf](2026-11-10%20-%20Proyecto%20Foro%20Fase%20I%20Dise%C3%B1o%20wirerframe%20y%20Diagrama%20l%C3%B3gico/Proyecto%20FORO.pdf)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `2026-11-10 - Proyecto Foro Fase I Diseño wirerframe y Diagrama lógico/`, junto a los adjuntos._

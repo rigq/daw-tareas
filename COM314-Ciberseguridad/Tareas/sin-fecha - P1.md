@@ -15,8 +15,8 @@
 
 ## Archivos adjuntos
 
-- Explicación-1.docx
+- [Explicación-1.docx](sin-fecha%20-%20P1/Explicaci%C3%B3n-1.docx)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `sin-fecha - P1/`, junto a los adjuntos._

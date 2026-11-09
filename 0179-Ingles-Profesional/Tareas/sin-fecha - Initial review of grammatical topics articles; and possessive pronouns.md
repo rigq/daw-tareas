@@ -19,8 +19,8 @@ Remember: You can use the PDF presentation “Initial grammatical review: articl
 
 ## Archivos adjuntos
 
-- Articles and pronouns exercises - 0159.pdf
+- [Articles and pronouns exercises - 0159.pdf](sin-fecha%20-%20Initial%20review%20of%20grammatical%20topics%20articles%3B%20and%20possessive%20pronouns/Articles%20and%20pronouns%20exercises%20-%200159.pdf)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `sin-fecha - Initial review of grammatical topics articles; and possessive pronouns/`, junto a los adjuntos._

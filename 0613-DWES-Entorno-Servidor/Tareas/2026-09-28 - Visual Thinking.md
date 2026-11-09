@@ -15,8 +15,8 @@
 
 ## Archivos adjuntos
 
-- Manual Visual Thinking (1).pdf
+- [Manual Visual Thinking.pdf](2026-09-28%20-%20Visual%20Thinking/Manual%20Visual%20Thinking.pdf)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `2026-09-28 - Visual Thinking/`, junto a los adjuntos._

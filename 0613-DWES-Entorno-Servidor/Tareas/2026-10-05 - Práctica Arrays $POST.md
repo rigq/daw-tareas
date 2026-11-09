@@ -15,8 +15,8 @@
 
 ## Archivos adjuntos
 
-- Práctica PHP $POST.pdf
+- [Práctica PHP $POST.pdf](2026-10-05%20-%20Pr%C3%A1ctica%20Arrays%20%24POST/Pr%C3%A1ctica%20PHP%20%24POST.pdf)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `2026-10-05 - Práctica Arrays $POST/`, junto a los adjuntos._

@@ -19,8 +19,8 @@ Detalla al menos 3-4 ideas con dots en cada apartado y súbelo al Campus.
 
 ## Archivos adjuntos
 
-- Cuadro-Análisis-Empresa.jpeg
+- [Cuadro-Análisis-Empresa.jpeg](2026-11-04%20-%20ACTIVIDAD-2%20Cuadro%20de%20negocio/Cuadro-Ana%CC%81lisis-Empresa.jpeg)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `2026-11-04 - ACTIVIDAD-2 Cuadro de negocio/`, junto a los adjuntos._

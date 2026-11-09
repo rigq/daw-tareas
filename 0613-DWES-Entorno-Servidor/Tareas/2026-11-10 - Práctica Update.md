@@ -15,8 +15,8 @@
 
 ## Archivos adjuntos
 
-- practica_update.pdf
+- [practica_update.pdf](2026-11-10%20-%20Pr%C3%A1ctica%20Update/practica_update.pdf)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `2026-11-10 - Práctica Update/`, junto a los adjuntos._

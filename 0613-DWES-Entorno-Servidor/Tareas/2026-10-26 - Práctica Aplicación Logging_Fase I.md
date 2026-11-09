@@ -17,8 +17,8 @@ Se debe crear la cookie al pulsar el botón, y cuando se recarga la página que 
 
 ## Archivos adjuntos
 
-- Práctica wireframe aplicación con arrays del sistema.pdf
+- [Práctica wireframe aplicación con arrays del sistema.pdf](2026-10-26%20-%20Pr%C3%A1ctica%20Aplicaci%C3%B3n%20Logging_Fase%20I/Pr%C3%A1ctica%20wireframe%20aplicaci%C3%B3n%20con%20arrays%20del%20sistema.pdf)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `2026-10-26 - Práctica Aplicación Logging_Fase I/`, junto a los adjuntos._

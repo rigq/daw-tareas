@@ -15,8 +15,8 @@
 
 ## Archivos adjuntos
 
-- Práctica PHP Bucle dowhile.pdf
+- [Práctica PHP Bucle dowhile.pdf](2026-09-29%20-%20Pr%C3%A1ctica%20Bucle%20DoWhile/Pr%C3%A1ctica%20PHP%20Bucle%20dowhile.pdf)
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+_Guarda tu código y notas en la carpeta `2026-09-29 - Práctica Bucle DoWhile/`, junto a los adjuntos._
