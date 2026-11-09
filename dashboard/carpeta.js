@@ -56,6 +56,28 @@ export async function escribir(h, ruta, contenido) {
 
 export const crearCarpeta = (h, ruta) => directorio(h, ruta.split('/'), true);
 
+// Devuelve el File de una ruta (para abrir apuntes).
+export async function archivo(h, ruta) {
+  const [dirs, nombre] = partir(ruta);
+  return (await (await directorio(h, dirs, false)).getFileHandle(nombre)).getFile();
+}
+
+// Lista recursiva de <módulo>/Apuntes: [{ ruta: 'UD1/tema.pdf' }] (rutas relativas a Apuntes/).
+export async function listarApuntes(h, carpetaModulo) {
+  const out = [];
+  let raiz;
+  try { raiz = await directorio(h, [carpetaModulo, 'Apuntes'], false); } catch { return out; }
+  async function recorrer(dir, prefijo) {
+    for await (const [nombre, e] of dir.entries()) {
+      if (nombre.startsWith('.')) continue;
+      if (e.kind === 'directory') await recorrer(e, `${prefijo}${nombre}/`);
+      else out.push({ ruta: `${prefijo}${nombre}` });
+    }
+  }
+  await recorrer(raiz, '');
+  return out;
+}
+
 export async function fichasExistentes(h) {
   const mapa = new Map();
   for await (const [nombreMod, mod] of h.entries()) {

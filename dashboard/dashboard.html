@@ -8,7 +8,11 @@
 </head>
 <body>
   <header>
-    <h1>Tareas DAW</h1>
+    <h1>DAW</h1>
+    <nav id="pestanas" aria-label="Vistas">
+      <button data-vista="tareas" class="activa" title="Tareas (1)">Tareas</button>
+      <button data-vista="apuntes" title="Apuntes (2)">Apuntes</button>
+    </nav>
     <span id="actualizado"></span>
     <input id="buscar" type="search" placeholder="Buscar  ( / )" aria-label="Buscar tareas">
     <button id="actualizar" class="primario" title="Actualizar (R)">Actualizar</button>
@@ -17,6 +21,10 @@
   <progress id="progreso" hidden></progress>
   <div id="aviso" role="status" hidden></div>
   <main id="lista"></main>
+  <section id="apuntes" hidden>
+    <aside id="modulos" aria-label="Asignaturas"></aside>
+    <div id="contenido-apuntes"></div>
+  </section>
 
   <dialog id="ajustes">
     <h2>Ajustes</h2>

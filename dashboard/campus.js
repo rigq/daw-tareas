@@ -1,5 +1,5 @@
 // Lee el campus con la sesión de Chrome del usuario. Solo navegador.
-import { CAMPUS, parseFecha, esPaginaLogin } from './logica.js';
+import { CAMPUS, parseFecha, esPaginaLogin, esDescargaValida, nombreArchivo } from './logica.js';
 
 export class ErrorCampus extends Error {
   constructor(codigo, mensaje) { super(mensaje); this.codigo = codigo; }
@@ -75,7 +75,7 @@ export async function leerCampus(alProgresar = () => {}) {
 
   const { courses } = await ajax('core_course_get_enrolled_courses_by_timeline_classification',
     { offset: 0, limit: 0, classification: 'inprogress', sort: 'fullname' }); // sin módulos de cursos pasados
-  const cursos = [], items = [];
+  const cursos = [], items = [], apuntes = [];
   for (const c of courses) {
     const curso = { id: String(c.id), nombre: c.fullname, aula: null };
     cursos.push(curso);
@@ -87,6 +87,10 @@ export async function leerCampus(alProgresar = () => {}) {
       if (m.module === 'url' && /aula virtual/i.test(m.name)) {
         try { curso.aula = (await pagina(m.url)).querySelector('.urlworkaround a')?.getAttribute('href') || null; }
         catch (e) { if (e.codigo === 'SIN_SESION') throw e; }
+      }
+      if (m.module === 'resource' || m.module === 'folder') {
+        apuntes.push({ id: String(m.id), curso: curso.id, cursoNombre: c.fullname, tipo: m.module,
+          nombre: m.name.replace(/&amp;/g, '&'), url: m.url });
       }
       if (m.module === 'assign' || m.module === 'quiz') {
         items.push({ id: String(m.id), curso: curso.id, cursoNombre: c.fullname, mod: m.module,
@@ -102,5 +106,31 @@ export async function leerCampus(alProgresar = () => {}) {
     catch (e) { if (e.codigo === 'SIN_SESION') throw e; return { id: item.id, curso: item.curso, error: true }; }
     finally { alProgresar(++hechas, items.length); }
   });
-  return { fecha: new Date().toISOString(), cursos, tareas };
+  return { fecha: new Date().toISOString(), cursos, tareas, apuntes };
+}
+
+// Descarga un archivo del campus validando que no sea la página de login. Devuelve { nombre, blob } o null.
+export async function descargar(url) {
+  const r = await pedir(url);
+  const tipo = r.headers.get('content-type');
+  const nombre = nombreArchivo(r.url);
+  if (/text\/html/i.test(tipo || '') && !/\.html?$/i.test(nombre)) {
+    // Recurso mostrado dentro de una página: buscar el enlace o la imagen al archivo real.
+    const doc = new DOMParser().parseFromString(await r.text(), 'text/html');
+    const enlace = doc.querySelector('.resourceworkaround a, .resourcecontent a, .resourcecontent img, .resourceimage, [role="main"] a[href*="pluginfile.php"]');
+    const href = enlace?.getAttribute('href') || enlace?.getAttribute('src');
+    return href && href.includes('pluginfile.php') ? descargar(absoluta(href)) : null;
+  }
+  if (!esDescargaValida(r.url, tipo, nombre)) return null;
+  return { nombre, blob: await r.blob() };
+}
+
+// Archivos de una carpeta del campus: [{ nombre, url }].
+export async function archivosDeCarpeta(url) {
+  const doc = await pagina(url);
+  const vistos = new Set();
+  return [...doc.querySelectorAll('[role="main"] a[href*="pluginfile.php"]')]
+    .map(a => absoluta(a.getAttribute('href')))
+    .filter(u => !vistos.has(u.split('?')[0]) && vistos.add(u.split('?')[0]))
+    .map(u => ({ nombre: nombreArchivo(u), url: u }));
 }

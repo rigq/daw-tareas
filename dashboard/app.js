@@ -2,12 +2,15 @@
 import { CAMPUS, agrupar, cuentaAtras, urgencia, modDe, urlEntrega, urlCampus, rutaFicha, rutaLibre,
   nombreArchivo, infoModulo, clave, esDescargaValida, estaHecha, fusionarMarcas } from './logica.js';
 import { fichaMd, readmeModulo, pendientesMd } from './markdown.js';
-import { leerCampus } from './campus.js';
+import { leerCampus, descargar, archivosDeCarpeta } from './campus.js';
+import { parseMd, agruparApuntes, sinResumir, tipoApunte, rutaApunte } from './apuntes.js';
+import { MODULOS } from './logica.js';
 import * as fs from './carpeta.js';
 
 const $ = s => document.querySelector(s);
 const RUTA_POR_DEFECTO = 'C:\\Users\\fabri\\Desktop\\DAW';
-const app = { datos: null, marcas: {}, carpeta: null, ruta: RUTA_POR_DEFECTO, filtro: '', ocupado: false };
+const app = { datos: null, marcas: {}, carpeta: null, ruta: RUTA_POR_DEFECTO, filtro: '', ocupado: false,
+  vista: 'tareas', modulo: '761' };
 const almacen = {
   get: async k => (await chrome.storage.local.get(k))[k],
   set: (k, v) => chrome.storage.local.set({ [k]: v }),
@@ -107,7 +110,38 @@ async function volcar(c, datos) {
   }
   await fs.escribir(c, 'PENDIENTES.md', pendientesMd(datos.tareas, app.marcas, ahora, datos.rutas));
   await fs.escribir(c, 'dashboard/datos/campus.json', JSON.stringify(datos, null, 1));
-  return `${fichas} ${fichas === 1 ? 'ficha nueva' : 'fichas nuevas'}, ${adjuntos} ${adjuntos === 1 ? 'adjunto' : 'adjuntos'}.`;
+  const nuevosApuntes = await volcarApuntes(c, datos.apuntes || []);
+  return `${fichas} ${fichas === 1 ? 'ficha nueva' : 'fichas nuevas'}, ${adjuntos} ${adjuntos === 1 ? 'adjunto' : 'adjuntos'}, ` +
+    `${nuevosApuntes} ${nuevosApuntes === 1 ? 'apunte nuevo' : 'apuntes nuevos'}.`;
+}
+
+// Descarga a <módulo>/Apuntes los recursos que no se conocían y los archivos nuevos de las carpetas del campus.
+// Nunca sobrescribe: si ya existe un archivo con ese nombre, se deja.
+async function volcarApuntes(c, apuntes) {
+  const conocidos = JSON.parse((await fs.leer(c, 'dashboard/datos/apuntes.json')) || '{}');
+  let nuevos = 0;
+  for (const a of apuntes) {
+    const mod = infoModulo(a.curso, a.cursoNombre);
+    try {
+      if (a.tipo === 'resource') {
+        if (conocidos[a.id]) continue;
+        const f = await descargar(a.url);
+        if (!f) continue;
+        const ruta = rutaApunte(mod.carpeta, f.nombre);
+        if (!await fs.existe(c, ruta)) { await fs.escribir(c, ruta, f.blob); nuevos++; }
+        conocidos[a.id] = ruta;
+      } else {
+        for (const f of await archivosDeCarpeta(a.url)) {
+          const ruta = rutaApunte(mod.carpeta, f.nombre, a.nombre);
+          if (await fs.existe(c, ruta)) continue;
+          const d = await descargar(f.url);
+          if (d) { await fs.escribir(c, ruta, d.blob); nuevos++; }
+        }
+      }
+    } catch (e) { if (e.codigo === 'SIN_SESION') throw e; /* un apunte que falla no detiene el resto */ }
+  }
+  await fs.escribir(c, 'dashboard/datos/apuntes.json', JSON.stringify(conocidos, null, 1));
+  return nuevos;
 }
 
 async function actualizar() {
@@ -168,6 +202,11 @@ function tarjeta(t, ahora, hecha) {
 }
 
 function pintar() {
+  for (const b of document.querySelectorAll('#pestanas button')) b.classList.toggle('activa', b.dataset.vista === app.vista);
+  $('#lista').hidden = app.vista !== 'tareas';
+  $('#apuntes').hidden = app.vista !== 'apuntes';
+  $('#buscar').placeholder = app.vista === 'apuntes' ? 'Buscar apuntes  ( / )' : 'Buscar tareas  ( / )';
+  if (app.vista === 'apuntes') { pintarApuntes().catch(e => aviso(e.message, 'error')); return; }
   const lista = $('#lista');
   lista.replaceChildren();
   if (!app.datos) {
@@ -192,6 +231,84 @@ function pintar() {
   }
 }
 
+// ---------- apuntes ----------
+
+const INLINE = { b: 'strong', i: 'em', code: 'code' };
+const pintarInline = partes => partes.map(p => (p.t === 'text' ? p.v : el(INLINE[p.t], {}, p.v)));
+
+function pintarMd(texto) {
+  const caja = el('article', { class: 'resumen' });
+  for (const b of parseMd(texto)) {
+    if (b.tipo === 'h') caja.append(el(`h${b.nivel}`, {}, ...pintarInline(b.inline)));
+    else if (b.tipo === 'p') caja.append(el('p', {}, ...pintarInline(b.inline)));
+    else if (b.tipo === 'quote') caja.append(el('blockquote', {}, ...pintarInline(b.inline)));
+    else if (b.tipo === 'code') caja.append(el('pre', {}, el('code', {}, b.texto)));
+    else if (b.tipo === 'ul' || b.tipo === 'ol') caja.append(el(b.tipo, {}, ...b.items.map(i => el('li', {}, ...pintarInline(i)))));
+    else if (b.tipo === 'table') caja.append(el('table', {}, ...b.filas.map(f => el('tr', {}, ...f.map(c => el('td', {}, ...pintarInline(c)))))));
+  }
+  return caja;
+}
+
+const TIPOS_MIME = { pdf: 'application/pdf', texto: 'text/plain;charset=utf-8' };
+
+async function abrirApunte(carpetaMod, ruta) {
+  const f = await fs.archivo(app.carpeta, `${carpetaMod}/Apuntes/${ruta}`);
+  const tipo = tipoApunte(f.name);
+  const blob = TIPOS_MIME[tipo] ? new Blob([f], { type: TIPOS_MIME[tipo] }) : f;
+  const url = URL.createObjectURL(blob);
+  if (tipo === 'pdf' || tipo === 'imagen' || tipo === 'texto') abrirExterno(url);
+  else el('a', { href: url, download: f.name }).click(); // Office y otros: se abren con su programa
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
+}
+
+async function pintarApuntes() {
+  const lista = $('#modulos'), cont = $('#contenido-apuntes');
+  const c = app.carpeta;
+  if (!c || !await fs.tienePermiso(c)) {
+    lista.replaceChildren();
+    cont.replaceChildren(el('p', { class: 'vacio' }, 'Los apuntes se leen de tu carpeta DAW. '),
+      el('p', { style: 'text-align:center' }, el('button', { class: 'primario', onclick: async () => {
+        if (c && await fs.tienePermiso(c, true)) { await cargarDeCarpeta(); pintar(); return; }
+        try { app.carpeta = await fs.elegirCarpeta(); await cargarDeCarpeta(); pintar(); }
+        catch (e) { if (e.name !== 'AbortError') aviso(e.message, 'error'); }
+      } }, c ? 'Dar acceso a la carpeta DAW' : 'Elegir carpeta DAW')));
+    return;
+  }
+  const modulos = Object.entries(MODULOS);
+  const info = await Promise.all(modulos.map(async ([id, m]) => {
+    const archivos = await fs.listarApuntes(c, m.carpeta);
+    const resumen = await fs.leer(c, `${m.carpeta}/Apuntes/RESUMEN.md`);
+    return { id, m, archivos, resumen, pendientes: sinResumir(archivos, resumen) };
+  }));
+  lista.replaceChildren(...info.filter(x => x.archivos.length).map(({ id, m, resumen, pendientes }) =>
+    el('button', { class: id === app.modulo ? 'activa' : '', onclick: () => { app.modulo = id; almacen.set('modulo', id); pintar(); } },
+      el('span', { class: 'punto', style: `--c:${m.color}` }), m.corto,
+      resumen && pendientes.length ? el('span', { class: 'pend', title: 'Apuntes nuevos sin resumir' }, `+${pendientes.length}`) : null)));
+
+  const sel = info.find(x => x.id === app.modulo && x.archivos.length) || info.find(x => x.archivos.length);
+  if (!sel) { cont.replaceChildren(el('p', { class: 'vacio' }, 'No hay apuntes todavía.')); return; }
+  const f = app.filtro.trim().toLowerCase();
+  const grupos = agruparApuntes(sel.archivos.filter(a => !f || a.ruta.toLowerCase().includes(f)));
+  cont.replaceChildren(
+    el('h2', {}, sel.m.titulo),
+    sel.resumen && sel.pendientes.length
+      ? el('p', { class: 'chip' }, `${sel.pendientes.length} apuntes nuevos sin resumir: pídele a Claude «actualiza los resúmenes».`) : null,
+    sel.resumen ? pintarMd(sel.resumen) : el('p', { class: 'chip' }, 'Todavía no hay resumen de esta asignatura.'),
+    el('div', { class: 'archivos' }, el('h2', {}, `Archivos · ${grupos.reduce((n, g) => n + g.archivos.length, 0)}`),
+      ...grupos.flatMap(g => [g.grupo ? el('h3', {}, g.grupo) : null,
+        ...g.archivos.map(a => {
+          const nombre = a.ruta.split('/').pop();
+          return el('button', { title: 'Abrir', onclick: () => abrirApunte(sel.m.carpeta, a.ruta).catch(e => aviso(e.message, 'error')) },
+            nombre.replace(/\.[^.]+$/, ''), el('span', { class: 'ext' }, (nombre.match(/\.([^.]+)$/)?.[1] || '')));
+        })])));
+}
+
+function cambiarVista(v) {
+  app.vista = v;
+  almacen.set('vista', v);
+  pintar();
+}
+
 // ---------- ajustes y arranque ----------
 
 async function pintarAjustes() {
@@ -210,9 +327,12 @@ async function iniciar() {
   app.marcas = (await almacen.get('marcas')) || {};
   app.ruta = (await almacen.get('ruta')) || RUTA_POR_DEFECTO;
   app.carpeta = (await fs.carpetaGuardada()) || null;
+  app.vista = (await almacen.get('vista')) || 'tareas';
+  app.modulo = (await almacen.get('modulo')) || app.modulo;
   if (app.carpeta && await fs.tienePermiso(app.carpeta)) await cargarDeCarpeta();
   pintar();
 
+  for (const b of document.querySelectorAll('#pestanas button')) b.addEventListener('click', () => cambiarVista(b.dataset.vista));
   $('#actualizar').addEventListener('click', actualizar);
   $('#buscar').addEventListener('input', e => { app.filtro = e.target.value; pintar(); });
   $('#abrir-ajustes').addEventListener('click', () => { pintarAjustes(); $('#ajustes').showModal(); });
@@ -225,6 +345,8 @@ async function iniciar() {
     if (e.target.matches('input') || $('#ajustes').open || e.ctrlKey || e.metaKey || e.altKey) return;
     if (e.key === 'r' || e.key === 'R') { e.preventDefault(); actualizar(); }
     if (e.key === '/') { e.preventDefault(); $('#buscar').focus(); }
+    if (e.key === '1') cambiarVista('tareas');
+    if (e.key === '2') cambiarVista('apuntes');
   });
   setInterval(() => app.datos && ($('#actualizado').textContent = hace(app.datos.fecha)), 60000);
   if (!app.carpeta) aviso('Primer uso: elige la carpeta DAW en ⚙ y pulsa Actualizar.');

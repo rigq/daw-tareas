@@ -52,6 +52,43 @@ dialog { border: 1px solid var(--borde); border-radius: 12px; background: var(--
 dialog label { display: block; margin: 16px 0; font-size: 14px; }
 dialog input { display: block; width: 100%; margin-top: 6px; padding: 6px 10px; border: 1px solid var(--borde);
   border-radius: 8px; background: var(--fondo); color: var(--texto); }
+/* ---------- pestañas ---------- */
+#pestanas { display: flex; gap: 2px; background: var(--borde); padding: 2px; border-radius: 9px; }
+#pestanas button { border: 0; background: transparent; padding: 4px 12px; border-radius: 7px; color: var(--suave); }
+#pestanas button.activa { background: var(--tarjeta); color: var(--texto); font-weight: 600; }
+
+/* ---------- apuntes ---------- */
+#apuntes { display: grid; grid-template-columns: 190px 1fr; gap: 24px; max-width: 1040px; margin: 0 auto; padding: 16px 16px 64px; }
+#apuntes[hidden] { display: none; }
+#modulos { display: flex; flex-direction: column; gap: 2px; position: sticky; top: 72px; align-self: start; }
+#modulos button { text-align: left; border: 0; background: transparent; display: flex; align-items: center; gap: 8px; }
+#modulos button.activa { background: var(--tarjeta); box-shadow: 0 0 0 1px var(--borde); font-weight: 600; }
+#modulos .pend { margin-left: auto; font-size: 11px; color: var(--naranja); }
+#contenido-apuntes { min-width: 0; }
+.chip { display: inline-block; font-size: 13px; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--naranja); color: var(--naranja); margin: 0 0 12px; }
+.resumen { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 12px; padding: 4px 24px 16px; line-height: 1.6; }
+.resumen h1 { font-size: 22px; margin: 18px 0 6px; }
+.resumen h2 { font-size: 17px; text-transform: none; letter-spacing: 0; color: var(--texto); margin: 22px 0 6px; padding-top: 12px; border-top: 1px solid var(--borde); }
+.resumen h3 { font-size: 15px; margin: 16px 0 4px; }
+.resumen h4 { font-size: 14px; margin: 12px 0 4px; color: var(--suave); }
+.resumen p, .resumen ul, .resumen ol { margin: 6px 0; }
+.resumen code { font: 13px ui-monospace, Consolas, monospace; background: var(--fondo); padding: 1px 5px; border-radius: 4px; }
+.resumen pre { background: var(--fondo); border: 1px solid var(--borde); border-radius: 8px; padding: 10px 12px; overflow-x: auto; }
+.resumen pre code { background: none; padding: 0; }
+.resumen blockquote { margin: 10px 0; padding: 8px 12px; border-left: 3px solid var(--acento); background: var(--fondo); border-radius: 0 8px 8px 0; }
+.resumen table { border-collapse: collapse; margin: 8px 0; font-size: 14px; display: block; overflow-x: auto; }
+.resumen td { border: 1px solid var(--borde); padding: 4px 8px; vertical-align: top; }
+.resumen tr:first-child td { font-weight: 600; background: var(--fondo); }
+.archivos { margin-top: 20px; }
+.archivos h3 { font-size: 13px; color: var(--suave); margin: 14px 0 4px; font-weight: 500; }
+.archivos button { display: block; width: 100%; text-align: left; border: 0; background: transparent; padding: 5px 8px; border-radius: 6px; }
+.archivos button:hover { background: var(--tarjeta); }
+.archivos .ext { font-size: 11px; color: var(--suave); margin-left: 6px; text-transform: uppercase; }
+
+@media (max-width: 720px) {
+  #apuntes { grid-template-columns: 1fr; }
+  #modulos { position: static; flex-direction: row; flex-wrap: wrap; }
+}
 @media (max-width: 560px) {
   header { flex-wrap: wrap; }
   #buscar { order: 9; width: 100%; }
