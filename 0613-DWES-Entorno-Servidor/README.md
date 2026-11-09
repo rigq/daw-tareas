@@ -1,7 +1,7 @@
 # 0613. Desarrollo web en entorno servidor
 
 - **Campus:** https://campus.digitechfp.com/course/view.php?id=761
-- **Aula virtual (Teams):** https://teams.microsoft.com/meet/312015390374085
+- **Aula virtual (Teams):** https://teams.microsoft.com/meet/312015390374085?p=MyOa9hWfn6Fvq8opev
 
 ## Tareas
 
@@ -34,6 +34,6 @@
 
 ## Apuntes
 
-7 recursos — ver [Apuntes/README.md](Apuntes/README.md)
+Ver [Apuntes/README.md](Apuntes/README.md)
 
-Leyenda: ✅ entregada · ⏳ pendiente · ❌ vencida sin entregar
+Leyenda: ✅ entregada o hecha · ⏳ pendiente · ❌ vencida sin entregar

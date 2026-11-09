@@ -1,7 +1,7 @@
 # 0615. Diseño de interfaces web
 
 - **Campus:** https://campus.digitechfp.com/course/view.php?id=765
-- **Aula virtual (Teams):** https://teams.microsoft.com/meet/339950436062771
+- **Aula virtual (Teams):** https://teams.microsoft.com/meet/339950436062771?p=1ZoeufSu4QH0tVcIQU
 
 ## Tareas
 
@@ -11,6 +11,6 @@
 
 ## Apuntes
 
-5 recursos — ver [Apuntes/README.md](Apuntes/README.md)
+Ver [Apuntes/README.md](Apuntes/README.md)
 
-Leyenda: ✅ entregada · ⏳ pendiente · ❌ vencida sin entregar
+Leyenda: ✅ entregada o hecha · ⏳ pendiente · ❌ vencida sin entregar

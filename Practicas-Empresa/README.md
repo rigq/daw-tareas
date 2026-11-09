@@ -13,6 +13,6 @@
 
 ## Apuntes
 
-3 recursos — ver [Apuntes/README.md](Apuntes/README.md)
+Ver [Apuntes/README.md](Apuntes/README.md)
 
-Leyenda: ✅ entregada · ⏳ pendiente · ❌ vencida sin entregar
+Leyenda: ✅ entregada o hecha · ⏳ pendiente · ❌ vencida sin entregar

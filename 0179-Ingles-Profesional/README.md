@@ -1,12 +1,7 @@
 # 0179. Inglés profesional
 
 - **Campus:** https://campus.digitechfp.com/course/view.php?id=768
-- **Aula virtual (Teams):** https://teams.microsoft.com/meet/389631434969924
-
-## Avisos recientes
-
-- 10 oct. 2026: Summary of the previous lesson
-- 2 oct. 2026: Summary of the first lesson (2 October 2026)
+- **Aula virtual (Teams):** https://teams.microsoft.com/meet/389631434969924?p=nfLorgl74HhKAj7OVb
 
 ## Exámenes y evaluaciones
 
@@ -34,6 +29,6 @@
 
 ## Apuntes
 
-30 recursos — ver [Apuntes/README.md](Apuntes/README.md)
+Ver [Apuntes/README.md](Apuntes/README.md)
 
-Leyenda: ✅ entregada · ⏳ pendiente · ❌ vencida sin entregar
+Leyenda: ✅ entregada o hecha · ⏳ pendiente · ❌ vencida sin entregar

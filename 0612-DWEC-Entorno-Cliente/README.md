@@ -1,7 +1,7 @@
 # 0612. Desarrollo web en entorno cliente
 
 - **Campus:** https://campus.digitechfp.com/course/view.php?id=759
-- **Aula virtual (Teams):** https://teams.microsoft.com/meet/375808455278173
+- **Aula virtual (Teams):** https://teams.microsoft.com/meet/375808455278173?p=tCdjKA8tudZFvPHMgc
 
 ## Exámenes y evaluaciones
 
@@ -29,6 +29,6 @@
 
 ## Apuntes
 
-2 recursos — ver [Apuntes/README.md](Apuntes/README.md)
+Ver [Apuntes/README.md](Apuntes/README.md)
 
-Leyenda: ✅ entregada · ⏳ pendiente · ❌ vencida sin entregar
+Leyenda: ✅ entregada o hecha · ⏳ pendiente · ❌ vencida sin entregar

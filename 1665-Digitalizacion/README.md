@@ -1,7 +1,7 @@
 # 1665. Digitalización aplicada al sistema productivo
 
 - **Campus:** https://campus.digitechfp.com/course/view.php?id=801
-- **Aula virtual (Teams):** https://teams.microsoft.com/meet/33878324265102
+- **Aula virtual (Teams):** https://teams.microsoft.com/meet/33878324265102?p=MlPUICMjzYxJlTOi5r
 
 ## Tareas
 
@@ -11,6 +11,6 @@
 
 ## Apuntes
 
-1 recursos — ver [Apuntes/README.md](Apuntes/README.md)
+Ver [Apuntes/README.md](Apuntes/README.md)
 
-Leyenda: ✅ entregada · ⏳ pendiente · ❌ vencida sin entregar
+Leyenda: ✅ entregada o hecha · ⏳ pendiente · ❌ vencida sin entregar

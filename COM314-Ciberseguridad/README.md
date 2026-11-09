@@ -1,7 +1,7 @@
 # COM314. Ciberseguridad
 
 - **Campus:** https://campus.digitechfp.com/course/view.php?id=762
-- **Aula virtual (Teams):** https://teams.microsoft.com/meet/389544529891196
+- **Aula virtual (Teams):** https://teams.microsoft.com/meet/389544529891196?p=1m3M4qyAoV4v3bgXAs
 
 ## Tareas
 
@@ -12,6 +12,6 @@
 
 ## Apuntes
 
-3 recursos — ver [Apuntes/README.md](Apuntes/README.md)
+Ver [Apuntes/README.md](Apuntes/README.md)
 
-Leyenda: ✅ entregada · ⏳ pendiente · ❌ vencida sin entregar
+Leyenda: ✅ entregada o hecha · ⏳ pendiente · ❌ vencida sin entregar
