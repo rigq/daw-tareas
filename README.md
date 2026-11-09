@@ -38,3 +38,19 @@ Primera vez en un portátil nuevo:
 ```bash
 git clone https://github.com/rigq/daw-tareas.git
 ```
+
+## Dashboard de tareas
+
+Extensión de Chrome en [`dashboard/`](dashboard/) con tus pendientes ordenadas por urgencia.
+
+**Instalar (una vez por portátil):**
+1. Chrome → `chrome://extensions` → activa **Modo de desarrollador**.
+2. **Cargar descomprimida** → elige la carpeta `DAW/dashboard`.
+3. Fija el icono "Tareas DAW" en la barra y púlsalo.
+4. ⚙ → **Elegir carpeta DAW** (la carpeta del repo) y comprueba la ruta para VS Code.
+
+**Usar:** inicia sesión en el campus en Chrome y pulsa **Actualizar** (o `R`).
+**Entregar** abre directamente el formulario de envío. 📄 enunciado · 📁 carpeta en VS Code · ✓ marcar como hecha (en papel o en clase).
+Al terminar, `git add . && git commit -m "..." && git push` para llevar las fichas nuevas y las marcas al otro portátil.
+
+Tests: `cd dashboard && node --test`
