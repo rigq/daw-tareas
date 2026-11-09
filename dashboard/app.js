@@ -3,7 +3,7 @@ import { CAMPUS, agrupar, cuentaAtras, urgencia, modDe, urlEntrega, urlCampus, r
   nombreArchivo, infoModulo, clave, esDescargaValida, estaHecha, fusionarMarcas } from './logica.js';
 import { fichaMd, readmeModulo, pendientesMd } from './markdown.js';
 import { leerCampus, descargar, archivosDeCarpeta } from './campus.js';
-import { parseMd, agruparApuntes, sinResumir, tipoApunte, rutaApunte } from './apuntes.js';
+import { parseMd, inline, agruparApuntes, sinResumir, tipoApunte, rutaApunte } from './apuntes.js';
 import { MODULOS } from './logica.js';
 import * as fs from './carpeta.js';
 
@@ -234,7 +234,9 @@ function pintar() {
 // ---------- apuntes ----------
 
 const INLINE = { b: 'strong', i: 'em', code: 'code' };
-const pintarInline = partes => partes.map(p => (p.t === 'text' ? p.v : el(INLINE[p.t], {}, p.v)));
+// Negrita y cursiva pueden contener `código` u otros estilos: se procesan de nuevo por dentro.
+const pintarInline = partes => partes.map(p => (p.t === 'text' ? p.v
+  : p.t === 'code' ? el('code', {}, p.v) : el(INLINE[p.t], {}, ...pintarInline(inline(p.v)))));
 
 function pintarMd(texto) {
   const caja = el('article', { class: 'resumen' });
@@ -289,7 +291,7 @@ async function pintarApuntes() {
   if (!sel) { cont.replaceChildren(el('p', { class: 'vacio' }, 'No hay apuntes todavía.')); return; }
   const f = app.filtro.trim().toLowerCase();
   const grupos = agruparApuntes(sel.archivos.filter(a => !f || a.ruta.toLowerCase().includes(f)));
-  cont.replaceChildren(
+  cont.replaceChildren(...[
     el('h2', {}, sel.m.titulo),
     sel.resumen && sel.pendientes.length
       ? el('p', { class: 'chip' }, `${sel.pendientes.length} apuntes nuevos sin resumir: pídele a Claude «actualiza los resúmenes».`) : null,
@@ -300,7 +302,7 @@ async function pintarApuntes() {
           const nombre = a.ruta.split('/').pop();
           return el('button', { title: 'Abrir', onclick: () => abrirApunte(sel.m.carpeta, a.ruta).catch(e => aviso(e.message, 'error')) },
             nombre.replace(/\.[^.]+$/, ''), el('span', { class: 'ext' }, (nombre.match(/\.([^.]+)$/)?.[1] || '')));
-        })])));
+        })]))].filter(Boolean)); // replaceChildren no descarta null: se filtra aquí
 }
 
 function cambiarVista(v) {

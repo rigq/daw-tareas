@@ -7,7 +7,7 @@ const ordenar = (a, b) => a.localeCompare(b, 'es', { sensitivity: 'base', numeri
 
 // ---------- Markdown mínimo → bloques (la interfaz los pinta con textContent) ----------
 
-function inline(s) {
+export function inline(s) {
   const out = [];
   for (const parte of s.split(/(\*\*[^*]+\*\*|`[^`]+`|\*[^*\s][^*]*\*)/)) {
     if (!parte) continue;
@@ -43,7 +43,8 @@ export function parseMd(texto) {
     } else if (/^\s*\|/.test(l)) {
       cerrar();
       if (/^\s*\|[\s:|-]+\|\s*$/.test(l)) continue; // fila separadora
-      const celdas = l.trim().replace(/^\||\|$/g, '').split('|').map(c => inline(c.trim()));
+      const celdas = l.trim().replace(/^\||(?<!\\)\|$/g, '').split(/(?<!\\)\|/)
+        .map(c => inline(c.trim().replace(/\\\|/g, '|')));
       (ultimo('table') || bloques[bloques.push({ tipo: 'table', filas: [] }) - 1]).filas.push(celdas);
     } else if ((m = l.match(/^>\s?(.*)/))) {
       cerrar(); bloques.push({ tipo: 'quote', inline: inline(m[1]) });

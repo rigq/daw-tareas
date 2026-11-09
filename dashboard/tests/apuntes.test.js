@@ -24,6 +24,13 @@ test('parseMd ignora comentarios HTML (lista de archivos resumidos)', () => {
   assert.deepEqual(b.map(x => x.tipo), ['h']);
 });
 
+test('parseMd respeta las barras escapadas dentro de una tabla', () => {
+  const b = parseMd('| Op | Uso |\n|---|---|\n| `a \\|\\| b` | OR |');
+  assert.equal(b[0].tipo, 'table');
+  assert.equal(b[0].filas[1].length, 2);
+  assert.deepEqual(b[0].filas[1][0], [{ t: 'code', v: 'a || b' }]);
+});
+
 test('agruparApuntes agrupa por carpeta y oculta índices', () => {
   const g = agruparApuntes([
     { ruta: 'Tema 1.pdf' }, { ruta: 'UD2 PHP/b.pdf' }, { ruta: 'README.md' }, { ruta: 'RESUMEN.md' },
