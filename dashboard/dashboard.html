@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tareas DAW</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Tareas DAW</h1>
+    <span id="actualizado"></span>
+    <input id="buscar" type="search" placeholder="Buscar  ( / )" aria-label="Buscar tareas">
+    <button id="actualizar" class="primario" title="Actualizar (R)">Actualizar</button>
+    <button id="abrir-ajustes" class="icono" title="Ajustes" aria-label="Ajustes">⚙</button>
+  </header>
+  <progress id="progreso" hidden></progress>
+  <div id="aviso" role="status" hidden></div>
+  <main id="lista"></main>
+
+  <dialog id="ajustes">
+    <h2>Ajustes</h2>
+    <p>Carpeta DAW (para crear fichas y adjuntos): <strong id="nombre-carpeta">sin elegir</strong></p>
+    <button id="elegir-carpeta">Elegir carpeta DAW</button>
+    <label>Ruta de la carpeta en este portátil (para abrirla en VS Code)
+      <input id="ruta" type="text" spellcheck="false">
+    </label>
+    <form method="dialog"><button class="primario">Listo</button></form>
+  </dialog>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -41,3 +41,6 @@ __pycache__/
 
 # Espacio de trabajo de planes (local)
 .superpowers/
+
+# Configuración local de Claude
+.claude/

@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Tareas DAW",
+  "version": "1.0.0",
+  "description": "Tus tareas pendientes del campus Digitech FP, a un clic de entregarlas.",
+  "action": { "default_title": "Tareas DAW" },
+  "background": { "service_worker": "background.js" },
+  "permissions": ["storage"],
+  "host_permissions": ["https://campus.digitechfp.com/*"]
+}
