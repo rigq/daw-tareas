@@ -38,3 +38,6 @@ __pycache__/
 # Varios
 *.log
 *.tmp
+
+# Espacio de trabajo de planes (local)
+.superpowers/
