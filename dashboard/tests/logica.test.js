@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {
   parseFecha, esExamen, slug, nombreFicha, rutaFicha, rutaLibre, idDeFicha, nombreArchivo,
   estado, franja, cuentaAtras, urlEntrega, esPaginaLogin, agrupar, infoModulo, fmt,
+  clave, esDescargaValida, estaHecha, fusionarMarcas,
 } from '../logica.js';
 
 const T = (o = {}) => ({ id: '1', curso: '761', cursoNombre: '', mod: 'assign', nombre: 'Tarea', seccion: '',
@@ -50,9 +51,34 @@ test('infoModulo genera una carpeta para módulos desconocidos', () => {
 test('idDeFicha y rutaLibre evitan duplicados (Review Focus 1)', () => {
   assert.equal(idDeFicha('- **En el campus:** https://campus.digitechfp.com/mod/assign/view.php?id=68320\n'), '68320');
   assert.equal(idDeFicha('sin enlace'), null);
-  const ocupadas = new Set(['A/Tareas/sin-fecha - P1.md']);
-  assert.equal(rutaLibre('A/Tareas/sin-fecha - P1.md', '42', ocupadas), 'A/Tareas/sin-fecha - P1 (42).md');
-  assert.equal(rutaLibre('A/Tareas/otra.md', '42', ocupadas), 'A/Tareas/otra.md');
+  assert.equal(rutaLibre('A/Tareas/sin-fecha - P1.md', '42', 0), 'A/Tareas/sin-fecha - P1.md');
+  assert.equal(rutaLibre('A/Tareas/sin-fecha - P1.md', '42', 1), 'A/Tareas/sin-fecha - P1 (42).md');
+  assert.equal(rutaLibre('A/Tareas/sin-fecha - P1.md', '42', 2), 'A/Tareas/sin-fecha - P1 (42-2).md');
+});
+
+test('clave compara rutas como Windows: sin mayúsculas ni formas Unicode distintas (revisión #1)', () => {
+  assert.equal(clave('A/Tareas/Práctica.md'), clave('a/tareas/PRÁCTICA.md'));
+  assert.equal(clave('A/Práctica.md'), clave('A/Práctica.md')); // NFD vs NFC
+});
+
+test('esDescargaValida rechaza la página de login guardada como adjunto (revisión #2)', () => {
+  assert.ok(esDescargaValida('https://campus.digitechfp.com/pluginfile.php/1/a.pdf', 'application/pdf', 'a.pdf'));
+  assert.ok(!esDescargaValida('https://campus.digitechfp.com/login/index.php', 'text/html; charset=utf-8', 'a.pdf'));
+  assert.ok(!esDescargaValida('https://campus.digitechfp.com/pluginfile.php/1/a.pdf', 'text/html', 'a.pdf'));
+  assert.ok(esDescargaValida('https://campus.digitechfp.com/pluginfile.php/1/b.html', 'text/html', 'b.html'));
+});
+
+test('marcas: desmarcar deja rastro y la fusión gana la más reciente (revisión #3)', () => {
+  assert.ok(estaHecha({ 1: '2026-11-01T00:00:00Z' }, '1'));            // formato antiguo
+  assert.ok(estaHecha({ 1: { hecha: true, t: '2026-11-01T00:00:00Z' } }, '1'));
+  assert.ok(!estaHecha({ 1: { hecha: false, t: '2026-11-02T00:00:00Z' } }, '1'));
+  const casa = { 1: { hecha: true, t: '2026-11-01T10:00:00Z' }, 2: { hecha: false, t: '2026-11-03T10:00:00Z' } };
+  const clase = { 1: { hecha: false, t: '2026-11-02T10:00:00Z' }, 2: '2026-11-01T10:00:00Z', 3: { hecha: true, t: '2026-11-01T10:00:00Z' } };
+  const f = fusionarMarcas(casa, clase);
+  assert.ok(!estaHecha(f, '1')); // desmarcada después en clase
+  assert.ok(!estaHecha(f, '2')); // desmarcada después en casa
+  assert.ok(estaHecha(f, '3'));  // solo existía en clase
+  assert.equal(estado(T({ id: '1' }), f, ahora), 'pendiente');
 });
 
 test('nombreArchivo limpia nombres de adjuntos (Review Focus 3)', () => {

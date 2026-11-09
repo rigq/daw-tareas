@@ -53,7 +53,11 @@ export function nombreFicha(t) {
   return `${pref} - ${slug(t.nombre)}.md`;
 }
 export const rutaFicha = t => `${modDe(t).carpeta}/${esExamen(t) ? 'Examenes' : 'Tareas'}/${nombreFicha(t)}`;
-export const rutaLibre = (ruta, id, ocupadas) => (ocupadas.has(ruta) ? ruta.replace(/\.md$/, ` (${id}).md`) : ruta);
+// Nombre alternativo para el intento N (0 = el original): "x.md", "x (id).md", "x (id-2).md"…
+export const rutaLibre = (ruta, id, intento = 0) =>
+  (intento === 0 ? ruta : ruta.replace(/\.md$/, ` (${intento === 1 ? id : `${id}-${intento}`}).md`));
+// Clave de comparación como la del sistema de archivos de Windows (sin mayúsculas, Unicode NFC).
+export const clave = ruta => ruta.normalize('NFC').toLowerCase();
 export const idDeFicha = texto => (texto || '').match(/view\.php\?id=(\d+)/)?.[1] ?? null;
 
 export function nombreArchivo(url) {
@@ -61,8 +65,23 @@ export function nombreArchivo(url) {
   return ultimo.replace(/ \(\d+\)(?=\.[^.]+$)/, '').replace(/[<>:"/\\|?*]/g, '').trim() || 'archivo';
 }
 
+// Marcas: id → { hecha, t } (t = cuándo se cambió). Un string antiguo equivale a { hecha: true, t: string }.
+const marca = v => (typeof v === 'string' ? { hecha: true, t: v } : v || null);
+export const estaHecha = (marcas, id) => marca(marcas?.[id])?.hecha === true;
+export function fusionarMarcas(a = {}, b = {}) {
+  const r = {};
+  for (const id of new Set([...Object.keys(a), ...Object.keys(b)])) {
+    const x = marca(a[id]), y = marca(b[id]);
+    r[id] = !x ? y : !y ? x : (y.t > x.t ? y : x);
+  }
+  return r;
+}
+
+export const esDescargaValida = (urlFinal, tipo, nombre) =>
+  !esPaginaLogin(urlFinal) && !(/text\/html/i.test(tipo || '') && !/\.html?$/i.test(nombre));
+
 export function estado(t, marcas = {}, ahora = new Date()) {
-  if (marcas[t.id]) return 'hecha';
+  if (estaHecha(marcas, t.id)) return 'hecha';
   if (/Enviado/.test(t.entrega || '')) return 'entregada';
   const c = aFecha(t.cierre);
   if (c && c.getFullYear() <= ANIO_ABIERTA && c < ahora) return 'vencida';

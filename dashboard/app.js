@@ -1,6 +1,6 @@
 // Interfaz del dashboard: estado, actualizar, volcar a la carpeta DAW y pintar.
 import { CAMPUS, agrupar, cuentaAtras, urgencia, modDe, urlEntrega, urlCampus, rutaFicha, rutaLibre,
-  nombreArchivo, infoModulo } from './logica.js';
+  nombreArchivo, infoModulo, clave, esDescargaValida, estaHecha, fusionarMarcas } from './logica.js';
 import { fichaMd, readmeModulo, pendientesMd } from './markdown.js';
 import { leerCampus } from './campus.js';
 import * as fs from './carpeta.js';
@@ -55,24 +55,31 @@ async function abrirCarpeta(t) {
   el('a', { href: `vscode://file/${encodeURI(abs)}` }).click();
 }
 
-async function alternarHecha(t) {
-  if (app.marcas[t.id]) delete app.marcas[t.id];
-  else app.marcas[t.id] = new Date().toISOString();
+// Fusiona las marcas locales con dashboard/datos/marcas.json (que viaja por git) y guarda en ambos sitios.
+async function sincronizarMarcas(c) {
+  const enCarpeta = await fs.leer(c, 'dashboard/datos/marcas.json');
+  app.marcas = fusionarMarcas(app.marcas, enCarpeta ? JSON.parse(enCarpeta) : {});
   await almacen.set('marcas', app.marcas);
-  if (app.carpeta && await fs.tienePermiso(app.carpeta)) {
-    await fs.escribir(app.carpeta, 'dashboard/datos/marcas.json', JSON.stringify(app.marcas, null, 1));
-  }
+  await fs.escribir(c, 'dashboard/datos/marcas.json', JSON.stringify(app.marcas, null, 1));
+}
+
+async function alternarHecha(t) {
+  app.marcas[t.id] = { hecha: !estaHecha(app.marcas, t.id), t: new Date().toISOString() };
+  await almacen.set('marcas', app.marcas);
+  if (app.carpeta && await fs.tienePermiso(app.carpeta)) await sincronizarMarcas(app.carpeta);
   pintar();
 }
 
 async function volcar(c, datos) {
   const existentes = await fs.fichasExistentes(c);
-  const ocupadas = new Set(existentes.values());
+  const ocupadas = new Set([...existentes.values()].map(clave));
   let fichas = 0, adjuntos = 0;
   for (const t of datos.tareas) {
     if (existentes.has(t.id)) continue; // nunca se sobrescribe una ficha existente
-    const ruta = rutaLibre(rutaFicha(t), t.id, ocupadas);
-    ocupadas.add(ruta);
+    let ruta, intento = 0;
+    do { ruta = rutaLibre(rutaFicha(t), t.id, intento++); }
+    while (ocupadas.has(clave(ruta)) || await fs.existe(c, ruta)); // ni fichas conocidas ni archivos ajenos
+    ocupadas.add(clave(ruta));
     const dir = ruta.replace(/\.md$/, '');
     const nombres = [];
     for (const a of t.adjuntos) {
@@ -80,7 +87,7 @@ async function volcar(c, datos) {
       try {
         if (!await fs.existe(c, `${dir}/${n}`)) {
           const r = await fetch(a.url, { credentials: 'include' });
-          if (!r.ok) continue;
+          if (!r.ok || !esDescargaValida(r.url, r.headers.get('content-type'), n)) continue; // p. ej. sesión caducada
           await fs.escribir(c, `${dir}/${n}`, await r.blob());
           adjuntos++;
         }
@@ -119,6 +126,7 @@ async function actualizar() {
     nuevos.tareas = nuevos.tareas.map(t => (t.error ? previas.get(t.id) : t)).filter(Boolean);
     nuevos.rutas = app.datos?.rutas || {};
     app.datos = nuevos;
+    if (conCarpeta) await sincronizarMarcas(app.carpeta);
     const resumen = conCarpeta ? await volcar(app.carpeta, nuevos) : 'Elige la carpeta DAW en ⚙ para crear fichas.';
     await almacen.set('datos', app.datos);
     aviso(`Listo. ${resumen}${fallos ? ` ${fallos} tareas no se pudieron leer (se mantienen los datos anteriores).` : ''}`);
@@ -138,7 +146,7 @@ async function actualizar() {
 
 function tarjeta(t, ahora, hecha) {
   const m = modDe(t);
-  const marcada = Boolean(app.marcas[t.id]);
+  const marcada = estaHecha(app.marcas, t.id);
   const detalle = el('div', { class: 'detalle', hidden: '' }, t.enunciado || 'Sin descripción en el campus.',
     t.adjuntos?.length ? el('ul', {}, ...t.adjuntos.map(a => el('li', {}, el('a', { href: a.url, target: '_blank' }, a.nombre || nombreArchivo(a.url))))) : null,
     el('p', {}, el('a', { href: urlCampus(t), target: '_blank' }, 'Ver en el campus')));
@@ -194,8 +202,7 @@ async function pintarAjustes() {
 async function cargarDeCarpeta() {
   const d = await fs.leer(app.carpeta, 'dashboard/datos/campus.json');
   if (d) { const x = JSON.parse(d); if (!app.datos || x.fecha > app.datos.fecha) app.datos = x; }
-  const m = await fs.leer(app.carpeta, 'dashboard/datos/marcas.json');
-  if (m) app.marcas = JSON.parse(m);
+  await sincronizarMarcas(app.carpeta); // fusiona, nunca reemplaza
 }
 
 async function iniciar() {

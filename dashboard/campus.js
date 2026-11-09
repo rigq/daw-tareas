@@ -74,7 +74,7 @@ export async function leerCampus(alProgresar = () => {}) {
   };
 
   const { courses } = await ajax('core_course_get_enrolled_courses_by_timeline_classification',
-    { offset: 0, limit: 0, classification: 'all', sort: 'fullname' });
+    { offset: 0, limit: 0, classification: 'inprogress', sort: 'fullname' }); // sin módulos de cursos pasados
   const cursos = [], items = [];
   for (const c of courses) {
     const curso = { id: String(c.id), nombre: c.fullname, aula: null };
