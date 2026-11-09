@@ -1,0 +1,40 @@
+# Sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editores
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+
+# Node / JavaScript
+node_modules/
+dist/
+build/
+npm-debug.log*
+
+# PHP
+vendor/
+
+# Java
+*.class
+target/
+out/
+bin/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Secretos y configuración local (NUNCA subir contraseñas)
+.env
+.env.*
+!.env.example
+
+# Varios
+*.log
+*.tmp
