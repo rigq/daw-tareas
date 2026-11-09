@@ -50,17 +50,19 @@ Si alguna tarea falla al leerse, se conserva su dato anterior y se avisa: "2 tar
 - **Primer uso en cada portátil:** botón "Elegir carpeta DAW" (`showDirectoryPicker`). El permiso se guarda en IndexedDB; si Chrome lo pide de nuevo, se renueva con el clic en "Actualizar".
 - **Ruta para VS Code:** el navegador no conoce la ruta real de la carpeta elegida, así que en **Ajustes** se escribe una vez la ruta (por defecto `C:\Users\fabri\Desktop\DAW`), guardada en `chrome.storage.local`, es decir, por portátil. El botón "Carpeta" abre `vscode://file/<ruta>/<Módulo>/Tareas/<ficha>` y crea antes la carpeta de la tarea si no existe.
 
-## Interfaz
+## Interfaz (minimalista, orientada a entregar rápido)
 
-- **Cabecera:** botón **Actualizar**, "última actualización hace 2 h" y Ajustes.
-- **Contadores:** *Vence hoy/mañana* · *Esta semana* · *Vencidas sin entregar* · *Entregadas*. Al pulsar uno, filtra la lista.
-- **Filtros:** un chip por módulo, cada uno con su color, y un buscador por nombre.
-- **Lista principal:** las pendientes ordenadas por fecha de cierre. Cada tarjeta lleva:
-  - módulo (en su color), nombre y cuenta atrás ("en 2 días", "¡hoy 11:15!") en rojo, naranja o gris;
-  - estado: ✅ Entregada · ⏳ Pendiente · ❌ Vencida;
-  - botones: **Enunciado** (despliega el texto y enlaza los adjuntos del campus), **Entregar** (abre la tarea en el campus) y **Carpeta** (VS Code);
-  - **"Marcar como hecha"**, para las que se entregaron en papel o en clase. Se guarda en `dashboard/datos/marcas.json`, así que se sincroniza con git, y la tarea pasa al grupo "Hechas".
-- **Grupos plegables** debajo: *Vencidas sin entregar*, *Entregadas / hechas*, *Carpetas abiertas todo el curso* (cierres en 2029 o más tarde).
+Principio: **una sola lista, lo más urgente arriba, y el botón principal de cada tarjeta es Entregar.** Nada que no sirva para eso.
+
+- **Cabecera de una línea:** título, "actualizado hace 2 h" y el botón **Actualizar**. Los ajustes van en un icono ⚙ discreto.
+- **Lista "Pendientes"**, ordenada por cierre y agrupada por franjas: *Hoy* · *Mañana* · *Esta semana* · *Más adelante* · *Sin fecha*. Cada tarjeta lleva:
+  - un punto de color del módulo, nombre corto del módulo, nombre de la tarea y la hora de cierre ("hoy 11:15" en rojo, "en 3 días");
+  - **botón principal "Entregar"**, que abre directamente el formulario de envío del campus (`view.php?id=N&action=editsubmission`) en una pestaña nueva, sin pasos intermedios. En los cuestionarios abre el cuestionario;
+  - dos iconos secundarios: 📄 **Enunciado** (despliega el texto y los adjuntos en la propia tarjeta) y 📁 **Carpeta** (VS Code);
+  - **✓ Hecha**, para las entregadas en papel o en clase. Se guarda en `dashboard/datos/marcas.json` y se sincroniza con git.
+- **Debajo, plegados por defecto:** *Vencidas sin entregar (N)* y *Entregadas (N)*. Las carpetas abiertas todo el curso (cierres en 2029 o más tarde) van en "Sin fecha".
+- **Atajos de teclado:** `R` actualiza, `/` busca, y `Enter` sobre una tarjeta la entrega.
+- Un buscador pequeño; sin chips de filtros ni contadores.
 - Tema claro y oscuro según el sistema; se puede leer en pantalla pequeña.
 
 ## Reglas (en `logica.js`)
