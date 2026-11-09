@@ -1,0 +1,51 @@
+# Apuntes — 0613. Desarrollo web en entorno servidor
+
+Material publicado en el campus. Los archivos descargados van en esta carpeta.
+
+- **Carpeta: [UD1 Servidores y tipos](UD1%20Servidores%20y%20tipos/)** · [campus](https://campus.digitechfp.com/mod/folder/view.php?id=62091)
+  - `Tema1_Servidores.pdf`
+  - `Tema2_Servidores.pdf`
+- **Carpeta: [UD2 Lenguaje PHP](UD2%20Lenguaje%20PHP/)** · [campus](https://campus.digitechfp.com/mod/folder/view.php?id=62104)
+  - `$_COOKIE.txt`
+  - `$_SESSION.txt`
+  - `$FILES.txt`
+  - `$GET.txt`
+  - `$POST.txt`
+  - `ARRAYS.txt`
+  - `FUNCIONES PARA EL TRABAJO DE ARRAYS.txt`
+  - `Includerequired.txt`
+  - `MATRICES.txt`
+  - `OPERADORES LÓGICOS.txt`
+  - `Variables,condicionales y bucles.pdf`
+- **Carpeta: [Archivos fuente](Archivos%20fuente/)** · [campus](https://campus.digitechfp.com/mod/folder/view.php?id=65075)
+  - `applications.html`
+  - `arrray_multidimensional_asociativo2.php`
+  - `cargaarchivo.php`
+  - `ejercicio1.php`
+  - `ejercicio5.php`
+  - `files1.php`
+  - `formulario1.html`
+  - `formulario1.php`
+  - `get1.html`
+  - `get1.php`
+  - `get2.html`
+  - `get2.php`
+  - `include.php`
+  - `required.php`
+  - `subir.php`
+  - `subir.txt`
+  - `switch.php`
+  - `texto.txt`
+- **Carpeta: [Diseño wireframe](Dise%C3%B1o%20wireframe/)** · [campus](https://campus.digitechfp.com/mod/folder/view.php?id=65971)
+  - `Elementos de un wireframe.txt`
+- **Carpeta: [UD3 Conexión php y mysql](UD3%20Conexi%C3%B3n%20php%20y%20mysql/)** · [campus](https://campus.digitechfp.com/mod/folder/view.php?id=67153)
+  - `Elementos de un wireframe.txt`
+- **Carpeta: [UD4 Consultas desde PHP](UD4%20Consultas%20desde%20PHP/)** · [campus](https://campus.digitechfp.com/mod/folder/view.php?id=67608)
+  - `borrar.php`
+  - `carga_select.php`
+  - `conexion_tipo.php`
+  - `insert.php`
+  - `update.php`
+- **Carpeta: [UD4 Trabajo con archivos](UD4%20Trabajo%20con%20archivos/)** · [campus](https://campus.digitechfp.com/mod/folder/view.php?id=68040)
+  - `archivo.php`
+  - `Trabajo con archivos.txt`

@@ -1,0 +1,12 @@
+$FILES
+------
+Gestionar operaciones con archivos.
+
+1.Dentro del formulario HTML, utilizamos el campo file
+<input type="file">
+
+2.Tenemos que configurar el parámetro en el formulario, enctype.
+<form enctype="multipart/form-data">
+
+3.En cada celda, se almacena un archivo diferente.
+

@@ -1,0 +1,41 @@
+$_SESSION
+----------
+Almacenar información sobre el acceso de un usuario o sesión.El archivo de sesión se guarda en el servidor.
+
+Utilizamos el método session_start();
+
+<?php
+session_start();
+?>
+
+Una vez creada la sesión podemos almacenar información dentro del array $_SESSION
+
+ Ejemplo:
+
+<?php
+
+/*CREAR UNA SESIÓN*/
+error_reporting(2);
+
+/*crear la sesión*/
+session_start();
+echo("Se ha creado la sesión<br>");
+
+/*borrar sesión*/
+/*session_destroy();
+echo("Se ha eliminado la sesión");
+*/
+
+/*id de la sesión*/
+echo("El sesión_name es: ".session_name()."<br>");
+
+/*mostrar el id de sesión*/
+echo("El id de sesión es:" . session_id());
+
+
+?>
+
+
+
+
+

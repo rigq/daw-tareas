@@ -1,0 +1,19 @@
+MATRICES
+--------
+Son estructuras matriciales de datos, que nos permiten guardar valores, que pueden valores externos.
+
+Sintaxis
+--------
+
+-Matriz índice numérico:
+$datos=[["ana","gomez",23],["pedro","garcia",31],["luis","gomez",49]];
+
+echo($datos[1][0]);------pedro
+
+
+-Matriz asociativa:
+$misalumnos=[
+		["nombre"=>"ana","edad"=>23,"email"=>"sgonzalo@gmail,.com"],
+		["nombre"=>"david","edad"=>34,"email"=>"luis@gmail.com"],
+		["nombre"=>"elena","edad"=>26,"email"=>"elena@gmail.com"],
+];

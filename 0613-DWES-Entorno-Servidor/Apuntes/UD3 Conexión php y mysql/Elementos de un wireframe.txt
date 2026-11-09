@@ -1,0 +1,31 @@
+ELEMENTOS DE UN WIREFRAME
+--------------------------
+
+1.Cabecera. Logo,nombre de la web,título de la pag
+	    Sistema de navegación.
+	    Acceso a la aplicación.
+
+2.Menu navegación. Especificamos las categorías.
+		   (texto/imagenes)
+
+3.Área del contenido. Diseñar la posible maqueta con cajas(div,semánticas)
+
+4.Imagenes, puede diseñar con una caja vacía
+
+5.Formulario, pintamos los controles, cajas de texto, botones, ect.
+
+6.Pie de página, definimos es el copyright, información menos relevante del proyecto.
+
+OTROS ELEMENTOS A REPRESENTAR
+------------------------------
+-Iconos.
+-Tablas
+-Migas de pan. Inicio>Programación
+-Indicadores de carga
+-Animaciones
+
+
+
+
+
+

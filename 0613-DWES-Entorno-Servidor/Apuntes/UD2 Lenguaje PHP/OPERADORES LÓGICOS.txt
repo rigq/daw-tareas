@@ -1,0 +1,40 @@
+OPERADORES LÓGICOS
+------------------
+
+AND(&&), Se tienen que cumplir las dos condiciones, o las que se plantean.
+
+ej:
+
+$edad=25;
+
+if($edad>18 && $edad<30)
+{
+echo("Generación Z");
+}
+
+
+OR(||), se cumple una de las dos condiciones.
+
+if($edad<30 || $edad>18)
+{
+echo("");
+}
+
+NOT(!), Invierte el valor lógico de una condición.
+
+<?php
+$login=false;
+
+if(!login)
+	{
+	echo("Debe iniciar sesión");	
+	}
+
+
+
+?>
+
+
+
+
+

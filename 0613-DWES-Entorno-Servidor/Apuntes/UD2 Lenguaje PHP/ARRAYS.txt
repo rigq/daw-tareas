@@ -1,0 +1,45 @@
+ARRAYS
+-------
+
+1.Índice numérico. Cada elemento ocupa una posición dentro del array. indice->0
+
+2.Índice asociativos.El índice es un texto.
+
+Para recorrer un array, utilizamos un bucle for:
+numérico->for
+asociativo->for eachç
+
+Sintaxis
+---------
+$tabladatos=[3,45,23,89];
+
+-Seleccionamos una celda del array
+echo($tabladatos[0]);
+
+$nombres=["nombre"=>"pedro","edad"=>"23","email"=>"mgomez@gmail.com"]
+
+
+Recorrer un array
+------------------
+1.Numérico
+for($contador=0;$contador<5;$contador++)
+{
+
+}
+
+
+2.Asociativo
+foreach($nombres as $nombre=>$valor)
+{
+	echo $clave.":".$valor
+}
+
+
+
+
+
+
+
+
+
+

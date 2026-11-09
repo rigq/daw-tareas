@@ -1,0 +1,9 @@
+FUNCIONES PARA EL TRABAJO DE ARRAYS
+------------------------------------
+
+count(), nos devuelve el número de elementos o celdas del array
+array_push(), nos permite añadir elementos a un array
+array_pop(), elimina el ultimo elemento
+array_shift(), elimina el primer elemento
+sort(), ordena los elementos de un array
+in_array(), comprueba si un valor está en el array

@@ -1,0 +1,34 @@
+$_COOKIE
+---------
+Este archivo se crea en el equipo cliente.
+
+-Podemos guardar información, por ejemplo del usuario, idioma, sesión..
+-Mediante cookies podemos lo que se denomina publicidad programática.
+
+//creamos una cookie, para guardar información
+
+<?php
+//CREAMOS UNA COOKIE
+//usuario es el nombre de la cookie, y sara el valor
+setcookie("usuario","Sara",time()+3600);
+
+echo("La cookie se ha creado correctamente");
+
+//Leer una COOKIE
+if($_COOKIE['usuario'])
+    {
+    echo("La cookie se ha creado y almacena: ". $_COOKIE['usuario'])
+    }
+
+
+//borramos la cookie
+if($_COOKIE['usuario'])
+    {
+      setcookie("usuario","");  
+    echo("La cookie se ha eliminado");
+    }
+
+
+?>
+
+

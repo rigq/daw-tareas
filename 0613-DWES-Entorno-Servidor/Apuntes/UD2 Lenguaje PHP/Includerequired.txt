@@ -1,0 +1,23 @@
+Include/required
+----------------
+HTML,txt,php
+
+-Nos permite incrustar un archivo php externo, si da error, el código se sigue ejecutando.
+<?php
+include("datos.php");
+?>
+
+-Required. Incrustamos un archivo, pero si no se carga el código se detiene. Agregar los datos de una conexión a una base de datos. 
+
+<?php
+required("datos.php")
+?>
+
+-Required once. Incrustar un archivo, solamente una única vez.
+
+require_once("datos.php")
+
+-Include once. Incrusta un archivo, solamente una única jvez
+
+include_once("datos.php")
+

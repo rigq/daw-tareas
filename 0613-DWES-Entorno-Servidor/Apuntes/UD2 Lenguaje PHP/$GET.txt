@@ -1,0 +1,24 @@
+$GET
+----
+Es un método del sistema, nos permite utilizar HTTP para enviar información al servidor. Pasar los datos a través de la url, no es fiable.
+
+El array $GET, se genera cuando en un formulario pulsamos el botón de enviar y también podemos nosotros crear un enlace (a), y a través de ese enlace enviar esos datos.
+
+-Url:
+http://localhost/PHP/informacion.php?nombre=pepe&edad=25
+
+Esos valores se almacenan en el array $GET, y cada celda del array $GET, tiene el nombre del parámetro
+
+$_GET['nombre'], en esta celda se almacena el valor de pepe
+
+-Pasar los datos directamente desde una etiqueta a
+
+header(), nos permite redireccionar a una url, y pasarle los parámetros.
+
+header("location:get2.php?edad=$edad&domicilio=$domicilio)
+
+
+
+
+
+

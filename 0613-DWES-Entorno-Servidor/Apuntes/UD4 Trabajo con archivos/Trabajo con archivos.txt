@@ -1,0 +1,36 @@
+Trabajo con archivos
+---------------------
+
+Desde php, podemos:
+-Crear un archivo
+-Escribir en un archivo
+-Leer un archivo
+
+Para esto aplicamos una serie de permisos. Utilizamos los archivos como estrategia de backup.
+
+fopen, nos permite abrir un archivo y según el tipo de permiso, si no existe lo puede crear.
+
+$archivo=fopen("ruta/datos.txt","permiso");
+
+Tipos de permisos
+------------------
+r  Solo lectura
+w  Solo escrituar
+r+ Lectura y escritura si el archivo existe. Si no existe      
+   avisa
+w+ Lectura y escritura, si no existe el archivo lo crea
+a  escritura, y no sobrescribe.
+a+ Equivale al anterior, con lectura incorporada
+
+Metodos
+-------
+fopen, abre y en permiso a lo crea si no existe.
+fwrite, permite escribir en el archivo. 
+fgets, permite leer el contenido del archivo.
+
+
+
+
+
+
+

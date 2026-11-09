@@ -1,0 +1,8 @@
+$POST
+-----
+Array del sistema, que nos permite almacenar datos que completamos en un formulario HTML.
+
+-Se crea cuando pulsamos el botón de enviar(submit)
+-En cada celda del array se almacena un valor.
+-Las celdas del array tienen la referencia del atributo name del input de la declaración del elemento en HTML
+
