@@ -81,7 +81,7 @@ export async function pintarFondo() {
   const capa = document.getElementById('fondo-foto');
   const foto = fotoDelDia((await almacen.get('fondos')) || []);
   capa.classList.toggle('sin-foto', !foto);
-  capa.style.backgroundImage = foto ? `url("${foto}")` : '';
+  if (foto) capa.style.setProperty('--foto', `url("${foto}")`); else capa.style.removeProperty('--foto');
 }
 
 // Reduce la foto (máx. 2400 px, JPEG) para que quepa holgada en el almacenamiento de la extensión.

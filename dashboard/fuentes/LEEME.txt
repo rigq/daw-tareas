@@ -1,0 +1,2 @@
+Tipografías incluidas (todas con licencia SIL Open Font License 1.1, ver OFL.txt):
+Manrope, Inter, Spectral, Bodoni Moda y Newsreader, obtenidas de Fontsource (fontsource.org).

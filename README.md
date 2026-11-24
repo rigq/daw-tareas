@@ -54,7 +54,7 @@ Extensión de Chrome en [`dashboard/`](dashboard/) con tus pendientes ordenadas 
 Al terminar, `git add . && git commit -m "..." && git push` para llevar las fichas nuevas y las marcas al otro portátil.
 
 **Modos** (botón de arriba a la izquierda o `M`): cada uno con sus pestañas (`1`, `2`, `3`) y su estética, en claro y oscuro.
-- **Inicio**: tu foto de fondo (⚙ → Añadir fotos, o el botón *Fondo*), la hora, lo pendiente de todo, hábitos, notas, idea del día, novedades y accesos.
+- **Inicio (Riga Hub)**: tu foto de fondo (⚙ → Añadir fotos, o el botón *Fondo*), la hora, lo pendiente de todo, hábitos, notas, idea del día, novedades y accesos.
 - **Dr. Baos**: Tablero (frentes con progreso y Kanban; `N` nueva tarea, flechas para mover tarjetas) e Ideas.
 - **Grado**: Tareas, Semana y Apuntes.
 

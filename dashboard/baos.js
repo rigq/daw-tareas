@@ -32,7 +32,9 @@ export async function pintarBaos(cont, { filtro = '', vista = 'baos' } = {}) {
   cont.dataset.vista = vista;
   cont.replaceChildren(
     pintarResumen(baos),
-    vista === 'ideas' ? pintarIdeas(baos) : el('div', {}, pintarFrentes(baos), pintarTablero(baos)));
+    vista === 'ideas' ? pintarIdeas(baos) : el('div', {},
+      el('header', { class: 'seccion-baos' }, el('h2', {}, 'Frentes'), el('span', {}, 'Progreso por área')),
+      pintarFrentes(baos), pintarTablero(baos)));
 }
 
 // ---------- franja de resumen y acciones ----------

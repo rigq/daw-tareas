@@ -580,7 +580,7 @@ async function pintarApuntes() {
 // ---------- modos: cada uno con sus pestañas y su estética ----------
 const PRIMER_USO = 'Primer uso: elige la carpeta DAW en Ajustes (la rueda de arriba a la derecha) y pulsa Actualizar.';
 const MODOS = {
-  inicio: { nombre: 'Inicio', desc: 'Tu día de un vistazo', vistas: { inicio: 'Inicio' }, titulo: () => 'Riga Dashboard' },
+  inicio: { nombre: 'Inicio', desc: 'Tu día de un vistazo', vistas: { inicio: 'Inicio' }, titulo: () => 'Riga Hub' },
   baos: { nombre: 'Dr. Baos', desc: 'Clínica Dental · cliente', vistas: { baos: 'Tablero', ideas: 'Ideas' },
     titulo: () => 'Dr. Baos', subtitulo: 'Clínica Dental · Majadahonda · Argés' },
   grado: { nombre: 'Grado', desc: 'DAW · tareas, semana y apuntes', vistas: { tareas: 'Tareas', semana: 'Semana', apuntes: 'Apuntes' },
