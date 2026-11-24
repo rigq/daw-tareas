@@ -29,8 +29,12 @@
 | ❌ | 29/10/2026 14:30 | [Práctica Aplicación Logging_Fase II](Tareas/2026-10-29%20-%20Pr%C3%A1ctica%20Aplicaci%C3%B3n%20Logging_Fase%20II.md) | Todavía no se han realizado envíos | Sin calificar |
 | ❌ | 03/11/2026 11:15 | [Práctica Insert](Tareas/2026-11-03%20-%20Pr%C3%A1ctica%20Insert.md) | Todavía no se han realizado envíos | Sin calificar |
 | ❌ | 05/11/2026 11:15 | [Práctica Trabajo con archivos](Tareas/2026-11-05%20-%20Pr%C3%A1ctica%20Trabajo%20con%20archivos.md) | Todavía no se han realizado envíos | Sin calificar |
-| ⏳ | 10/11/2026 11:15 | [Práctica Update](Tareas/2026-11-10%20-%20Pr%C3%A1ctica%20Update.md) | Todavía no se han realizado envíos | Sin calificar |
-| ⏳ | 10/11/2026 11:15 | [Proyecto Foro Fase I Diseño wirerframe y Diagrama lógico](Tareas/2026-11-10%20-%20Proyecto%20Foro%20Fase%20I%20Dise%C3%B1o%20wirerframe%20y%20Diagrama%20l%C3%B3gico.md) | Todavía no se han realizado envíos | Sin calificar |
+| ✅ | 10/11/2026 11:15 | [Práctica Update](Tareas/2026-11-10%20-%20Pr%C3%A1ctica%20Update.md) | Todavía no se han realizado envíos | Sin calificar |
+| ✅ | 10/11/2026 11:15 | [Proyecto Foro Fase I Diseño wirerframe y Diagrama lógico](Tareas/2026-11-10%20-%20Proyecto%20Foro%20Fase%20I%20Dise%C3%B1o%20wirerframe%20y%20Diagrama%20l%C3%B3gico.md) | Enviado para calificar | Sin calificar |
+| ❌ | 12/11/2026 11:15 | [Proyecto Foro Fase II Creación de Script BBDD](Tareas/2026-11-12%20-%20Proyecto%20Foro%20Fase%20II%20Creaci%C3%B3n%20de%20Script%20BBDD.md) | Todavía no se han realizado envíos | Sin calificar |
+| ❌ | 17/11/2026 14:30 | [Proyecto Foro Fase III Diseño usuarios proyecto](Tareas/2026-11-17%20-%20Proyecto%20Foro%20Fase%20III%20Dise%C3%B1o%20usuarios%20proyecto.md) | Todavía no se han realizado envíos | Sin calificar |
+| ⏳ | 24/11/2026 14:30 | [Proyecto Foro Fase IV Registro,login](Tareas/2026-11-24%20-%20Proyecto%20Foro%20Fase%20IV%20Registro%2Clogin.md) | Todavía no se han realizado envíos | Sin calificar |
+| ⏳ | 03/12/2026 14:30 | [Proyecto Foro Fase V Diseño Perfil de usuario](Tareas/2026-12-03%20-%20Proyecto%20Foro%20Fase%20V%20Dise%C3%B1o%20Perfil%20de%20usuario.md) | Todavía no se han realizado envíos | Sin calificar |
 
 ## Apuntes
 

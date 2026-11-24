@@ -1,5 +1,6 @@
 // Lee el campus con la sesión de Chrome del usuario. Solo navegador.
 import { CAMPUS, parseFecha, esPaginaLogin, esDescargaValida, nombreArchivo } from './logica.js';
+import { parseNota } from './plan.js';
 
 export class ErrorCampus extends Error {
   constructor(codigo, mensaje) { super(mensaje); this.codigo = codigo; }
@@ -46,11 +47,18 @@ async function leerTarea(item) {
     .map(a => ({ nombre: limpio(a.textContent), url: absoluta(a.getAttribute('href')) }))
     .filter(a => !vistos.has(a.url) && vistos.add(a.url));
   const cierre = parseFecha('Cierre', fechas) || parseFecha('Vencimiento', fechas);
+  // Nota: en tareas, la fila "Calificación" de la retroalimentación; en cuestionarios, "Calificación más alta/final: x / y".
+  const filaNota = [...doc.querySelectorAll('.feedback tr, .gradingtable tr')].map(tr => limpio(tr.textContent))
+    .find(f => /^Calificaci[oó]n\b/.test(f)) || '';
+  const textoQuiz = item.mod === 'quiz'
+    ? (limpio(doc.querySelector('[role="main"]')?.textContent).match(/Calificaci[oó]n (?:m[aá]s alta|final)[^:]*:\s*([\d.,]+\s*\/\s*[\d.,]+)/i)?.[1] || '')
+    : '';
   return {
     id: item.id, curso: item.curso, cursoNombre: item.cursoNombre, mod: item.mod,
     nombre: item.nombre.replace(/&amp;/g, '&'), seccion: item.seccion,
     apertura: parseFecha('Apertura', fechas)?.toISOString() ?? null, cierre: cierre?.toISOString() ?? null,
     entrega: fila('Estado de la entrega'), calif: fila('Estado de la calificación'),
+    nota: parseNota(filaNota.replace(/^Calificaci[oó]n/i, '')) || parseNota(textoQuiz),
     enunciado: aTexto(doc.querySelector('.activity-description, #intro')), adjuntos, error: false,
   };
 }

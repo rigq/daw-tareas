@@ -1,10 +1,16 @@
 {
   "manifest_version": 3,
-  "name": "Tareas DAW",
-  "version": "1.0.0",
+  "name": "Rigatony Dash",
+  "version": "1.1.0",
   "description": "Tus tareas pendientes del campus Digitech FP, a un clic de entregarlas.",
-  "action": { "default_title": "Tareas DAW" },
-  "background": { "service_worker": "background.js" },
-  "permissions": ["storage"],
+  "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "action": {
+    "default_title": "Rigatony Dash",
+    "default_popup": "popup.html",
+    "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
+  },
+  "chrome_url_overrides": { "newtab": "dashboard.html" },
+  "background": { "service_worker": "background.js", "type": "module" },
+  "permissions": ["storage", "alarms", "notifications", "offscreen"],
   "host_permissions": ["https://campus.digitechfp.com/*"]
 }

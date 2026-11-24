@@ -8,7 +8,7 @@
 | | Cierre | Nombre | Entrega | Calificación |
 |---|---|---|---|---|
 | ✅ | 10/10/2026 23:59 | [PRACTICA 0](Tareas/2026-10-10%20-%20PRACTICA%200.md) | Enviado para calificar | Calificado |
-| ⏳ | — | [P1](Tareas/sin-fecha%20-%20P1.md) | Todavía no se han realizado envíos | Sin calificar |
+| ❌ | 23/11/2026 23:59 | [PRACTICA 1](Tareas/sin-fecha%20-%20P1.md) | Todavía no se han realizado envíos | Sin calificar |
 
 ## Apuntes
 

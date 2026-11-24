@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendiendo CSS Grid</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="cabecera">
+        <h1>Aprendiendo CSS Grid</h1>
+        <p>Guía práctica con explicaciones y ejemplos en vivo. Cada ejemplo muestra el código y,
+           justo debajo, el resultado real en el navegador.</p>
+    </header>
+
+    <main class="pagina">
+
+        <nav class="indice">
+            <h2>Índice</h2>
+            <ol>
+                <li><a href="#que-es">¿Qué es CSS Grid?</a></li>
+                <li><a href="#display-grid">display: grid</a></li>
+                <li><a href="#columns">grid-template-columns</a></li>
+                <li><a href="#repeat">La función repeat()</a></li>
+                <li><a href="#rows">grid-template-rows</a></li>
+                <li><a href="#gap">gap</a></li>
+                <li><a href="#auto-rows">grid-auto-rows</a></li>
+                <li><a href="#ejercicio">Ejercicio: 4 bloques en 2 columnas y 2 filas</a></li>
+            </ol>
+        </nav>
+
+        <!-- 1. QUÉ ES -->
+        <section id="que-es">
+            <h2>1. ¿Qué es CSS Grid?</h2>
+            <p>CSS Grid es un sistema de maquetación <strong>bidimensional</strong>: permite organizar los
+               elementos en <strong>filas y columnas a la vez</strong>. Flexbox, en cambio, es
+               unidimensional (organiza en una sola dirección: o en fila o en columna).</p>
+            <p>Estos son los conceptos básicos:</p>
+            <ul>
+                <li><strong>Contenedor grid (grid container):</strong> el elemento padre al que se le aplica
+                    <code>display: grid</code>. Casi todas las propiedades de este tutorial se escriben en él.</li>
+                <li><strong>Ítems (grid items):</strong> los hijos directos del contenedor. Se colocan
+                    automáticamente en la cuadrícula.</li>
+                <li><strong>Pistas (tracks):</strong> cada columna y cada fila de la cuadrícula.</li>
+                <li><strong>Celda (cell):</strong> el hueco donde se cruzan una fila y una columna.</li>
+                <li><strong>Líneas (lines):</strong> las líneas que separan las pistas. Una cuadrícula de
+                    2 columnas tiene 3 líneas verticales.</li>
+            </ul>
+            <p class="nota">En todos los ejemplos, el <strong>fondo gris</strong> es el contenedor y los
+               <strong>cuadros de colores</strong> son los ítems.</p>
+        </section>
+
+        <!-- 2. DISPLAY GRID -->
+        <section id="display-grid">
+            <h2>2. display: grid</h2>
+            <p>Es el primer paso: convierte un elemento en contenedor grid. Sus hijos directos pasan a ser
+               ítems de la cuadrícula.</p>
+<pre><code>.ejemplo {
+    display: grid;
+}</code></pre>
+            <p>Si no defines columnas, el grid tiene <strong>una sola columna</strong> y cada ítem ocupa una
+               fila nueva, uno debajo de otro. Para que parezca una cuadrícula hay que definir columnas
+               (siguiente apartado).</p>
+            <div class="ejemplo ejemplo-solo-grid">
+                <div class="bloque bloque-1">Ítem 1</div>
+                <div class="bloque bloque-2">Ítem 2</div>
+                <div class="bloque bloque-3">Ítem 3</div>
+            </div>
+        </section>
+
+        <!-- 3. COLUMNS -->
+        <section id="columns">
+            <h2>3. grid-template-columns</h2>
+            <p>Define <strong>cuántas columnas</strong> tiene el grid y <strong>cuánto mide cada una</strong>.
+               Se escribe un valor por columna, separados por espacios.</p>
+<pre><code>.ejemplo-columnas {
+    display: grid;
+    grid-template-columns: 200px 1fr 2fr;
+}</code></pre>
+            <p>Aquí hay 3 columnas porque hay 3 valores:</p>
+            <ul>
+                <li><code>200px</code>: la primera columna mide siempre 200 píxeles.</li>
+                <li><code>1fr</code> y <code>2fr</code>: se reparten el espacio que sobra.</li>
+            </ul>
+            <div class="ejemplo ejemplo-columnas">
+                <div class="bloque bloque-1">200px</div>
+                <div class="bloque bloque-2">1fr</div>
+                <div class="bloque bloque-3">2fr</div>
+            </div>
+
+            <h3>La unidad fr</h3>
+            <p><code>fr</code> significa <em>fracción del espacio disponible</em>. Primero se descuentan las
+               medidas fijas (en el ejemplo, los 200px) y el resto se divide en partes:
+               <code>1fr 2fr</code> son 3 partes en total, así que la segunda columna ocupa el doble que la
+               primera. Con <code>1fr 1fr</code> las dos columnas son iguales.</p>
+
+            <h3>Valores que se pueden usar</h3>
+            <table>
+                <thead><tr><th>Valor</th><th>Significado</th></tr></thead>
+                <tbody>
+                    <tr><td><code>200px</code></td><td>Tamaño fijo en píxeles.</td></tr>
+                    <tr><td><code>25%</code></td><td>Porcentaje del ancho del contenedor.</td></tr>
+                    <tr><td><code>1fr</code></td><td>Una parte del espacio libre.</td></tr>
+                    <tr><td><code>auto</code></td><td>Se ajusta al contenido (y ocupa el espacio sobrante si no hay <code>fr</code>).</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 4. REPEAT -->
+        <section id="repeat">
+            <h2>4. La función repeat()</h2>
+            <p>Sirve para no repetir valores. <code>repeat(cantidad, tamaño)</code> crea esa cantidad de pistas
+               con ese tamaño.</p>
+<pre><code>/* Estas dos líneas hacen exactamente lo mismo */
+grid-template-columns: 1fr 1fr 1fr 1fr;
+grid-template-columns: repeat(4, 1fr);</code></pre>
+            <div class="ejemplo ejemplo-repeat">
+                <div class="bloque bloque-1">1</div>
+                <div class="bloque bloque-2">2</div>
+                <div class="bloque bloque-3">3</div>
+                <div class="bloque bloque-4">4</div>
+            </div>
+            <p>También funciona en <code>grid-template-rows</code>.</p>
+        </section>
+
+        <!-- 5. ROWS -->
+        <section id="rows">
+            <h2>5. grid-template-rows</h2>
+            <p>Es lo mismo que <code>grid-template-columns</code>, pero para las <strong>filas</strong>: define
+               cuántas filas hay y <strong>cuánto mide de alto</strong> cada una.</p>
+<pre><code>.ejemplo-filas {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 120px 60px;
+}</code></pre>
+            <p>Tres filas: la primera de 60px, la segunda de 120px y la tercera de 60px.</p>
+            <div class="ejemplo ejemplo-filas">
+                <div class="bloque bloque-1">60px</div>
+                <div class="bloque bloque-2">120px</div>
+                <div class="bloque bloque-3">60px</div>
+            </div>
+
+            <h3>Distintas formas de escribir las filas</h3>
+            <table>
+                <thead><tr><th>Valor</th><th>Resultado</th></tr></thead>
+                <tbody>
+                    <tr><td><code>repeat(2, 1fr)</code></td><td>2 filas iguales que se reparten el alto del contenedor.</td></tr>
+                    <tr><td><code>1fr 1fr</code></td><td>Igual que la anterior, escrito a mano.</td></tr>
+                    <tr><td><code>auto auto</code></td><td>2 filas, cada una con el alto de su contenido.</td></tr>
+                    <tr><td><code>20vh 20vh</code></td><td>2 filas de un 20% del alto de la ventana cada una.</td></tr>
+                    <tr><td><code>100px 100px</code></td><td>2 filas de 100px.</td></tr>
+                    <tr><td><code>100px auto</code></td><td>Primera fila de 100px; la segunda se ajusta a su contenido.</td></tr>
+                </tbody>
+            </table>
+            <p class="aviso"><strong>Ojo con dos errores típicos:</strong></p>
+            <ul class="aviso">
+                <li>Los valores se separan <strong>con espacios, no con comas</strong>:
+                    <code>100px, 100px</code> es inválido y el navegador ignora la línea entera.</li>
+                <li><code>fr</code> en filas solo reparte espacio si el contenedor tiene una
+                    <strong>altura definida</strong> (por ejemplo <code>height: 100vh</code>). Si no, la altura
+                    se ajusta al contenido y no hay espacio que repartir.</li>
+            </ul>
+        </section>
+
+        <!-- 6. GAP -->
+        <section id="gap">
+            <h2>6. gap</h2>
+            <p>Define el <strong>espacio entre pistas</strong> (entre filas y entre columnas). No añade margen
+               por fuera del grid, solo entre los ítems.</p>
+<pre><code>.ejemplo-gap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}</code></pre>
+            <ul>
+                <li><code>gap: 30px</code>: mismo espacio entre filas y columnas.</li>
+                <li><code>gap: 10px 30px</code>: 10px entre filas y 30px entre columnas.</li>
+                <li><code>row-gap</code> y <code>column-gap</code>: lo mismo, por separado.</li>
+            </ul>
+            <div class="ejemplo ejemplo-gap">
+                <div class="bloque bloque-1">1</div>
+                <div class="bloque bloque-2">2</div>
+                <div class="bloque bloque-3">3</div>
+                <div class="bloque bloque-4">4</div>
+                <div class="bloque bloque-1">5</div>
+                <div class="bloque bloque-2">6</div>
+            </div>
+        </section>
+
+        <!-- 7. AUTO ROWS -->
+        <section id="auto-rows">
+            <h2>7. grid-auto-rows</h2>
+            <p><code>grid-template-rows</code> define las filas que tú declaras (las
+               <strong>explícitas</strong>). Pero si hay más ítems de los que caben en ellas, el grid crea filas
+               nuevas por su cuenta (las <strong>implícitas</strong>). Sin más instrucciones, esas filas miden
+               lo que mida su contenido.</p>
+            <p><code>grid-auto-rows</code> fija el alto de esas filas automáticas.</p>
+<pre><code>.ejemplo-auto-filas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;   /* 2 columnas */
+    grid-template-rows: 50px;         /* solo defino la 1ª fila */
+    grid-auto-rows: 100px;            /* el resto de filas miden 100px */
+}</code></pre>
+            <p>Hay 5 ítems y 2 columnas, así que hacen falta 3 filas. La primera (50px) la define
+               <code>grid-template-rows</code>; las otras dos se crean solas y miden 100px por
+               <code>grid-auto-rows</code>.</p>
+            <div class="ejemplo ejemplo-auto-filas">
+                <div class="bloque bloque-1">1 (50px)</div>
+                <div class="bloque bloque-2">2 (50px)</div>
+                <div class="bloque bloque-3">3 (auto: 100px)</div>
+                <div class="bloque bloque-4">4 (auto: 100px)</div>
+                <div class="bloque bloque-1">5 (auto: 100px)</div>
+            </div>
+            <p class="nota"><strong>¿Cuándo usarlo?</strong> Cuando no sabes cuántos elementos habrá (una
+               galería, una lista de tarjetas...). Con <code>grid-auto-rows</code> cada fila nueva sale con el
+               alto que quieres sin tener que declararla.</p>
+        </section>
+
+        <!-- 8. EJERCICIO -->
+        <section id="ejercicio">
+            <h2>8. Ejercicio: 4 bloques en 2 columnas y 2 filas</h2>
+            <p>Juntando lo aprendido: 4 bloques repartidos en 2 columnas y 2 filas que ocupan toda la
+               pantalla.</p>
+<pre><code>.contenedor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* 2 columnas iguales */
+    grid-template-rows: 1fr 1fr;     /* 2 filas iguales */
+    gap: 10px;
+    height: 100vh;                   /* alto de toda la pantalla */
+}</code></pre>
+            <ul>
+                <li><code>grid-template-columns: 1fr 1fr</code> crea 2 columnas del mismo ancho.</li>
+                <li><code>grid-template-rows: 1fr 1fr</code> crea 2 filas del mismo alto.</li>
+                <li><code>height: 100vh</code> hace que el contenedor mida el 100% del alto de la ventana
+                    (<code>vh</code> = <em>viewport height</em>). Sin esto, las filas <code>1fr</code> no tendrían
+                    espacio que repartir (ver el aviso del apartado 5).</li>
+                <li>Los 4 ítems se colocan solos, de izquierda a derecha y de arriba abajo.</li>
+            </ul>
+            <div class="contenedor">
+                <div class="bloque bloque-1">Bloque 1</div>
+                <div class="bloque bloque-2">Bloque 2</div>
+                <div class="bloque bloque-3">Bloque 3</div>
+                <div class="bloque bloque-4">Bloque 4</div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="pie">
+        <p>Siguientes pasos para seguir aprendiendo: <code>grid-auto-columns</code>,
+           <code>grid-column</code> / <code>grid-row</code> (ítems que ocupan varias celdas),
+           <code>minmax()</code> y <code>grid-template-areas</code>.</p>
+    </footer>
+</body>
+</html>

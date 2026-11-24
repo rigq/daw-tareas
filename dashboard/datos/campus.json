@@ -1,5 +1,5 @@
 {
- "fecha": "2026-11-09T23:33:05.626Z",
+ "fecha": "2026-11-24T12:16:39.946Z",
  "cursos": [
   {
    "id": "768",
@@ -69,6 +69,7 @@
    "cierre": null,
    "entrega": "",
    "calif": "",
+   "nota": null,
    "enunciado": "",
    "adjuntos": [],
    "error": false
@@ -84,6 +85,7 @@
    "cierre": null,
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Download this document in PDF format and complete the exercises.\n\nRemember: You can use the PDF presentation “Initial grammatical review: articles...” if you need it.\n\n- Articles and pronouns exercises - 0159.pdf\n2 de octubre de 2026, 12:33",
    "adjuntos": [
     {
@@ -104,22 +106,8 @@
    "cierre": "2026-10-09T08:00:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Read the following instructions.\n\nClick on this link and watch the video.\n\nLink:\nwatch\n\nThen, answer the following questions:\n\nWhat is software? And hardware? Give two examples of each from the video and one or more additional examples of your own.\n\nWhat hardware and software do you use most in your studies? Why?\n\nSubmit your answer to this exercise in PDF format.\n\nRemember: you can watch the video as many times as you need and use the English subtitles.",
-   "adjuntos": [],
-   "error": false
-  },
-  {
-   "id": "62902",
-   "curso": "768",
-   "cursoNombre": "DAW - 0179. Inglés profesional",
-   "mod": "assign",
-   "nombre": "How to write a professional profile",
-   "seccion": "1ª Evaluación",
-   "apertura": null,
-   "cierre": null,
-   "entrega": "Todavía no se han realizado envíos",
-   "calif": "Sin calificar",
-   "enunciado": "Check the following links to improve your professional profile:\n\n- Examples and tips: https://learnenglish.britishcouncil.org/free-resources/writing/b1/professional-profile\n\n- Explanation, tips and examples: https://www.indeed.com/career-advice/resumes-cover-letters/how-to-write-a-professional-profile",
    "adjuntos": [],
    "error": false
   },
@@ -134,57 +122,8 @@
    "cierre": "2026-10-16T06:00:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "We completed this exercise in class; you don’t have to submit it. Use of English. Complete the three different exercises on the difference between the simple present and the present continuous. -> https://test-english.com/grammar-points/b1/present-simple-present-continuous/\n\nExercise you have to do and upload to the platform; upload a PDF file that includes different screenshots of the results you obtained:\n\nListening. Watch the following video and complete Task 1 and Task 2. https://learnenglish.britishcouncil.org/free-resources/business/youre-hired/episode-01",
-   "adjuntos": [],
-   "error": false
-  },
-  {
-   "id": "64303",
-   "curso": "768",
-   "cursoNombre": "DAW - 0179. Inglés profesional",
-   "mod": "assign",
-   "nombre": "Task 1. Professional Profile - Instructions",
-   "seccion": "1ª Evaluación",
-   "apertura": "2026-10-09T22:00:00.000Z",
-   "cierre": "2026-10-20T21:59:00.000Z",
-   "entrega": "Todavía no se han realizado envíos",
-   "calif": "Sin calificar",
-   "enunciado": "Please read the attached document before submitting Task 1.\n\nImportante: Aseguraos de completar y confirmar la entrega de la tarea en Moodle. Comprobad que el trabajo aparece como enviado y no como borrador.\n\n- Task 1. Professional Profile (2).pdf\n10 de octubre de 2026, 11:22",
-   "adjuntos": [
-    {
-     "nombre": "Task 1. Professional Profile (2).pdf",
-     "url": "https://campus.digitechfp.com/pluginfile.php/72479/mod_assign/introattachment/0/Task%201.%20Professional%20Profile%20%282%29.pdf?forcedownload=1"
-    }
-   ],
-   "error": false
-  },
-  {
-   "id": "66854",
-   "curso": "768",
-   "cursoNombre": "DAW - 0179. Inglés profesional",
-   "mod": "assign",
-   "nombre": "Task 1. Professional Profile - Segundo intento",
-   "seccion": "1ª Evaluación",
-   "apertura": "2026-10-22T16:00:00.000Z",
-   "cierre": "2026-10-24T21:59:00.000Z",
-   "entrega": "Todavía no se han realizado envíos",
-   "calif": "Sin calificar",
-   "enunciado": "Esta tarea es para que subáis aquí vuestro reintento del Professional Profile. Esta tarea SOLO VA DIRIGIDA a aquellos alumnos que NO entregaron la tarea en el plazo establecido o NO siguieron las indicaciones. En comentarios, comentadme por qué la subís de nuevo.\n\nBest wishes and good luck!",
-   "adjuntos": [],
-   "error": false
-  },
-  {
-   "id": "67810",
-   "curso": "768",
-   "cursoNombre": "DAW - 0179. Inglés profesional",
-   "mod": "assign",
-   "nombre": "Task 1. Professional Profile - Last attempt",
-   "seccion": "1ª Evaluación",
-   "apertura": "2026-10-29T23:00:00.000Z",
-   "cierre": "2026-11-02T22:59:00.000Z",
-   "entrega": "Todavía no se han realizado envíos",
-   "calif": "Sin calificar",
-   "enunciado": "Por favor, quien no haya subido aún su entrega obligatoria, habiendo, para ello, leído y comprendido las instrucciones que incluí en la primera versión de la Task 1, que lo haga, por favor.\n\nGracias.",
    "adjuntos": [],
    "error": false
   },
@@ -199,41 +138,44 @@
    "cierre": "2032-10-23T22:00:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Esto no es una tarea que debáis subir.\n\nComo os indico en el tablón de anuncios, he creado esta \"tarea\" por si os resulta más fácil subir aquí vuestro archivo con los ejercicios que hay que realizar para el próximo día de clase y, así, poder descargarlos fácilmente para corregirlos.",
    "adjuntos": [],
    "error": false
   },
   {
-   "id": "66830",
+   "id": "62902",
    "curso": "768",
    "cursoNombre": "DAW - 0179. Inglés profesional",
    "mod": "assign",
-   "nombre": "Unit 2. Past Tenses - Folder",
+   "nombre": "How to write a professional profile",
    "seccion": "1ª Evaluación",
-   "apertura": "2029-10-21T22:00:00.000Z",
-   "cierre": "2029-12-14T08:00:00.000Z",
+   "apertura": null,
+   "cierre": null,
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
-   "enunciado": "As I mentioned, this is a FOLDER. I created it in case you want to store the exercises you have already completed here, so that they are more easily accessible.",
+   "nota": null,
+   "enunciado": "Check the following links to improve your professional profile:\n\n- Examples and tips: https://learnenglish.britishcouncil.org/free-resources/writing/b1/professional-profile\n\n- Explanation, tips and examples: https://www.indeed.com/career-advice/resumes-cover-letters/how-to-write-a-professional-profile",
    "adjuntos": [],
    "error": false
   },
   {
-   "id": "67051",
+   "id": "64303",
    "curso": "768",
    "cursoNombre": "DAW - 0179. Inglés profesional",
    "mod": "assign",
-   "nombre": "Task 2. Writing a CV - Instructions",
+   "nombre": "Task 1. Professional Profile - Instructions",
    "seccion": "1ª Evaluación",
-   "apertura": "2026-10-24T15:00:00.000Z",
-   "cierre": "2026-11-09T22:59:00.000Z",
-   "entrega": "Enviado para calificar",
+   "apertura": "2026-10-09T22:00:00.000Z",
+   "cierre": "2026-10-20T21:59:00.000Z",
+   "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
-   "enunciado": "Please, use the attached template to complete this task in group.\n\nPor favor, usad la plantilla que adjunto en formato WORD para completar la tarea. Cuando vayáis a subirla, hacedlo en formato PDF, es decir, convertid la plantilla de WORD. Asimismo, completad todos los apartados que os indico y ayudaros del apartado 10 de la plantilla para aseguraros de que lo hicisteis, y tened en cuenta la fecha y hora límite.\n\nAunque hagáis este proyecto en grupo, por favor, que cada integrante suba una copia del mismo.\n\n- Task 2. Writing a CV - Grado Superior.docx\n25 de octubre de 2026, 17:48",
+   "nota": null,
+   "enunciado": "Please read the attached document before submitting Task 1.\n\nImportante: Aseguraos de completar y confirmar la entrega de la tarea en Moodle. Comprobad que el trabajo aparece como enviado y no como borrador.\n\n- Task 1. Professional Profile (2).pdf\n10 de octubre de 2026, 11:22",
    "adjuntos": [
     {
-     "nombre": "Task 2. Writing a CV - Grado Superior.docx",
-     "url": "https://campus.digitechfp.com/pluginfile.php/75381/mod_assign/introattachment/0/Task%202.%20Writing%20a%20CV%20-%20Grado%20Superior.docx?forcedownload=1"
+     "nombre": "Task 1. Professional Profile (2).pdf",
+     "url": "https://campus.digitechfp.com/pluginfile.php/72479/mod_assign/introattachment/0/Task%201.%20Professional%20Profile%20%282%29.pdf?forcedownload=1"
     }
    ],
    "error": false
@@ -249,6 +191,7 @@
    "cierre": "2026-11-08T07:00:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Good afternoon, students,\n\nI have created this \"task\" so that, if you would like, yo can upload the exercises that you are supposed to work on, so we can correct them in class next week.\n\nThe exercises that you are required to complete are:\n\n- Document entitled \"Unit 2. Past Tenses - Be used to and Get used to - Exercises\"\n\n- Document entitled \"Document 1. Exercises - Extra\" (pages 3 and 4 of the PDF [Reading exercise] and pages 5 and 6 of the PDF [grammar]).\n\nI would also like to take this space to let you know that I have uploaded:\n\n- Unit 2. Past Tenses - Example of a CV\n\n- Unit 2. Past Tenses - Writing a CV - Useful tips\n\n- Unit 2. Past Tenses - Writing a CV - Useful vocabulary\n\n- Unit 2. Past Tenses. Task 2. Writing a CV - CV instructions\n\nIn addition, you will find the official template that you have to use in order to complete and submit the task related to the unit 2 in Task 2. Writing a CV - Instructions.\n\nIMPORTANTE: Adjunto también un documento para aquellas personas que lo necesiten acerca de cómo abordar los ejercicios propuestos para la semana que viene. Incluyo explicaciones y ejemplos.\n\n- Exercises - explanation.pdf\n30 de octubre de 2026, 23:31",
    "adjuntos": [
     {
@@ -269,6 +212,7 @@
    "cierre": "2029-11-04T23:00:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Complete the following Reading exercise in pairs.\n\n- Unit 2. Past Tenses - New vocabulary (2).pdf\n6 de noviembre de 2026, 12:53",
    "adjuntos": [
     {
@@ -286,9 +230,10 @@
    "nombre": "Unit 2. Past Tenses - Speaking and Grammar Exercises - Deadline: 13/11/2026",
    "seccion": "1ª Evaluación",
    "apertura": "2026-11-04T23:00:00.000Z",
-   "cierre": "2026-11-13T13:00:00.000Z",
-   "entrega": "Todavía no se han realizado envíos",
+   "cierre": "2026-11-13T21:00:00.000Z",
+   "entrega": "Enviado para calificar",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Dear Students:\n\nFor next week’s class, you must complete the two activities attached to this assignment. Finally, the oral exercise (Unit 2. Past Tenses - Oral Exercise) will be done individually.\n\nPlease complete the assignments and upload them here so there is a record that you have finished them.\n\nPlease also remember to complete the glossary task entitled “Unit 2. Past Tenses—Glossary.”\n\nWe will correct these activities together.\n\n- Unit 2. Past Tenses - Passive voice exercise.pdf\n6 de noviembre de 2026, 23:49\n\n- Unit 2. Past Tenses - Speaking exercise.pdf\n6 de noviembre de 2026, 23:49",
    "adjuntos": [
     {
@@ -303,6 +248,138 @@
    "error": false
   },
   {
+   "id": "67051",
+   "curso": "768",
+   "cursoNombre": "DAW - 0179. Inglés profesional",
+   "mod": "assign",
+   "nombre": "Task 2. Writing a CV - Instructions",
+   "seccion": "1ª Evaluación",
+   "apertura": "2026-10-24T15:00:00.000Z",
+   "cierre": "2026-11-09T22:59:00.000Z",
+   "entrega": "Enviado para calificar",
+   "calif": "Calificado",
+   "nota": {
+    "valor": 8.08,
+    "max": 10
+   },
+   "enunciado": "Please, use the attached template to complete this task in group.\n\nPor favor, usad la plantilla que adjunto en formato WORD para completar la tarea. Cuando vayáis a subirla, hacedlo en formato PDF, es decir, convertid la plantilla de WORD. Asimismo, completad todos los apartados que os indico y ayudaros del apartado 10 de la plantilla para aseguraros de que lo hicisteis, y tened en cuenta la fecha y hora límite.\n\nAunque hagáis este proyecto en grupo, por favor, que cada integrante suba una copia del mismo.\n\n- Task 2. Writing a CV - Grado Superior.docx\n25 de octubre de 2026, 17:48",
+   "adjuntos": [
+    {
+     "nombre": "Task 2. Writing a CV - Grado Superior.docx",
+     "url": "https://campus.digitechfp.com/pluginfile.php/75381/mod_assign/introattachment/0/Task%202.%20Writing%20a%20CV%20-%20Grado%20Superior.docx?forcedownload=1"
+    }
+   ],
+   "error": false
+  },
+  {
+   "id": "69279",
+   "curso": "768",
+   "cursoNombre": "DAW - 0179. Inglés profesional",
+   "mod": "assign",
+   "nombre": "Unit 3. Passive voice, Perfect Tenses and Modals - Exercises - DEADLINE 20/11/2026",
+   "seccion": "1ª Evaluación",
+   "apertura": "2026-11-12T23:00:00.000Z",
+   "cierre": "2026-11-20T17:00:00.000Z",
+   "entrega": "Enviado para calificar",
+   "calif": "Sin calificar",
+   "nota": null,
+   "enunciado": "Complete the following exercises. Make sure you upload your completed work to this assignment BEFORE NEXT WEEK'S CLASS so that there is a record of your work. We will go through the answers together in class.\n\n-\nDocument \"Unit 3. Passive Voice, Perfect Tenses and Modals - Document 2. Extra Exercises\": Complete the reading comprehension and grammar exercises on pages 17, 18, 19 and 20.\n\n-\nDocument \"Unit 3. Passive Voice, Perfect Tenses and Modals - Grammar and Vocabulary Exercises\": Complete all the exercises.\n\n- Document \"Unit 3. Passive Voice, Perfect Tenses and Modals - Listening Activity 1\": Listen to this audio (In this webpage, you will find the transcription in case you need it to understand better the oral conversation). Listen to this audio: https://www.oxfordonlineenglish.com/computer-problems. In order to complete this exercise, use the attached worksheet entitled \"Unit 3. Passive Voice, Perfect Tenses and Modals - Listening Activity 1.pdf\".\n\n-------------------------------------------------------------------------------------------------------------------\n\nInformación extra (lo siguiente que voy a indicar no hay que subirlo, pero sí debéis usar los materiales comentados para practicar de manera autónoma)\n\n-Enlace a recursos para practicar voz pasiva:\n\n- https://www.perfect-english-grammar.com/passive-exercises.html\n\n-Enlaces a recursos para practicar las oraciones en perfecto:\n\n- https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/present-perfect-simple-continuous?utm_source=\n\n- https://www.perfect-english-grammar.com/past-perfect-past-perfect-continuous-exercise-1.html?utm_source=\n\nSumado a lo anterior, os recuerdo que he subido a la plataforma un enlace a un recurso online para aquellos estudiantes que necesiten reforzar su nivel de inglés en general. También tenéis disponible la presentación con la gramática que vimos en clase.\n\n- Unit 3. Passive Voice, Perfect Tenses and Modals - Document 2. Exercises Extra.pdf\n14 de noviembre de 2026, 11:59\n\n- Unit 3. Passive Voice, Perfect Tenses and Modals - Grammar and Vocabulary Exercises.pdf\n14 de noviembre de 2026, 11:59\n\n- Unit 3. Passive Voice, Perfect Tenses and Modals - Listening Activity 1.pdf\n14 de noviembre de 2026, 11:59",
+   "adjuntos": [
+    {
+     "nombre": "Unit 3. Passive Voice, Perfect Tenses and Modals - Document 2. Exercises Extra.pdf",
+     "url": "https://campus.digitechfp.com/pluginfile.php/77621/mod_assign/introattachment/0/Unit%203.%20Passive%20Voice%2C%20Perfect%20Tenses%20and%20Modals%20-%20Document%202.%20Exercises%20Extra.pdf?forcedownload=1"
+    },
+    {
+     "nombre": "Unit 3. Passive Voice, Perfect Tenses and Modals - Grammar and Vocabulary Exercises.pdf",
+     "url": "https://campus.digitechfp.com/pluginfile.php/77621/mod_assign/introattachment/0/Unit%203.%20Passive%20Voice%2C%20Perfect%20Tenses%20and%20Modals%20-%20Grammar%20and%20Vocabulary%20Exercises.pdf?forcedownload=1"
+    },
+    {
+     "nombre": "Unit 3. Passive Voice, Perfect Tenses and Modals - Listening Activity 1.pdf",
+     "url": "https://campus.digitechfp.com/pluginfile.php/77621/mod_assign/introattachment/0/Unit%203.%20Passive%20Voice%2C%20Perfect%20Tenses%20and%20Modals%20-%20Listening%20Activity%201.pdf?forcedownload=1"
+    }
+   ],
+   "error": false
+  },
+  {
+   "id": "69989",
+   "curso": "768",
+   "cursoNombre": "DAW - 0179. Inglés profesional",
+   "mod": "assign",
+   "nombre": "Task 3. Passive Voice, Perfect Tenses and Modal Verbs- Exercises on modals",
+   "seccion": "1ª Evaluación",
+   "apertura": "2026-11-19T23:00:00.000Z",
+   "cierre": "2026-11-20T16:00:00.000Z",
+   "entrega": "Todavía no se han realizado envíos",
+   "calif": "Sin calificar",
+   "nota": null,
+   "enunciado": "Take a screenshot of your results and upload them here.",
+   "adjuntos": [],
+   "error": false
+  },
+  {
+   "id": "69354",
+   "curso": "768",
+   "cursoNombre": "DAW - 0179. Inglés profesional",
+   "mod": "assign",
+   "nombre": "Unit 3. Passive Voice, Perfect Tenses and Modals - Task 3. Cover letter",
+   "seccion": "1ª Evaluación",
+   "apertura": "2026-11-14T23:00:00.000Z",
+   "cierre": "2026-11-29T14:00:00.000Z",
+   "entrega": "Todavía no se han realizado envíos",
+   "calif": "Sin calificar",
+   "nota": null,
+   "enunciado": "Hello everyone,\n\nThis is your third compulsory assignment, and it must be submitted on time and in the required format. Please note that late submissions will not be accepted.\n\nTo complete this assignment, carefully read and follow the instructions provided in the document \"Unit 3. Passive Voice, Perfect Tenses and Modals – Task 3. Cover Letter – Instructions\".\n\nGood luck, and once again, please make sure you meet the submission deadline.\n\nBest regards,\n\n- Unit 3. Passive Voice, Perfect Tenses and Modals - Task 3. How to write an English cover letter - Instructions.pdf\n15 de noviembre de 2026, 15:49\n\n- Unit 3. Passive Voice, Perfect Tenses and Modals - Task 3. How to write an English cover letter - TEMPLATE.odt\n15 de noviembre de 2026, 15:49",
+   "adjuntos": [
+    {
+     "nombre": "Unit 3. Passive Voice, Perfect Tenses and Modals - Task 3. How to write an English cover letter - Instructions.pdf",
+     "url": "https://campus.digitechfp.com/pluginfile.php/77696/mod_assign/introattachment/0/Unit%203.%20Passive%20Voice%2C%20Perfect%20Tenses%20and%20Modals%20-%20Task%203.%20How%20to%20write%20an%20English%20cover%20letter%20-%20Instructions.pdf?forcedownload=1"
+    },
+    {
+     "nombre": "Unit 3. Passive Voice, Perfect Tenses and Modals - Task 3. How to write an English cover letter - TEMPLATE.odt",
+     "url": "https://campus.digitechfp.com/pluginfile.php/77696/mod_assign/introattachment/0/Unit%203.%20Passive%20Voice%2C%20Perfect%20Tenses%20and%20Modals%20-%20Task%203.%20How%20to%20write%20an%20English%20cover%20letter%20-%20TEMPLATE.odt?forcedownload=1"
+    }
+   ],
+   "error": false
+  },
+  {
+   "id": "69985",
+   "curso": "768",
+   "cursoNombre": "DAW - 0179. Inglés profesional",
+   "mod": "quiz",
+   "nombre": "Unit 1. Present Tenses - What I know and what I need to study",
+   "seccion": "1ª Evaluación",
+   "apertura": null,
+   "cierre": null,
+   "entrega": "",
+   "calif": "",
+   "nota": {
+    "valor": 8.8,
+    "max": 10
+   },
+   "enunciado": "",
+   "adjuntos": [],
+   "error": false
+  },
+  {
+   "id": "69986",
+   "curso": "768",
+   "cursoNombre": "DAW - 0179. Inglés profesional",
+   "mod": "quiz",
+   "nombre": "Unit 2. Past Tenses - What I know and What I need to study",
+   "seccion": "1ª Evaluación",
+   "apertura": null,
+   "cierre": null,
+   "entrega": "",
+   "calif": "",
+   "nota": {
+    "valor": 10,
+    "max": 10
+   },
+   "enunciado": "",
+   "adjuntos": [],
+   "error": false
+  },
+  {
    "id": "62838",
    "curso": "759",
    "cursoNombre": "DAW - 0612. Desarrollo web en entorno cliente",
@@ -313,6 +390,7 @@
    "cierre": "2026-10-02T18:00:00.000Z",
    "entrega": "Enviado para calificar",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "// Ejercicios en Clase\n\nImprime 5 comparaciones falsas con diferentes operadores de comparación\n\nImprime 5 comparaciones verdaderas con diferentes operadores de comparación\n\nImprime una variable que contenga el resultado de un operador lógico and\n\nImprime una variable que contenga el resultado de un operador aritmético\n\nUtiliza el operador ternario para comparar",
    "adjuntos": [],
    "error": false
@@ -328,6 +406,7 @@
    "cierre": "2026-10-02T20:00:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Crea una Presentación en PowerPoint de al menos 5 láminas, que contenga un resumen de la clase vista.",
    "adjuntos": [],
    "error": false
@@ -343,6 +422,7 @@
    "cierre": "2026-10-08T22:00:00.000Z",
    "entrega": "Enviado para calificar",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Subir los 5 ejercicios realizados en clase y resueltos por el estudiante",
    "adjuntos": [],
    "error": false
@@ -358,6 +438,7 @@
    "cierre": "2026-10-09T21:59:00.000Z",
    "entrega": "Enviado para calificar",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "/* 08/10/2026\n\n1.- concatena dos cadenas de Texto\n\n2.- Muestra la longitud de una cadena de texto\n\n3.- muestra el primer y último caracter de un string\n\n4.- convierte a mayúsculas y minúsculas un texto\n\n5.- crea una cadena de texto en varias líneas\n\n6.- Interpola el valor de una variable en un String\n\n7.- Reemplaza todos los espacios en blanco de un string por guiones\n\n8.- comprueba si una cadena de texto contiene una palabra concreta\n\n9.- Comprueba si dos Strings son Iguales\n\n10.- Comprueba si dos Strings tienen la misma longitud\n\n*/",
    "adjuntos": [],
    "error": false
@@ -373,6 +454,7 @@
    "cierre": "2026-10-09T22:00:00.000Z",
    "entrega": "Enviado para calificar",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Subir los 10 ejercicios:\n\n/*\n\n1.- Imprime por consola tu nombre si una variable toma su valor\n\n2.- Imprime por consola un mensaje si el usuario y\n\ncontraseña coinciden con los establecidos\n\n3.- Verifica si un número es positivo, negativo o cero\n\ne imprime un mensaje con el resultado\n\n4.- Verifica si una persona puede votar o no (Mayor o igual a 18)\n\ne indica cuantos años le faltan\n\n5.- Usa el operador ternario para asignar el valor \"adulto\" o \"menor\n\na una variable dependiendo de la edad\"\n\n6.- Muestra en que estación del año nos encontramos dependiendo del mes\n\nde una variable (usa IF)\n\n*//*\n\n7.- muestra el número de días que tiene un mes deendiendo de la\n\nvariable del ejercicio anterior (usa IF)\n\n8.- Usa un switch para imprimir un messaje de saludo diferente\n\ndependiendo del idioma.\n\n9.- Usa un Switch para realizar el ejercicio 6.\n\n10.- Usa un Switch para realizar el ejercicio 7.",
    "adjuntos": [],
    "error": false
@@ -388,6 +470,7 @@
    "cierre": "2026-10-15T22:00:00.000Z",
    "entrega": "Enviado para calificar",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- Ejercicio 1 completos.docx\n9 de octubre de 2026, 10:33",
    "adjuntos": [
     {
@@ -408,6 +491,7 @@
    "cierre": "2026-10-15T12:10:00.000Z",
    "entrega": "Enviado para calificar",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Ejercicios Prácticos (Módulos 00 al 09)\n\nEjercicio 1: Declaración, Tipos y Coerción Aritmética\n\n-\nEnunciado: Declara una variable numérica que almacene la cantidad de unidades de un producto y una constante con el precio unitario en formato string (ej: \"45\"). Utiliza conversión de tipos para calcular el precio total bruto, aplica un incremento del 21% usando operadores aritméticos y muestra el resultado en consola empleando plantillas de cadenas (template literals).\n\nEjercicio 2: Operadores de Asignación Compuesta\n\n-\nEnunciado: Define una variable puntosAcumulados con valor inicial de 100. Aplica secuencialmente operadores de asignación compuesta para: sumarle 50 puntos, restarle 20 puntos, multiplicarla por 2, y dividirla entre 4. Imprime el valor final y su tipo de dato mediante typeof.\n\nEjercicio 3: Validación de Nulos e Indefinidos\n\n-\nEnunciado: Declara tres variables: una sin inicializar (let a;), otra inicializada explícitamente a null (let b = null;), y una tercera con un string vacío (let c = \"\";). Comprueba mediante operadores de comparación estricta (===) si a es estrictamente igual a undefined y si b es estrictamente igual a null. Muestra los resultados booleanos.\n\nEjercicio 4: Lógica Booleana y Tabla de Verdad de Acceso\n\n-\nEnunciado: Define tres variables booleanas: isRegistered = true, hasSubscription = false, y isBanned = false. Escribe una expresión lógica compleja que determine si un usuario puede descargar un recurso: se permite si isRegistered es verdadero Y hasSubscription es verdadero, O bien si el usuario es administrador (añade una variable isAdmin = true). Todo ello condicionado a que isBanned sea estrictamente falso. Imprime el resultado booleano.\n\nEjercicio 5: Manipulación y Normalización de Strings\n\n-\nEnunciado: Dada una cadena de texto recibida con formato irregular: \" usuario_DAW@correo.es \", utiliza los métodos de string aprendidos para eliminar los espacios sobrantes, transformarla por completo a minúsculas, extraer los primeros 11 caracteres mediante el método de corte adecuado, y comprobar mediante métodos lógicos de cadena si incluye el dominio \"@correo.es\".\n\nEjercicio 6: Condicional Simple y Operador Ternario\n\n-\nEnunciado: Define una variable numérica stock = 3. Utiliza primero una estructura condicional if / else para comprobar si el stock es mayor que 0 (imprimiendo \"Disponible\" o \"Agotado\"). A continuación, reescribe exactamente la misma lógica utilizando el operador ternario asignando el resultado a una variable llamada estadoStock.\n\nEjercicio 7: Condicionales Anidados para Rangos Numéricos\n\n-\nEnunciado: Dada una variable numérica que representa la velocidad de un vehículo (velocidad = 115), implementa una estructura if / else if / else para clasificarla:\n\n-\nMenor o igual a 50: \"Velocidad urbana adecuada\"\n\n-\nMayor a 50 y menor o igual a 90: \"Velocidad convencional\"\n\n-\nMayor a 90 y menor o igual a 120: \"Velocidad en autopista legal\"\n\n-\nMayor a 120: \"Exceso de velocidad / Multa\"\n\nEjercicio 8: Árbol de Decisiones Condicionales Complejo (Validación de Formulario)\n\n-\nEnunciado: Simula la validación de un formulario con tres variables: username = \"alumnoDAW\", password = \"Secreto123\", y termsAccepted = true. Utiliza condiciones anidadas para verificar:\n\n-\nSi termsAccepted es falso, rechazar inmediatamente indicando que se deben aceptar los términos.\n\n-\nSi se aceptan, verificar que el username tenga una longitud mayor o igual a 6 y que la password incluya el número \"123\".\n\n-\nSi todo es correcto, mostrar \"Formulario validado con éxito\".\n\nEjercicio 9: Estructura Switch con Agrupación de Casos (Roles de Sistema)\n\n-\nEnunciado: Dada una variable de texto rol = \"EDITOR\", normalízala a minúsculas y utiliza una estructura switch con casos agrupados para definir los permisos:\n\n-\nSi es \"administrador\" o \"supervisordb\": imprime \"Acceso total al sistema y base de datos.\"\n\n-\nSi es \"editor\" o \"redactor\": imprime \"Permisos de escritura y publicación de contenidos.\"\n\n-\nSi es \"invitado\": imprime \"Acceso exclusivo de lectura.\"\n\n-\nCaso por defecto (default): imprime \"Error: Rol de usuario no reconocido en el sistema.\"\n\nEjercicio 10: Algoritmo Lógico Integrado (Strings + Operadores + Condicionales)\n\n-\nEnunciado: Escribe un script que analice una cadena de código de licencia: \"LIC-2026-ADMIN\". El programa debe verificar simultáneamente mediante condicionales lógicos:\n\n-\nSi la cadena empieza por el prefijo \"LIC-\" (usando métodos de string).\n\n-\nSi su longitud total es exactamente igual a 13 caracteres.\n\n-\nSi contiene la palabra \"ADMIN\". Si cumple las tres condiciones, imprime \"Licencia corporativa válida\"; en caso contrario, detalla que la licencia es incorrecta.",
    "adjuntos": [],
    "error": false
@@ -423,6 +507,7 @@
    "cierre": "2026-10-23T14:00:00.000Z",
    "entrega": "Enviado para calificar",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "// 1. Crea un array que almacene cinco animales\n\n// 2. Añade dos más. Uno al principio y otro al final\n\n// 3. Elimina el que se encuentra en tercera posición\n\n// 4. Crea un set que almacene cinco libros\n\n// 5. Añade dos más. Uno de ellos repetido\n\n// 6. Elimina uno concreto a tu elección\n\n// 7. Crea un mapa que asocie el número del mes a su nombre\n\n// 8. Comprueba si el mes número 5 existe en el map e imprime su valor\n\n// 9. Añade al mapa una clave con un array que almacene los meses de verano\n\n// 10. Crea un Array, transfórmalo a un Set y almacénalo en un Map",
    "adjuntos": [],
    "error": false
@@ -438,6 +523,7 @@
    "cierre": "2026-10-23T21:00:00.000Z",
    "entrega": "Enviado para calificar",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "// 1. Crea un bucle que imprima los números del 1 al 20\n\n// 2. Crea un bucle que sume todos los números del 1 al 100 y muestre el resultado\n\n// 3. Crea un bucle que imprima todos los números pares entre 1 y 50\n\n// 4. Dado un array de nombres, usa un bucle para imprimir cada nombre en la consola\n\n// 5. Escribe un bucle que cuente el número de vocales en una cadena de texto\n\n// 6. Dado un array de números, usa un bucle para multiplicar todos los números y mostrar el producto\n\n// 7. Escribe un bucle que imprima la tabla de multiplicar del 5\n\n// 8. Usa un bucle para invertir una cadena de texto\n\n// 9. Usa un bucle para generar los primeros 10 números de la secuencia de Fibonacci\n\n// 10. Dado un array de números, usa un bucle para crear un nuevo array que contenga solo los números mayores a 10",
    "adjuntos": [],
    "error": false
@@ -453,6 +539,7 @@
    "cierre": "2026-10-29T22:00:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "1. Sistema de Gestión de Inventario para una Tienda Online\n\n-\nEnunciado:\n\n-\nDeclara variables utilizando let y const para almacenar la información de la tienda (nombre, año de fundación con BigInt, y estado de apertura con boolean).\n\n-\nCrea un Array inicial con al menos 5 productos (strings) y utiliza los métodos push y pop para actualizar el catálogo base.\n\n-\nConvierte ese array en un Set para asegurarte de que no existan productos duplicados.\n\n-\nUtiliza un bucle for...of para recorrer el Set y mostrar cada producto disponible en la consola.\n\n2. Plataforma de Análisis de Calificaciones Escolares\n\n-\nEnunciado:\n\n-\nCrea un Map donde las claves sean nombres de estudiantes y los valores sean arrays con 4 notas numéricas cada uno (del 0 al 10).\n\n-\nAñade un nuevo estudiante usando el método set y comprueba si existe un estudiante en específico con has.\n\n-\nRecorre el Map utilizando un bucle for...of.\n\n-\nDentro del bucle, utiliza operadores aritméticos para calcular el promedio de notas de cada alumno, y operadores de comparación junto con una estructura if para determinar si el estudiante está \"Aprobado\" (promedio $\\ge 6$) o \"Reprobado\". Imprime el resultado usando template literals.\n\n3. Simulador de Control de Acceso a un Concierto Exclusivo\n\n-\nEnunciado:\n\n-\nDeclara variables para el aforo máximo (number), el identificador de seguridad (Symbol), y el estado de la puerta (boolean).\n\n-\nCrea un Set con los correos de usuarios VIP que tienen acceso garantizado.\n\n-\nCrea un Array con una lista de intentos de acceso (correos electrónicos, algunos repetidos y otros incorrectos).\n\n-\nUtiliza un bucle for tradicional para recorrer el array de intentos.\n\n-\nDentro del bucle, utiliza el método has del Set para validar si el asistente puede entrar, empleando operadores lógicos para denegar el acceso si el aforo ya se ha completado. Usa break si ocurre una alerta de seguridad (por ejemplo, un intento malicioso detectado).\n\n4. Gestor de Tareas Pendientes (To-Do List Avanzada)\n\n-\nEnunciado:\n\n-\nCrea un Array vacío para almacenar las tareas iniciales y utiliza unshift y shift para organizar las tareas prioritarias del día.\n\n-\nUtiliza el método splice para modificar una tarea intermedia en el array y slice para extraer las primeras tareas de la mañana.\n\n-\nPasa el array final a un Set para eliminar tareas duplicadas por error.\n\n-\nImplementa un bucle while que simule la ejecución de las tareas una a una: en cada iteración del bucle, resta la longitud del set utilizando operadores aritméticos y de comparación hasta que todas las tareas hayan sido completadas (tamaño 0).\n\n5. Directorio de Empleados y Control de Salarios\n\n-\nEnunciado:\n\n-\nCrea un Map donde la clave sea el ID del empleado (string o number) y el valor sea un objeto o array con su nombre, puesto y sueldo.\n\n-\nUtiliza los métodos keys() y values() del Map para obtener los listados por separado.\n\n-\nImplementa un bucle for...of para recorrer el Map.\n\n-\nUtiliza operadores aritméticos y de comparación para aplicar un aumento salarial del 10% exclusivamente a aquellos empleados cuyo sueldo actual sea menor a una cantidad específica, saltando a los demás mediante el uso de continue.\n\n6. Sistema de Autenticación de Intentos Fallidos\n\n-\nEnunciado:\n\n-\nDeclara las credenciales del sistema (usuario correcto y contraseña correcta usando tipos string).\n\n-\nCrea un bucle do...while que simule un panel de inicio de sesión que se ejecute al menos una vez.\n\n-\nDentro del bucle, define un contador de intentos fallidos utilizando operadores aritméticos (++).\n\n-\nUtiliza operadores lógicos (&&, ||) para validar si el usuario introdujo bien los datos o si superó el límite máximo de 3 intentos permitidos. Si supera el límite, usa un bucle con break para bloquear el acceso de forma definitiva.\n\n7. Análisis de Frecuencia de Caracteres en un Mensaje Secreto\n\n-\nEnunciado:\n\n-\nDefine una variable string con una frase o mensaje codificado.\n\n-\nUtiliza un bucle for...of para recorrer cada carácter de la cadena de texto.\n\n-\nAlmacena las letras únicas encontradas en un Set utilizando el método add.\n\n-\nCrea un Map para contar cuántas veces aparece cada vocal analizando los elementos con operadores de comparación y estructuras condicionales dentro del mismo bucle, mostrando el reporte final en consola.\n\n8. Torneo de Videojuegos: Registro y Puntuaciones\n\n-\nEnunciado:\n\n-\nUtiliza un Map para registrar los nombres de los jugadores y un Array con las puntuaciones obtenidas en 3 rondas.\n\n-\nAñade, elimina (delete) y comprueba (has) jugadores utilizando los métodos propios de los Map.\n\n-\nRecorre el Map mediante un bucle for...of.\n\n-\nUtiliza operadores aritméticos para sumar las puntuaciones de cada array interno y operadores de comparación para declarar al ganador que obtenga la puntuación más alta acumulada.\n\n9. Control de Stock en Almacenes Múltiples\n\n-\nEnunciado:\n\n-\nCrea un Array con los códigos de barras de los productos disponibles en la central.\n\n-\nTransforma ese array en un Set para depurar entradas duplicadas en el sistema de inventario.\n\n-\nImplementa un bucle for clásico para recorrer el inventario combinándolo con operadores lógicos.\n\n-\nSi el código de barras coincide con una lista de productos prohibidos almacenada en un Set secundario, utiliza continue para ignorarlo, o break si se detecta un lote completamente corrupto, imprimiendo el estado final del almacén.\n\n10. Centro de Procesamiento de Datos Multiestructura (Proyecto Cierre)\n\n-\nEnunciado:\n\n-\nDiseña un script que integre: variables primitivas (let, const, tipos de datos especiales como BigInt y Symbol), operadores aritméticos, de comparación y lógicos.\n\n-\nDeclara un Array para almacenar registros en bruto, manipúlalo usando push, pop, splice y conviértelo posteriormente en un Set.\n\n-\nVincula la información limpia a un Map estructurado por categorías.\n\n-\nUtiliza una combinación de bucles (for...of y while) junto con sentencias de control de flujo (break, continue) para procesar la información del Map y generar un informe automatizado completo en consola.",
    "adjuntos": [],
    "error": false
@@ -468,6 +555,7 @@
    "cierre": "2026-10-30T10:00:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- EXAMEN DE PROGRAMACIÓN EN JAVASCRIPT.docx\n30 de octubre de 2026, 09:13",
    "adjuntos": [
     {
@@ -488,6 +576,7 @@
    "cierre": "2026-11-12T23:00:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Tenemos 4 Ejercicios que incluyen el ytemario visto en Clase hasta hoy 05/11/26\n\nEl ejercicio 1 debe ser entregado mañana 06/11/26 en papel escrito a bolígrafo\n\nEl ejercicio 2 debe ser resuelto y entregado mañana 06/11/26 en clase en papel escrito a bolígrafo\n\nEl ejercicio 3 y 4 debe ser entregado el jueves 12/11/26 en papel escrito a bolígrafo\n\nEjercicio 1: Control de Acceso y Gestión de Filas en una Atracción\n\nCrea un programa en JavaScript que gestiona una lista de espera para una atracción basada en las siguientes operaciones secuenciales:\n\n-\nSe parte de una lista inicial de personas en espera cuyos nombres son: , , y . \"Ana\" \"Carlos\" \"Bea\"\"David\"\n\n-\nIncorpora de golpe dos personas nuevas al principio de la lista ( \"Zoe\"y \"Leo\"), y posteriormente añade a una persona más al final de la misma ( \"Mateo\").\n\n-\nPor motivos de aforo, la última persona que se agregó al final de la lista debe ser retirada y eliminada de la estructura.\n\n-\nAsimismo, la primera persona de la lista debe ser atendida y retirada de la misma, mostrando su nombre por consolación.\n\n-\nRecorra la lista resultante elemento por elemento mediante una estructura repetitiva. Para cada posición numérica de la iteración, evalúe si el índice es par para mostrar un mensaje de acceso preferente, o impar para mostrar un acceso estándar.\n\n-\nExtrae y muestra de forma independiente únicamente un subconjunto de la lista que contiene exclusivamente a los elementos ubicados entre la segunda y la cuarta posición (considerando los límites estándar de indexación).\n\nEjercicio 2: Sistema de Cálculo de Nóminas y Niveles Salariales\n\nDesarrolla un sistema mediante funciones para calcular,clasificar y bonificar el salario de los trabajadores de una empresa:\n\n-\nDefina una función principal que reciba dos parámetros obligatorios:las horas trabajadas y la tarifa por hora.Si al invocar la función no se proporciona alguno de estos valores,deben tomar por defecto 40horas y una tarifa de 15euros respectivamente.\n\n-\nDentro de la función,calcula el salario bruto multiplicando las horas por la tarifa.Si las horas trabajadas superan las40,el exceso de horas debe calcularse aplicando una asignación especial utilizando operadores aritméticos y de asignación combinadas.\n\n-\nAlmacena en una constante una función anónima que recibe el salario bruto calculado y devuelva una clasificación del empleado utilizando operadores lógicos y de comparación: si el salario se encuentra en un rango determinado (por ejemplo,mayor o igual a1000y menor a2000,o superior a este último),de devolver etiquetas como\"Nivel Medio\", \"Nivel Alto\"o\"Nivel Básico\".\n\n-\nImplementa una estructura condicional múltiple basada en un código numérico de departamento (1para Administración, 2para Desarrollo, 3para Sistemas) para sumar un complemento fijo al resultado final impreso por consola.\n\nEjercicio 3: Registro y Validación de Correos Únicos\n\nDiseña un sistema para validar la unicidad y el filtrado de correos electrónicos que se registran en una plataforma web:\n\n-\nParte de una colección inicial de correos ingresados ​​que contiene valores repetidos: \"admin@daw.com\", \"user1@daw.com\", \"admin@daw.com\", \"user2@daw.com\"y \"user1@daw.com\".\n\n-\nAlmacena dicha colección de manera que se eliminan automáticamente los elementos duplicados.\n\n-\nComprueba mediante una verificación directa si el correo\"root@daw.com\"se encuentra dentro de la estructura de datos única.Si no está presente,Agrégalo de manera inmediata.\n\n-\nTransforma la estructura de datos única de vuelta a una estructura secuencial indexada tradicional para poder recorrerla.\n\n-\nEmplea una estructura iterativa de recorrido directo sobre los elementos para evaluar cada correo:si el correo contiene una longitud de caracteres mayor a12,imprime el correo formateado; si el correo coincide exactamente con\"user2@daw.com\",salta esa iteración específica utilizando una estructura de control de salto,y detén por completo el bucle si se encuentra un caso crítico determinado.\n\nEjercicio 4: Perfil de Usuario Avanzado mediante Pares Asociativos\n\nCrea un programa que gestione la información detallada de un perfil de usuario utilizando estructuras de almacenamiento basadas en clave-valor:\n\n-\nInicializa una estructura de datos asociativa que almacene los siguientes pares clave-valor iniciales: con valor , con valor , con valor y con valor . \"nombre\"\"Lucía\" \"rol\"\"Estudiante\" \"edad\"22\"activo\"true\n\n-\nAgrega una nueva propiedad con clave \"alias\"y valor \"Lucy\", y actualiza el valor de la clave \"rol\"a \"Desarrolladora\".\n\n-\nConsulta y muestra por consola de forma independiente el valor asociado a la clave\"nombre\"y verifica mediante una comprobación booleana si la clave\"edad\"existe en la estructura.\n\n-\nElimina la propiedad correspondiente a la clave \"activo\".\n\n-\nObtiene y muestra mediante comandos específicos el total de elementos almacenados actualmente en la estructura asociativa,así como la lista completa de todas sus claves y todos sus valores de manera independiente.\n\n-\nFinalmente,Limpia por completo la estructura asociativa y verifica mediante una comprobación de que su tamaño real 0.",
    "adjuntos": [],
    "error": false
@@ -503,6 +592,7 @@
    "cierre": "2026-11-05T22:00:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Ejercicios 1 al 5 se entregan en clase en papel y a bolígrafo\n\nEjercicios 6 al 10 se entregan en formato digital mediante un documento de .js en esta actividad.\n\n// NOTA: Explora diferentes sintaxis de funciones para resolver\n\n// los ejercicios\n\n// 1. Crea una función que reciba dos números y devuelva su suma\n\n// 2. Crea una función que reciba un array de números y devuelva\n\n// el mayor de ellos\n\n// 3. Crea una función que reciba un string y devuelva el número de\n\n// vocales que contiene\n\n// 4. Crea una función que reciba un array de strings y devuelva un\n\n// nuevo array con las strings en mayúsculas\n\n// 5. Crea una función que reciba un número y devuelva true si es primo,\n\n// y false en caso contrario\n\n// 6. Crea una función que reciba dos arrays y devuelva un nuevo array\n\n// que contenga los elementos comunes entre ambos\n\n// 7. Crea una función que reciba un array de números y devuelva la suma\n\n// de todos los números pares\n\n// 8. Crea una función que reciba un array de números y devuelva un nuevo array\n\n// con cada número elevado al cuadrado\n\n// 9. Crea una función que reciba una cadena de texto y devuelva la misma cadena\n\n// con las palabras en orden inverso\n\n// 10. Crea una función que calcule el factorial de un número dado",
    "adjuntos": [],
    "error": false
@@ -518,11 +608,81 @@
    "cierre": "2026-11-06T10:00:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- Evaluación 1 C DAM.docx\n6 de noviembre de 2026, 09:14",
    "adjuntos": [
     {
      "nombre": "Evaluación 1 C DAM.docx",
      "url": "https://campus.digitechfp.com/pluginfile.php/76764/mod_assign/introattachment/0/Evaluaci%C3%B3n%201%20C%20DAM.docx?forcedownload=1"
+    }
+   ],
+   "error": false
+  },
+  {
+   "id": "68977",
+   "curso": "759",
+   "cursoNombre": "DAW - 0612. Desarrollo web en entorno cliente",
+   "mod": "assign",
+   "nombre": "Ejercicios combinados de Array, Sets, Loops, Map, y Function",
+   "seccion": "1ª Evaluación",
+   "apertura": "2026-11-11T23:00:00.000Z",
+   "cierre": "2026-11-19T23:00:00.000Z",
+   "entrega": "Todavía no se han realizado envíos",
+   "calif": "Sin calificar",
+   "nota": null,
+   "enunciado": "Ejercicio 1: Bucles y Funciones Flecha básicas\n\n-\nBucle for: Crea un array con 4 nombres de servicios de red (ej: \"DNS\", \"DHCP\", \"FTP\", \"SSH\") y recórrelo con un bucle for clásico imprimiendo por consola: Servicio activo: [nombre].\n\n-\nBucle while: Implementa un bucle while que simule 3 intentos de conexión, imprimiendo en cada iteración Intento número [i].\n\n-\nFunción Flecha: Escribe una función flecha que reciba el nombre de un equipo y devuelva o imprima el mensaje: Conectado exitosamente a [equipo]. Pruébala con dos nombres diferentes.\n\nEjercicio 2: Mapas y Sets básicos\n\n-\nCreación de un Set: Crea un Set que almacene 4 direcciones IP (en formato string). Añade una IP repetida y comprueba con .has() si una IP concreta existe en el Set.\n\n-\nCreación de un Map: Crea un Map que relacione la configuración básica de un servidor con las siguientes claves: [\"host\", \"server01\"], [\"ip\", \"192.168.1.10\"], [\"puerto\", 80].\n\n-\nConsulta y Tamaño: Utiliza el método .get() para mostrar la IP del servidor por consola y muestra el número total de elementos que tiene el mapa usando .size.\n\nEjercicio 3: Manipulación avanzada de Arrays (push, pop, slice, splice)\n\n-\nEnunciado: Partiendo de un array inicial con 5 números de puertos de red comunes: [21, 22, 80, 443, 3306]:\n\n-\nUtiliza .unshift() para añadir el puerto 53 al inicio y .push() para añadir el puerto 8080 al final.\n\n-\nUtiliza .slice() para extraer un nuevo array que contenga únicamente los elementos desde la posición 2 hasta la 4 (exclusiva), mostrando el resultado sin modificar el array original.\n\n-\nUtiliza .splice() para eliminar 2 elementos a partir de la posición 1 del array principal y añade en su lugar el puerto 25. Imprime el estado final del array.\n\nEjercicio 4: Conversión de Estructuras y Orden Superior (Set a Array y forEach)\n\n-\nEnunciado: Trabajar con colecciones de datos duplicados y funciones de orden superior:\n\n-\nDefine un array con registros de conexiones que contenga IPs repetidas: [\"10.0.0.1\", \"10.0.0.2\", \"10.0.0.1\", \"10.0.0.3\", \"10.0.0.2\"].\n\n-\nConvierte dicho array en un Set para eliminar automáticamente los duplicados, y a continuación vuelve a convertir ese Set en un nuevo array utilizando Array.from().\n\n-\nUtiliza el método .forEach() junto con una función flecha para recorrer el array limpio e imprimir por consola un mensaje simulando el análisis de cada IP única.\n\nEjercicio 5: Lógica combinada con Mapas, Bucles y Control de Flujo (break / continue)\n\n-\nEnunciado: Simulación de auditoría de puertos utilizando estructuras de datos y control de flujo:\n\n-\nCrea un Map que almacene pares de clave-valor con nombres de servicios y sus respectivos puertos (ej: [\"SSH\", 22], [\"HTTP\", 80], [\"HTTPS\", 443], [\"FTP\", 21], [\"RDP\", 3389]).\n\n-\nRecorre el Map utilizando un bucle for...of (iterando sobre sus entries o usando forEach).\n\n-\nDentro del bucle, añade una condición: si el puerto es menor de 100, imprime Puerto privilegiado detectado: [puerto], utiliza continue para saltar el resto de la iteración si es necesario, o usa un break para detener la ejecución si encuentras un puerto específico (por ejemplo, el 3389).",
+   "adjuntos": [],
+   "error": false
+  },
+  {
+   "id": "69246",
+   "curso": "759",
+   "cursoNombre": "DAW - 0612. Desarrollo web en entorno cliente",
+   "mod": "assign",
+   "nombre": "Actividad de Práctica en preparación para el examen del Viernes 20/11",
+   "seccion": "1ª Evaluación",
+   "apertura": "2026-11-12T23:00:00.000Z",
+   "cierre": "2026-11-19T22:59:00.000Z",
+   "entrega": "Todavía no se han realizado envíos",
+   "calif": "Sin calificar",
+   "nota": null,
+   "enunciado": "Estimados estudiantes:\n\nCon el propósito de comprobar el grado de adquisición de los conocimientos y las competencias técnicas desarrolladas en la asignatura de Desarrollo Web en Entorno Cliente, he diseñado una aplicación web interactiva que les permitirá poner a prueba sus conocimientos, reforzar los contenidos trabajados en clase y preparar adecuadamente la evaluación presencial.\n\nLa herramienta incorpora dos modalidades de acceso, diferenciadas mediante dos botones, cada uno de ellos con una finalidad específica.\n\n1. Modalidad de entrenamiento y autoevaluación (botón azul)\n\nEsta primera modalidad está concebida como un entorno de entrenamiento autónomo que les permitirá realizar un recorrido completo por un banco de preguntas relacionadas con los contenidos de la asignatura.\n\nA diferencia de otros ejercicios de autoevaluación, en esta modalidad las preguntas se presentan de manera consecutiva, siguiendo una secuencia continua. Para conocer el resultado definitivo, será necesario completar íntegramente el cuestionario. Una vez respondida la última pregunta, la aplicación calculará y mostrará automáticamente la calificación obtenida.\n\nEl objetivo de esta modalidad no es únicamente comprobar cuánto sabéis, sino proporcionarles una oportunidad de aprendizaje progresivo que les permita identificar fortalezas, detectar posibles dificultades y consolidar los conocimientos necesarios para afrontar con garantías la evaluación presencial.\n\nPodréis utilizar esta modalidad para practicar y mejorar su rendimiento. Al finalizar cada recorrido, debes realizar una captura de pantalla en la que aparezcan claramente tu nombre y la calificación obtenida. Esta evidencia deberá adjuntarse en la actividad correspondiente del aula virtual.\n\nDebes entregar la captura correspondiente a la puntuación más alta que hayáis conseguido, de manera que quede constancia del mejor resultado alcanzado durante tu proceso de preparación.\n\n2. Modalidad de evaluación presencial (botón verde)\n\nLa segunda modalidad corresponde a la evaluación formal que realizaremos presencialmente en el aula. Para acceder a ella, debes seleccionar el botón verde, identificado como modalidad de examen.\n\nEsta prueba tendrá carácter evaluativo y estará orientada a comprobar tu nivel real de dominio de los contenidos abordados en la asignatura. Su estructura y planteamiento estarán vinculados al banco de preguntas utilizado en la modalidad de entrenamiento, por lo que la preparación previa mediante la aplicación constituirá una herramienta fundamental para familiarizarte con los contenidos y el tipo de preguntas que pudieras encontrar.\n\nA diferencia de la modalidad de entrenamiento, esta opción está destinada exclusivamente a la realización de la evaluación presencial y deberá afrontarse de manera individual, aplicando los conocimientos adquiridos durante el desarrollo de las clases.\n\n3. Recomendaciones para la preparación de la actividad\n\nLes recomiendo aprovechar la modalidad de entrenamiento antes de realizar la evaluación presencial. La posibilidad de completar el cuestionario en diferentes ocasiones constituye una oportunidad para reforzar los aprendizajes, mejorar la comprensión de los conceptos y desarrollar una mayor seguridad a la hora de resolver cuestiones relacionadas con el desarrollo web en el entorno cliente.\n\nEs importante que no abordes esta actividad como un simple ejercicio de memorización de respuestas. En el ámbito del desarrollo de software, resulta imprescindible comprender los fundamentos técnicos, interpretar correctamente los enunciados y saber aplicar los conocimientos adquiridos a diferentes situaciones y problemas de programación.\n\nPor ello, les animo a realizar varios recorridos completos por el banco de preguntas, prestando especial atención a aquellas preguntas en las que hayas cometido errores o experimentado mayores dificultades.\n\nRecuerda que el propósito fundamental de esta actividad es que llegues a la evaluación presencial con una preparación sólida, una comprensión adecuada de los contenidos y la capacidad técnica necesaria para resolver satisfactoriamente las cuestiones planteadas.\n\nLa práctica constante, el razonamiento lógico y la comprensión de los fundamentos de programación son elementos esenciales para el desarrollo como futuros profesionales del ámbito de la administración y el desarrollo de aplicaciones web.\n\nUn saludo cordial.\n\nhttps://sites.google.com/view/aplicaciones-web-2do-asir/p%C3%A1gina-principal",
+   "adjuntos": [],
+   "error": false
+  },
+  {
+   "id": "69868",
+   "curso": "759",
+   "cursoNombre": "DAW - 0612. Desarrollo web en entorno cliente",
+   "mod": "assign",
+   "nombre": "Simulador JavaScript",
+   "seccion": "1ª Evaluación",
+   "apertura": "2026-11-18T23:00:00.000Z",
+   "cierre": "2026-11-19T13:00:00.000Z",
+   "entrega": "Todavía no se han realizado envíos",
+   "calif": "Sin calificar",
+   "nota": null,
+   "enunciado": "Conecta con el siguiente enlace y Practica tus conocimientos:\n\nhttps://sites.google.com/view/simulador-programacion-web/p%C3%A1gina-principal",
+   "adjuntos": [],
+   "error": false
+  },
+  {
+   "id": "69869",
+   "curso": "759",
+   "cursoNombre": "DAW - 0612. Desarrollo web en entorno cliente",
+   "mod": "assign",
+   "nombre": "Clases de JavaScript desde 0 hasta Objetos",
+   "seccion": "1ª Evaluación",
+   "apertura": "2026-11-18T23:00:00.000Z",
+   "cierre": "2026-11-25T23:00:00.000Z",
+   "entrega": "Todavía no se han realizado envíos",
+   "calif": "Sin calificar",
+   "nota": null,
+   "enunciado": "- JavaScript.zip\n19 de noviembre de 2026, 12:31",
+   "adjuntos": [
+    {
+     "nombre": "JavaScript.zip",
+     "url": "https://campus.digitechfp.com/pluginfile.php/78213/mod_assign/introattachment/0/JavaScript.zip?forcedownload=1"
     }
    ],
    "error": false
@@ -538,6 +698,7 @@
    "cierre": "2026-09-28T20:00:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- Manual Visual Thinking (1).pdf\n28 de septiembre de 2026, 13:16",
    "adjuntos": [
     {
@@ -558,6 +719,7 @@
    "cierre": "2026-09-29T12:00:00.000Z",
    "entrega": "Enviado para calificar",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- Utilizando un bucle for, construye una tabla con un border 1, de 4 filas y 4 columnas",
    "adjuntos": [],
    "error": false
@@ -573,6 +735,7 @@
    "cierre": "2026-09-29T12:00:00.000Z",
    "entrega": "Enviado para calificar",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- Practica buclesII.pdf\n29 de septiembre de 2026, 09:50",
    "adjuntos": [
     {
@@ -593,6 +756,7 @@
    "cierre": "2026-09-29T12:00:00.000Z",
    "entrega": "Enviado para calificar",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- Práctica PHP Bucle dowhile.pdf\n29 de septiembre de 2026, 10:00",
    "adjuntos": [
     {
@@ -613,6 +777,7 @@
    "cierre": "2026-10-01T12:00:00.000Z",
    "entrega": "Enviado para calificar",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- Práctica Arrays con php.pdf\n1 de octubre de 2026, 10:08",
    "adjuntos": [
     {
@@ -633,6 +798,7 @@
    "cierre": "2026-10-05T12:00:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- Práctica Gestión de pedidos con Arrays.pdf\n1 de octubre de 2026, 10:24",
    "adjuntos": [
     {
@@ -653,6 +819,7 @@
    "cierre": "2026-10-05T12:30:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- Práctica PHP $POST.pdf\n5 de octubre de 2026, 12:32",
    "adjuntos": [
     {
@@ -673,6 +840,7 @@
    "cierre": "2026-10-06T12:30:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- Práctica Array $POST II.pdf\n5 de octubre de 2026, 13:49",
    "adjuntos": [
     {
@@ -693,6 +861,7 @@
    "cierre": "2026-10-13T12:30:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- Práctica PHP $POST IA.pdf\n8 de octubre de 2026, 09:48",
    "adjuntos": [
     {
@@ -713,6 +882,7 @@
    "cierre": "2026-10-08T12:30:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- figura1.jpg\n6 de octubre de 2026, 11:14\n\n- figura2.jpg\n6 de octubre de 2026, 11:14\n\n- figura3.jpg\n6 de octubre de 2026, 11:14\n\n- figura4.jpg\n6 de octubre de 2026, 11:14\n\n- figura5.jpg\n6 de octubre de 2026, 11:14",
    "adjuntos": [
     {
@@ -749,6 +919,7 @@
    "cierre": "2026-10-15T12:30:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "PAUTAS REALIZACIÓN ACTIVIDAD GUIADA\n\n1.Diseñar el formulario, en un documento php.\n\n(formulario.php)\n\n-Asignar name a todos los controles de formulario, porque esa referencia será el nombre de la celda del array $_POST, y $_GET.\n\n-Agregamos el código if($_POST), y almacenamos los valores en variables.\n\n2.plantilla, diseñamos la estructura con capas div, como lo hacemos habitutalmente.\n\nDentro de la capa, utilizamos php para coger los datos de los arrays, $_GET.\n\nEJ.\n\n<div>\n\n<?php\n\n$imagen=$_GET['foto'];\n\necho(\"<img src='$imagen'\">);\n\n?>\n\n</div>\n\nComo $_GET, me permite pasar los datos a través de la url, tenemos que pasar los parámetros cuando pulsamos el botón.\n\n<a href=\"plantilla.php?file=<?=$nombrefoto?>&file2=<?=$texto1?>&file3=<?=$texto2?>&file4=<?=$texto3?>&file5=<?=$texto4?>?>\"><input type=\"BUTTON\" name=\"b1\" value=\"Ver plantilla\"></a>\n\n2.Configurar el código para conseguir subir una copia del archivo al servidor.\n\n-Utilizamos el $_FILES, para seleccionar el archivo y crear el archivo temporal.\n\n-Método copy, lanzamos la orden de que copie el archivo en el directorio especificado.\n\nif($_POST)\n\n{\n\n$temporal=$_FILES[\"foto\"][\"tmp_name\"];\n\n$archivo=$_FILES[\"foto\"][\"name\"];\n\n$copia=\"C:xampp/htdocs/img/\".$archivo;\n\ncopy ($temporal,$copia);\n\necho(\"El archivo se ha subido con éxito\");\n\necho(\"<br>\".$archivo);\n\n}\n\n- Práctica SFILES,include y required.pdf\n13 de octubre de 2026, 10:38",
    "adjuntos": [
     {
@@ -769,6 +940,7 @@
    "cierre": "2026-10-19T12:30:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- Práctica II SFILES,include y required.pdf\n15 de octubre de 2026, 11:15",
    "adjuntos": [
     {
@@ -789,6 +961,7 @@
    "cierre": "2026-10-19T12:30:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "El objetivo del ejercicio, es que cuando la cookie se ha creado, aparece directamente el email en la caja, cuando se recarga la página, ya que se lee la cookie y el valor especificado.",
    "adjuntos": [],
    "error": false
@@ -804,6 +977,7 @@
    "cierre": "2026-10-20T12:30:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Se debe crear la cookie al pulsar el botón, y cuando se recarga la página que contiene el formulario debe aparecer el valor de la cookie\n\n- Práctica wireframe aplicación con arrays del sistema.pdf\n19 de octubre de 2026, 13:13",
    "adjuntos": [
     {
@@ -824,6 +998,7 @@
    "cierre": "2026-10-26T13:30:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Se debe crear la cookie al pulsar el botón, y cuando se recarga la página que contiene el formulario debe aparecer el valor de la cookie. Para esta entrega, realizar los tres primeros archivos.\n\n- Práctica wireframe aplicación con arrays del sistema.pdf\n20 de octubre de 2026, 09:51",
    "adjuntos": [
     {
@@ -844,6 +1019,7 @@
    "cierre": "2026-10-29T13:30:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Entregar el resto del proyecto.\n\n- Práctica wireframe aplicación con arrays del sistema.pdf\n22 de octubre de 2026, 09:58",
    "adjuntos": [
     {
@@ -864,6 +1040,7 @@
    "cierre": "2026-10-26T13:30:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Diseñar un documento php, donde se crea la sesiçon:\n\nPara posteriormente mostrar los datos en el php de su perfil de usuario:\n\n- Práctica wireframe aplicación con arrays del sistema.pdf\n22 de octubre de 2026, 10:51",
    "adjuntos": [
     {
@@ -884,6 +1061,7 @@
    "cierre": "2026-10-26T13:30:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Diseñar un formulario para loggearnos (root), y cuando se pulse el botón de logear, aparezca otro php, con el texto:\n\nBienvenido root, y si la conexión se ha establecido o no",
    "adjuntos": [],
    "error": false
@@ -899,6 +1077,7 @@
    "cierre": "2026-10-27T10:15:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- Práctica Buscador php.pdf\n27 de octubre de 2026, 08:51",
    "adjuntos": [
     {
@@ -919,6 +1098,7 @@
    "cierre": "2026-10-29T10:15:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- Practica Buscador Select II.pdf\n27 de octubre de 2026, 10:48",
    "adjuntos": [
     {
@@ -939,6 +1119,7 @@
    "cierre": "2026-11-03T10:15:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- Práctica Insert.pdf\n3 de noviembre de 2026, 09:20",
    "adjuntos": [
     {
@@ -959,6 +1140,7 @@
    "cierre": "2026-11-10T10:15:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- practica_update.pdf\n5 de noviembre de 2026, 10:27",
    "adjuntos": [
     {
@@ -979,6 +1161,7 @@
    "cierre": "2026-11-05T10:15:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- Práctica Gestión de archivos con PHP.pdf\n3 de noviembre de 2026, 12:11",
    "adjuntos": [
     {
@@ -997,8 +1180,9 @@
    "seccion": "1ª Evaluación",
    "apertura": "2026-11-05T08:20:00.000Z",
    "cierre": "2026-11-10T10:15:00.000Z",
-   "entrega": "Todavía no se han realizado envíos",
+   "entrega": "Enviado para calificar",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- Proyecto FORO.pdf\n5 de noviembre de 2026, 11:03",
    "adjuntos": [
     {
@@ -1009,17 +1193,129 @@
    "error": false
   },
   {
+   "id": "68729",
+   "curso": "761",
+   "cursoNombre": "DAW - 0613. Desarrollo web en entorno servidor",
+   "mod": "assign",
+   "nombre": "Proyecto Foro Fase II Creación de Script BBDD",
+   "seccion": "1ª Evaluación",
+   "apertura": "2026-11-10T09:30:00.000Z",
+   "cierre": "2026-11-12T10:15:00.000Z",
+   "entrega": "Todavía no se han realizado envíos",
+   "calif": "Sin calificar",
+   "nota": null,
+   "enunciado": "- Proyecto FORO.pdf\n10 de noviembre de 2026, 10:38",
+   "adjuntos": [
+    {
+     "nombre": "Proyecto FORO.pdf",
+     "url": "https://campus.digitechfp.com/pluginfile.php/77069/mod_assign/introattachment/0/Proyecto%20FORO.pdf?forcedownload=1"
+    }
+   ],
+   "error": false
+  },
+  {
+   "id": "69467",
+   "curso": "761",
+   "cursoNombre": "DAW - 0613. Desarrollo web en entorno servidor",
+   "mod": "assign",
+   "nombre": "Proyecto Foro Fase III Diseño usuarios proyecto",
+   "seccion": "1ª Evaluación",
+   "apertura": "2026-11-16T11:08:00.000Z",
+   "cierre": "2026-11-17T13:30:00.000Z",
+   "entrega": "Todavía no se han realizado envíos",
+   "calif": "Sin calificar",
+   "nota": null,
+   "enunciado": "- Tarea Usuarios proyecto.pdf\n16 de noviembre de 2026, 12:42",
+   "adjuntos": [
+    {
+     "nombre": "Tarea Usuarios proyecto.pdf",
+     "url": "https://campus.digitechfp.com/pluginfile.php/77810/mod_assign/introattachment/0/Tarea%20Usuarios%20proyecto.pdf?forcedownload=1"
+    }
+   ],
+   "error": false
+  },
+  {
+   "id": "69482",
+   "curso": "761",
+   "cursoNombre": "DAW - 0613. Desarrollo web en entorno servidor",
+   "mod": "assign",
+   "nombre": "Proyecto Foro Fase IV Registro,login",
+   "seccion": "1ª Evaluación",
+   "apertura": "2026-11-19T09:08:00.000Z",
+   "cierre": "2026-11-24T13:30:00.000Z",
+   "entrega": "Todavía no se han realizado envíos",
+   "calif": "Sin calificar",
+   "nota": null,
+   "enunciado": "- Proyecto Foro Fase IV.pdf\n19 de noviembre de 2026, 10:37",
+   "adjuntos": [
+    {
+     "nombre": "Proyecto Foro Fase IV.pdf",
+     "url": "https://campus.digitechfp.com/pluginfile.php/77825/mod_assign/introattachment/0/Proyecto%20Foro%20Fase%20IV.pdf?forcedownload=1"
+    }
+   ],
+   "error": false
+  },
+  {
+   "id": "70313",
+   "curso": "761",
+   "cursoNombre": "DAW - 0613. Desarrollo web en entorno servidor",
+   "mod": "assign",
+   "nombre": "Proyecto Foro Fase V Diseño Perfil de usuario",
+   "seccion": "1ª Evaluación",
+   "apertura": "2026-11-30T09:08:00.000Z",
+   "cierre": "2026-12-03T13:30:00.000Z",
+   "entrega": "Todavía no se han realizado envíos",
+   "calif": "Sin calificar",
+   "nota": null,
+   "enunciado": "",
+   "adjuntos": [],
+   "error": false
+  },
+  {
    "id": "63445",
    "curso": "765",
    "cursoNombre": "DAW - 0615. Diseño de interfaces web",
    "mod": "assign",
-   "nombre": "Practica 001",
+   "nombre": "Practica 01",
    "seccion": "1ª Evaluación",
    "apertura": "2026-10-05T22:00:00.000Z",
    "cierre": "2026-10-20T12:00:00.000Z",
    "entrega": "Enviado para calificar",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Elabora un análisis de una Aplicación elegida libremente, teniendo en cuenta:\n\n-\nSu Utilidad y Valor (funcional, social y emocional)\n\n-\nSu Experiencia de Uso\n\n-\nSu Resolución de Problemas\n\n-\nSu Durabilidad\n\n-\nSu Anticipación de Interacciones\n\n-\nSu colorimetría\n\nRealizar una exposición en clase, disponiendo para ello de unos 5 minutos, en los que expliques las conclusiones a las que has llegado en torno al objeto de estudio, apoyando el discurso con una presentación.",
+   "adjuntos": [],
+   "error": false
+  },
+  {
+   "id": "68758",
+   "curso": "765",
+   "cursoNombre": "DAW - 0615. Diseño de interfaces web",
+   "mod": "assign",
+   "nombre": "Práctica 02",
+   "seccion": "1ª Evaluación",
+   "apertura": "2026-11-09T23:00:00.000Z",
+   "cierre": "2026-11-17T13:30:00.000Z",
+   "entrega": "Enviado para calificar",
+   "calif": "Sin calificar",
+   "nota": null,
+   "enunciado": "Elabora una página web con FlexBox para la venta de abrigos en la que se muestren varios modelos, permitiendo al usuario elegir para cada abrigo entre varias tallas, así como la posibilidad de seleccionar varios abrigos.",
+   "adjuntos": [],
+   "error": false
+  },
+  {
+   "id": "70359",
+   "curso": "765",
+   "cursoNombre": "DAW - 0615. Diseño de interfaces web",
+   "mod": "assign",
+   "nombre": "Práctica 03",
+   "seccion": "1ª Evaluación",
+   "apertura": "2026-11-23T23:00:00.000Z",
+   "cierre": "2026-12-01T13:30:00.000Z",
+   "entrega": "Todavía no se han realizado envíos",
+   "calif": "Sin calificar",
+   "nota": null,
+   "enunciado": "Elabora una web por medio, únicamente, de Grid Layout, para la venta de café de especialidad. La web deberá contar al menos con una página de inicio, otra con el muestreo de todos los cafés disponibles y otra con la historia de la empresa y del tipo de cafés que ofrece.\n\nEntrega el proyecto comprimido con ZIP.",
    "adjuntos": [],
    "error": false
   },
@@ -1034,6 +1330,7 @@
    "cierre": "2026-10-18T21:59:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "Formato de entrega: libre elección (Word, Power Point, PDF…)\n\nModalidad: individual o por parejas\n\nProducto final: una recomendación razonada de compra.\n\nDía límite de entrega: 18/10/2026\n\nDecidir qué tipo de vehículo elegiríais si tuvierais que comprar uno actualmente, o si ya lo tenéis, contemplar la posibilidad de cambiarlo por otro, justificando la decisión en base a criterios:\n\n- Ambientales;\n\n- Económicos;\n\n- De uso; familiar, social, laboral…\n\n- Tecnológicos.\n\nCada cual puede elaborar su propio guión de trabajo, os facilito lo que podrían ser puntos orientativos:\n\na) Mi opinión inicial, definición de situación real.\n\nb) ¿Qué deberíamos estudiar antes de comprar?\n\nc) Si ya tenéis coche, tiene sentido sustituir un coche que funciona perfectamente por uno eléctrico únicamente por motivos ambientales?\n\nd) Decisión final. ¿Habéis cambiado de opinión respecto a lo que pensabais al comenzar la actividad? ¿Qué dato os hizo cambiar?\n\nUso responsable de la IA\n\nPodéis utilizar ChatGPT u otra IA, pero con unas normas. La IA puede ayudaros a:\n\n- Descubrir qué variables deberíais comparar\n\n- Explicar conceptos\n\n- Calcular costes aproximados\n\n- Organizar tablas comparativas\n\n- Plantear ventajas e inconvenientes\n\n- Ayudaros a localizar qué información necesitáis verificar\n\nPero no podéis hacer esto:\n\n“Dime qué coche me tengo que comprar.”\n\n“Hazme el trabajo sobre qué coche es más sostenible.”\n\nObligación importante\n\nTodo dato concreto obtenido mediante IA debe clasificarse como:\n\n✔ Verificado\nLo he contrastado con una fuente fiable.\n\n? No verificado\nLa IA lo ha indicado pero no he podido comprobar que sea correcto.",
    "adjuntos": [],
    "error": false
@@ -1049,6 +1346,10 @@
    "cierre": "2026-11-06T11:40:00.000Z",
    "entrega": "Enviado para calificar",
    "calif": "Calificado",
+   "nota": {
+    "valor": 10,
+    "max": 10
+   },
    "enunciado": "El 25 de septiembre de 2015 la Asamblea General de Naciones Unidas aprobó, por unanimidad, la Agenda 2030 para el Desarrollo Sostenible: un plan de acción en favor de las personas, el planeta, la prosperidad y la paz universal. Cuenta con 17 Objetivos de Desarrollo Sostenible (ODS) y 169 metas concretas a desarrollar con horizonte 2030.\n\nEscoge dos países, uno industrializado y otro en vías de desarrollo, y compara dos Objetivos de Desarrollo Sostenible en ellos. Será un estudio de mayor relevancia si has elegido una combinación de objetivos-países donde al menos uno de los indicadores refleja una mejor posición en el país en vías de desarrollo. Acompaña los indicadores escogidos con la información relacionada que puedas encontrar en la web.\n\nPara la realización del trabajo, utiliza el Informe sobre el Desarrollo Sostenible 2025 que encontrarás en el siguiente enlace:\n\nhttps://dashboards.sdgindex.org/\n\nId al apartado “Ver clasificaciones”. Aquí tenéis la información por países de todos sus ODS.\n\nPara la realización del trabajo, podéis hacer grupos de trabajo de dos alumnos máximo, o presentarlo de forma individual. En el caso de que lo hagáis en grupo, debe figurar en el documento que entregáis el nombre y apellidos de los componentes del grupo y en la entrega final deberán subir el trabajo a la plataforma todos los componentes del grupo.",
    "adjuntos": [],
    "error": false
@@ -1064,6 +1365,10 @@
    "cierre": "2026-10-10T21:59:00.000Z",
    "entrega": "Enviado para calificar",
    "calif": "Calificado",
+   "nota": {
+    "valor": 7.32,
+    "max": 100
+   },
    "enunciado": "- PRACTICA 0 CS ASIR-DAW 2026-2027.docx\n4 de octubre de 2026, 20:37\n\n- Unit42-Global-Incident-Response-Report-es.pdf\n4 de octubre de 2026, 20:37",
    "adjuntos": [
     {
@@ -1082,17 +1387,18 @@
    "curso": "762",
    "cursoNombre": "DAW - COM314. Ciberseguridad",
    "mod": "assign",
-   "nombre": "P1",
+   "nombre": "PRACTICA 1",
    "seccion": "1ª Evaluación",
-   "apertura": "2026-10-27T23:00:00.000Z",
-   "cierre": null,
+   "apertura": "2026-11-18T07:30:00.000Z",
+   "cierre": "2026-11-23T22:59:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
-   "enunciado": "- Explicación-1.docx\n28 de octubre de 2026, 10:04",
+   "nota": null,
+   "enunciado": "- PRACTICA 1 CS 2026-2027.docx\n18 de noviembre de 2026, 09:58",
    "adjuntos": [
     {
-     "nombre": "Explicación-1.docx",
-     "url": "https://campus.digitechfp.com/pluginfile.php/75747/mod_assign/introattachment/0/Explicaci%C3%B3n-1.docx?forcedownload=1"
+     "nombre": "PRACTICA 1 CS 2026-2027.docx",
+     "url": "https://campus.digitechfp.com/pluginfile.php/75747/mod_assign/introattachment/0/PRACTICA%201%20CS%202026-2027.docx?forcedownload=1"
     }
    ],
    "error": false
@@ -1108,6 +1414,7 @@
    "cierre": null,
    "entrega": "Enviado para calificar",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "",
    "adjuntos": [],
    "error": false
@@ -1123,6 +1430,10 @@
    "cierre": null,
    "entrega": "Enviado para calificar",
    "calif": "Calificado",
+   "nota": {
+    "valor": 6,
+    "max": 10
+   },
    "enunciado": "",
    "adjuntos": [],
    "error": false
@@ -1138,6 +1449,7 @@
    "cierre": null,
    "entrega": "Enviado para calificar",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "",
    "adjuntos": [],
    "error": false
@@ -1153,6 +1465,10 @@
    "cierre": null,
    "entrega": "Enviado para calificar",
    "calif": "Calificado",
+   "nota": {
+    "valor": 8,
+    "max": 10
+   },
    "enunciado": "",
    "adjuntos": [],
    "error": false
@@ -1168,6 +1484,7 @@
    "cierre": "2026-11-03T22:59:00.000Z",
    "entrega": "Todavía no se han realizado envíos",
    "calif": "Sin calificar",
+   "nota": null,
    "enunciado": "- FORO 0 DASP 26-27.docx\n3 de noviembre de 2026, 18:11",
    "adjuntos": [
     {
@@ -1178,69 +1495,451 @@
    "error": false
   },
   {
-   "id": "64294",
+   "id": "69616",
    "curso": "766",
    "cursoNombre": "DAW/MKP - 1710. Itinerario para la empleabilidad II",
    "mod": "assign",
-   "nombre": "ACTIVIDAD-1: Business card (tarjeta profesional)",
+   "nombre": "Actividad 1 - Primeros pasos en la creación de nuestra empresa.",
    "seccion": "1ª Evaluación",
-   "apertura": "2026-10-21T11:35:00.000Z",
-   "cierre": "2026-10-21T12:30:00.000Z",
-   "entrega": "Enviado para calificar",
-   "calif": "Calificado",
-   "enunciado": "Diseña una BUSINESS CARD personal (inspirada en vuestra empresa grupal) con la aplicación CANVA. No olvides añadir cosas como un logo, la dirección (si contáis con sede física), código QR, móvil y/o RR.SS.\n\nA continuación, analiza en grupo las tarjetas distribuidas en sobres por la profesora en clase y responde en un Word a las siguientes cuestiones:\n\n1) Detalla el sector que os ha tocado (diseño, moda, restaurantes...):\n2) Análisis de 1-2 líneas/tarjeta (p.e.: \"Restaurante Viet Nam\"):\n3) ¿Qué es lo más destacable de cada una? (1-2 líneas por tarjeta):\n4) ¿Tienen algo en común? ¿Qué es lo que más os ha impactado?:\n\nFinalmente, sube al Campus la BUSINESS CARD y este análisis de las tarjetas que venís de realizar en un WORD.\n\n*Podéis subir todos el mismo documento Word tras analizar las tarjetas en grupo.\n\nEn la próxima sesión de clase, cada grupo elegirá la tarjeta de empresa que más guste entre todos los integrantes. La tarjeta oficial de la empresa grupal será la más votada en el grupo.\n\nLa tarjeta de empresa se incluirá en el PPT de presentación final de la empresa grupal.",
-   "adjuntos": [],
-   "error": false
-  },
-  {
-   "id": "65148",
-   "curso": "766",
-   "cursoNombre": "DAW/MKP - 1710. Itinerario para la empleabilidad II",
-   "mod": "assign",
-   "nombre": "ACTIVIDAD-2: Cuadro de negocio",
-   "seccion": "1ª Evaluación",
-   "apertura": "2026-10-28T11:40:00.000Z",
-   "cierre": "2026-11-04T13:30:00.000Z",
-   "entrega": "Enviado para calificar",
-   "calif": "Calificado",
-   "enunciado": "Analiza el CUADRO DE NEGOCIO adjunto de forma grupal para iniciar un negocio empresarial aplicándolo a tu empresa grupal.\n\nDetalla al menos 3-4 ideas con dots en cada apartado y súbelo al Campus.\n\n- Cuadro-Análisis-Empresa.jpeg\n13 de octubre de 2026, 22:18",
+   "apertura": "2026-11-18T11:40:00.000Z",
+   "cierre": "2026-11-25T13:25:00.000Z",
+   "entrega": "Todavía no se han realizado envíos",
+   "calif": "Sin calificar",
+   "nota": null,
+   "enunciado": "Vamos a comenzar nuestro gran proyecto final de creación de empresa. Lo primero de todo, organizarnos, vamos a crear grupos de 2-3 personas, vais a hacer juntos la mayoría de las actividades hasta finales de febrero… Para que los grupos sean realmente potentes en cuanto a conocimiento, combinareis integrantes de las dos áreas de conocimiento en el aula DAW y Marketing. (proporción 2-1)\n\nUna vez creados los grupos, vamos a pensar en qué proyecto de empresa podríais hacer de forma conjunta en la Comunidad de Madrid. Para ello, rellenaréis de forma conjunta el archivo “FICHA DE ANÁLISIS DE UN SECTOR PRODUCTIVO”, como primer paso para vuestro proyecto.\n\nUna vez completada, todos los componentes del equipo subiréis el archivo resultante a la plataforma.\n\nNota: La elección del sector donde vayáis a situar vuestra futura empresa puede cambiar si desarrolláis una nueva idea que os resulte mas interesante, pero deberéis desarrollar un nuevo documento de análisis…\n\n- FICHA DE ANÁLISIS DE UN SECTOR PRODUCTIVO.docx\n17 de noviembre de 2026, 12:40",
    "adjuntos": [
     {
-     "nombre": "Cuadro-Análisis-Empresa.jpeg",
-     "url": "https://campus.digitechfp.com/pluginfile.php/73403/mod_assign/introattachment/0/Cuadro-Ana%CC%81lisis-Empresa.jpeg?forcedownload=1"
+     "nombre": "FICHA DE ANÁLISIS DE UN SECTOR PRODUCTIVO.docx",
+     "url": "https://campus.digitechfp.com/pluginfile.php/77959/mod_assign/introattachment/0/FICHA%20DE%20AN%C3%81LISIS%20DE%20UN%20SECTOR%20PRODUCTIVO.docx?forcedownload=1"
     }
    ],
    "error": false
+  }
+ ],
+ "apuntes": [
+  {
+   "id": "69295",
+   "curso": "768",
+   "cursoNombre": "DAW - 0179. Inglés profesional",
+   "tipo": "folder",
+   "nombre": "Document on class attendance",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=69295"
   },
   {
-   "id": "67366",
-   "curso": "766",
-   "cursoNombre": "DAW/MKP - 1710. Itinerario para la empleabilidad II",
-   "mod": "assign",
-   "nombre": "ACTIVIDAD-3: Factura digital",
-   "seccion": "1ª Evaluación",
-   "apertura": "2026-11-18T11:40:00.000Z",
-   "cierre": "2026-11-18T13:30:00.000Z",
-   "entrega": "Todavía no se han realizado envíos",
-   "calif": "Sin calificar",
-   "enunciado": "Elabora una factura sobre tu proyecto grupal en clase (siguiendo las indicaciones del profesor/a) y utilizando la herramienta digital BitFactura y súbela al Campus.\n\nNo olvides añadir los datos sobre el concepto y los impuestos correspondientes como el IVA.",
-   "adjuntos": [],
-   "error": false
+   "id": "69296",
+   "curso": "768",
+   "cursoNombre": "DAW - 0179. Inglés profesional",
+   "tipo": "folder",
+   "nombre": "Introduction and initial review of grammatical topics",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=69296"
   },
   {
-   "id": "67524",
+   "id": "69297",
+   "curso": "768",
+   "cursoNombre": "DAW - 0179. Inglés profesional",
+   "tipo": "folder",
+   "nombre": "Unit 1. Present Tenses - Grammar & Vocabulary",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=69297"
+  },
+  {
+   "id": "69298",
+   "curso": "768",
+   "cursoNombre": "DAW - 0179. Inglés profesional",
+   "tipo": "folder",
+   "nombre": "Unit 1. Present Tenses - Exercises",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=69298"
+  },
+  {
+   "id": "69299",
+   "curso": "768",
+   "cursoNombre": "DAW - 0179. Inglés profesional",
+   "tipo": "folder",
+   "nombre": "Unit 1. Present Tenses - Task 1. Professional Profile",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=69299"
+  },
+  {
+   "id": "69300",
+   "curso": "768",
+   "cursoNombre": "DAW - 0179. Inglés profesional",
+   "tipo": "folder",
+   "nombre": "Unit 2. Past Tenses - Grammar and Vocabulary",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=69300"
+  },
+  {
+   "id": "69301",
+   "curso": "768",
+   "cursoNombre": "DAW - 0179. Inglés profesional",
+   "tipo": "folder",
+   "nombre": "Unit 2. Past Tenses - Exercises",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=69301"
+  },
+  {
+   "id": "69302",
+   "curso": "768",
+   "cursoNombre": "DAW - 0179. Inglés profesional",
+   "tipo": "folder",
+   "nombre": "Unit 2. Past Tenses - Task 2. Writing a CV",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=69302"
+  },
+  {
+   "id": "69278",
+   "curso": "768",
+   "cursoNombre": "DAW - 0179. Inglés profesional",
+   "tipo": "folder",
+   "nombre": "Unit 3. Passive Voice, Perfect Tenses and Modals - Grammar and vocabulary",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=69278"
+  },
+  {
+   "id": "69303",
+   "curso": "768",
+   "cursoNombre": "DAW - 0179. Inglés profesional",
+   "tipo": "folder",
+   "nombre": "Unit 3. Passive Voice, Perfect Tenses and Modals - Exercises",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=69303"
+  },
+  {
+   "id": "69353",
+   "curso": "768",
+   "cursoNombre": "DAW - 0179. Inglés profesional",
+   "tipo": "folder",
+   "nombre": "Unit 3. Passive Voice, Perfect Tenses and Modals - Task 3. How to write a perfect English cover letter?",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=69353"
+  },
+  {
+   "id": "65519",
+   "curso": "759",
+   "cursoNombre": "DAW - 0612. Desarrollo web en entorno cliente",
+   "tipo": "resource",
+   "nombre": "Ejercicios 16/10/2026",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=65519"
+  },
+  {
+   "id": "66482",
+   "curso": "759",
+   "cursoNombre": "DAW - 0612. Desarrollo web en entorno cliente",
+   "tipo": "resource",
+   "nombre": "Apuntes de JS ARRAYS, SET y MAP",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=66482"
+  },
+  {
+   "id": "62091",
+   "curso": "761",
+   "cursoNombre": "DAW - 0613. Desarrollo web en entorno servidor",
+   "tipo": "folder",
+   "nombre": "UD1 Servidores y tipos",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=62091"
+  },
+  {
+   "id": "62104",
+   "curso": "761",
+   "cursoNombre": "DAW - 0613. Desarrollo web en entorno servidor",
+   "tipo": "folder",
+   "nombre": "UD2 Lenguaje PHP",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=62104"
+  },
+  {
+   "id": "65075",
+   "curso": "761",
+   "cursoNombre": "DAW - 0613. Desarrollo web en entorno servidor",
+   "tipo": "folder",
+   "nombre": "Archivos fuente",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=65075"
+  },
+  {
+   "id": "65971",
+   "curso": "761",
+   "cursoNombre": "DAW - 0613. Desarrollo web en entorno servidor",
+   "tipo": "folder",
+   "nombre": "Diseño wireframe",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=65971"
+  },
+  {
+   "id": "67153",
+   "curso": "761",
+   "cursoNombre": "DAW - 0613. Desarrollo web en entorno servidor",
+   "tipo": "folder",
+   "nombre": "UD3 Conexión php y mysql",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=67153"
+  },
+  {
+   "id": "67608",
+   "curso": "761",
+   "cursoNombre": "DAW - 0613. Desarrollo web en entorno servidor",
+   "tipo": "folder",
+   "nombre": "UD4 Consultas desde PHP",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=67608"
+  },
+  {
+   "id": "68040",
+   "curso": "761",
+   "cursoNombre": "DAW - 0613. Desarrollo web en entorno servidor",
+   "tipo": "folder",
+   "nombre": "UD4 Trabajo con archivos",
+   "url": "https://campus.digitechfp.com/mod/folder/view.php?id=68040"
+  },
+  {
+   "id": "62404",
+   "curso": "764",
+   "cursoNombre": "DAW - 0614. Despliegue de aplicaciones web",
+   "tipo": "resource",
+   "nombre": "Criterio calificativo",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=62404"
+  },
+  {
+   "id": "64217",
+   "curso": "764",
+   "cursoNombre": "DAW - 0614. Despliegue de aplicaciones web",
+   "tipo": "resource",
+   "nombre": "Guía",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=64217"
+  },
+  {
+   "id": "67157",
+   "curso": "764",
+   "cursoNombre": "DAW - 0614. Despliegue de aplicaciones web",
+   "tipo": "resource",
+   "nombre": "Xampp - Apache y MySQL - Solución de errores",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=67157"
+  },
+  {
+   "id": "69423",
+   "curso": "764",
+   "cursoNombre": "DAW - 0614. Despliegue de aplicaciones web",
+   "tipo": "resource",
+   "nombre": "Instalación de Servidor Apache + PHP + MySQL_MariaDB en Windows - (sin XAMPP)",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=69423"
+  },
+  {
+   "id": "69449",
+   "curso": "764",
+   "cursoNombre": "DAW - 0614. Despliegue de aplicaciones web",
+   "tipo": "resource",
+   "nombre": "Imagen de Docker - pro01-php-mysql.zip",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=69449"
+  },
+  {
+   "id": "69458",
+   "curso": "764",
+   "cursoNombre": "DAW - 0614. Despliegue de aplicaciones web",
+   "tipo": "resource",
+   "nombre": "Guía de instalación con Docker de Apache + PHP + MySQL",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=69458"
+  },
+  {
+   "id": "62408",
+   "curso": "765",
+   "cursoNombre": "DAW - 0615. Diseño de interfaces web",
+   "tipo": "resource",
+   "nombre": "Criterio calificativo",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=62408"
+  },
+  {
+   "id": "64218",
+   "curso": "765",
+   "cursoNombre": "DAW - 0615. Diseño de interfaces web",
+   "tipo": "resource",
+   "nombre": "Guía",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=64218"
+  },
+  {
+   "id": "63446",
+   "curso": "765",
+   "cursoNombre": "DAW - 0615. Diseño de interfaces web",
+   "tipo": "resource",
+   "nombre": "Teoría 001",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=63446"
+  },
+  {
+   "id": "68075",
+   "curso": "765",
+   "cursoNombre": "DAW - 0615. Diseño de interfaces web",
+   "tipo": "resource",
+   "nombre": "CSS - Fuentes -  Tokens de Diseño Tipográficos (Typography Design Tokens) y Tipografía Fluida (Fluid Typography)",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=68075"
+  },
+  {
+   "id": "68759",
+   "curso": "765",
+   "cursoNombre": "DAW - 0615. Diseño de interfaces web",
+   "tipo": "resource",
+   "nombre": "Presentación FlexBox",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=68759"
+  },
+  {
+   "id": "61034",
+   "curso": "767",
+   "cursoNombre": "DAW - 1708. Sostenibilidad aplicada al sistema productivo",
+   "tipo": "resource",
+   "nombre": "Temario Sostenibilidad 2026-27",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=61034"
+  },
+  {
+   "id": "68571",
+   "curso": "767",
+   "cursoNombre": "DAW - 1708. Sostenibilidad aplicada al sistema productivo",
+   "tipo": "resource",
+   "nombre": "Tema 1",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=68571"
+  },
+  {
+   "id": "64076",
+   "curso": "767",
+   "cursoNombre": "DAW - 1708. Sostenibilidad aplicada al sistema productivo",
+   "tipo": "resource",
+   "nombre": "Tema 1 Sostenibilidad",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=64076"
+  },
+  {
+   "id": "62725",
+   "curso": "762",
+   "cursoNombre": "DAW - COM314. Ciberseguridad",
+   "tipo": "resource",
+   "nombre": "PRESENTACION",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=62725"
+  },
+  {
+   "id": "63120",
+   "curso": "762",
+   "cursoNombre": "DAW - COM314. Ciberseguridad",
+   "tipo": "resource",
+   "nombre": "TEMA 0",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=63120"
+  },
+  {
+   "id": "68855",
+   "curso": "762",
+   "cursoNombre": "DAW - COM314. Ciberseguridad",
+   "tipo": "resource",
+   "nombre": "TEMA 1",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=68855"
+  },
+  {
+   "id": "67410",
+   "curso": "762",
+   "cursoNombre": "DAW - COM314. Ciberseguridad",
+   "tipo": "resource",
+   "nombre": "TEMA 3 PARCIAL",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=67410"
+  },
+  {
+   "id": "63509",
+   "curso": "820",
+   "cursoNombre": "DAW - Prácticas",
+   "tipo": "resource",
+   "nombre": "PROTECCIÓN DE DATOS",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=63509"
+  },
+  {
+   "id": "64164",
+   "curso": "820",
+   "cursoNombre": "DAW - Prácticas",
+   "tipo": "resource",
+   "nombre": "FORMACIÓN CV",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=64164"
+  },
+  {
+   "id": "65315",
+   "curso": "820",
+   "cursoNombre": "DAW - Prácticas",
+   "tipo": "resource",
+   "nombre": "MANUAL ESTANCIA EN EMPRESA",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=65315"
+  },
+  {
+   "id": "62092",
+   "curso": "760",
+   "cursoNombre": "DAW - Tutoría 2º",
+   "tipo": "resource",
+   "nombre": "Calendario Escolar 2026-2027",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=62092"
+  },
+  {
+   "id": "62093",
+   "curso": "760",
+   "cursoNombre": "DAW - Tutoría 2º",
+   "tipo": "resource",
+   "nombre": "Horario",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=62093"
+  },
+  {
+   "id": "63123",
+   "curso": "801",
+   "cursoNombre": "DAW/MKP - 1665. Digitalización Aplicada al Sistema Productivo",
+   "tipo": "resource",
+   "nombre": "PRESENTACION",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=63123"
+  },
+  {
+   "id": "62516",
    "curso": "766",
    "cursoNombre": "DAW/MKP - 1710. Itinerario para la empleabilidad II",
-   "mod": "assign",
-   "nombre": "ACTIVIDAD FINAL: PPT sobre creación de una empresa con 5 bienes (GRUPAL)",
-   "seccion": "1ª Evaluación",
-   "apertura": "2026-11-18T11:40:00.000Z",
-   "cierre": "2026-11-20T22:59:00.000Z",
-   "entrega": "Todavía no se han realizado envíos",
-   "calif": "No calificada",
-   "enunciado": "Crea una empresa grupal con los 5 bienes repartidos que forman vuestro capital social. A continuación:\n\n- Recógela en un .PPT siguiendo el guion del PPT-Cómo crear una empresa subido al Campus\n\n- Apóyate en todo momento de la información del Manual de Apoyo (1ª parte, tema 4, pág. 51)\n\n- Finalmente, prepara la presentación grupal en clase en los días indicados por el profesor/a",
-   "adjuntos": [],
-   "error": false
+   "tipo": "resource",
+   "nombre": "Calendario 2026-27",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=62516"
+  },
+  {
+   "id": "62518",
+   "curso": "766",
+   "cursoNombre": "DAW/MKP - 1710. Itinerario para la empleabilidad II",
+   "tipo": "resource",
+   "nombre": "Horarios (2ºMKP)",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=62518"
+  },
+  {
+   "id": "63318",
+   "curso": "766",
+   "cursoNombre": "DAW/MKP - 1710. Itinerario para la empleabilidad II",
+   "tipo": "resource",
+   "nombre": "Horarios (2º DAW)",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=63318"
+  },
+  {
+   "id": "62520",
+   "curso": "766",
+   "cursoNombre": "DAW/MKP - 1710. Itinerario para la empleabilidad II",
+   "tipo": "resource",
+   "nombre": "MANUAL de apoyo (1ª parte)",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=62520"
+  },
+  {
+   "id": "62524",
+   "curso": "766",
+   "cursoNombre": "DAW/MKP - 1710. Itinerario para la empleabilidad II",
+   "tipo": "resource",
+   "nombre": "MANUAL de apoyo (2ª parte)",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=62524"
+  },
+  {
+   "id": "62519",
+   "curso": "766",
+   "cursoNombre": "DAW/MKP - 1710. Itinerario para la empleabilidad II",
+   "tipo": "resource",
+   "nombre": "PPT: Cómo crear una empresa (GUION DEL TRABAJO GRUPAL)",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=62519"
+  },
+  {
+   "id": "64964",
+   "curso": "766",
+   "cursoNombre": "DAW/MKP - 1710. Itinerario para la empleabilidad II",
+   "tipo": "resource",
+   "nombre": "IMAGEN: 12 pasos para crear una empresa",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=64964"
+  },
+  {
+   "id": "69618",
+   "curso": "766",
+   "cursoNombre": "DAW/MKP - 1710. Itinerario para la empleabilidad II",
+   "tipo": "resource",
+   "nombre": "Tipos de empresa",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=69618"
+  },
+  {
+   "id": "69619",
+   "curso": "766",
+   "cursoNombre": "DAW/MKP - 1710. Itinerario para la empleabilidad II",
+   "tipo": "resource",
+   "nombre": "La factura",
+   "url": "https://campus.digitechfp.com/mod/resource/view.php?id=69619"
   }
  ],
  "rutas": {
@@ -1309,6 +2008,22 @@
   "68323": "0612-DWEC-Entorno-Cliente/Tareas/2026-11-05 - Ejercicios de Tarea sobre Funciones 1 al 10.md",
   "68426": "0612-DWEC-Entorno-Cliente/Examenes/2026-11-06 - Evaluación 1 C 20%.md",
   "68473": "0179-Ingles-Profesional/Tareas/2029-11-05 - Unit 2. Past Tenses - Reading exercise on new vocabulary.md",
-  "68534": "0179-Ingles-Profesional/Tareas/2026-11-13 - Unit 2. Past Tenses - Speaking and Grammar Exercises - Deadline 131120.md"
+  "68534": "0179-Ingles-Profesional/Tareas/2026-11-13 - Unit 2. Past Tenses - Speaking and Grammar Exercises - Deadline 131120.md",
+  "68729": "0613-DWES-Entorno-Servidor/Tareas/2026-11-12 - Proyecto Foro Fase II Creación de Script BBDD.md",
+  "68758": "0615-DIW-Diseno-Interfaces/Tareas/2026-11-17 - Práctica 02.md",
+  "68977": "0612-DWEC-Entorno-Cliente/Tareas/2026-11-20 - Ejercicios combinados de Array, Sets, Loops, Map, y Function.md",
+  "69246": "0612-DWEC-Entorno-Cliente/Examenes/2026-11-19 - Actividad de Práctica en preparación para el examen del Viernes 2011.md",
+  "69279": "0179-Ingles-Profesional/Tareas/2026-11-20 - Unit 3. Passive voice, Perfect Tenses and Modals - Exercises - DEADLIN.md",
+  "69354": "0179-Ingles-Profesional/Tareas/2026-11-29 - Unit 3. Passive Voice, Perfect Tenses and Modals - Task 3. Cover lette.md",
+  "69467": "0613-DWES-Entorno-Servidor/Tareas/2026-11-17 - Proyecto Foro Fase III Diseño usuarios proyecto.md",
+  "69482": "0613-DWES-Entorno-Servidor/Tareas/2026-11-24 - Proyecto Foro Fase IV Registro,login.md",
+  "69616": "1710-IPE-II/Tareas/2026-11-25 - Actividad 1 - Primeros pasos en la creación de nuestra empresa.md",
+  "69868": "0612-DWEC-Entorno-Cliente/Tareas/2026-11-19 - Simulador JavaScript.md",
+  "69869": "0612-DWEC-Entorno-Cliente/Tareas/2026-11-26 - Clases de JavaScript desde 0 hasta Objetos.md",
+  "69985": "0179-Ingles-Profesional/Examenes/sin-fecha - Unit 1. Present Tenses - What I know and what I need to study.md",
+  "69986": "0179-Ingles-Profesional/Examenes/sin-fecha - Unit 2. Past Tenses - What I know and What I need to study.md",
+  "69989": "0179-Ingles-Profesional/Tareas/2026-11-20 - Task 3. Passive Voice, Perfect Tenses and Modal Verbs- Exercises on mo.md",
+  "70313": "0613-DWES-Entorno-Servidor/Tareas/2026-12-03 - Proyecto Foro Fase V Diseño Perfil de usuario.md",
+  "70359": "0615-DIW-Diseno-Interfaces/Tareas/2026-12-01 - Práctica 03.md"
  }
 }

@@ -9,6 +9,7 @@
 |---|---|---|---|---|
 | ❌ | 30/10/2026 11:00 | [Evaluación 1B 20%](Examenes/2026-10-30%20-%20Evaluaci%C3%B3n%201B%2020%25.md) | Todavía no se han realizado envíos | Sin calificar |
 | ❌ | 06/11/2026 11:00 | [Evaluación 1 C 20%](Examenes/2026-11-06%20-%20Evaluaci%C3%B3n%201%20C%2020%25.md) | Todavía no se han realizado envíos | Sin calificar |
+| ❌ | 19/11/2026 23:59 | [Actividad de Práctica en preparación para el examen del Viernes 20/11](Examenes/2026-11-19%20-%20Actividad%20de%20Pr%C3%A1ctica%20en%20preparaci%C3%B3n%20para%20el%20examen%20del%20Viernes%202011.md) | Todavía no se han realizado envíos | Sin calificar |
 
 ## Tareas
 
@@ -25,7 +26,10 @@
 | ✅ | 23/10/2026 23:00 | [Ejercicios de Bucles 23/10/2026](Tareas/2026-10-23%20-%20Ejercicios%20de%20Bucles%2023102026.md) | Enviado para calificar | Sin calificar |
 | ❌ | 29/10/2026 23:00 | [Ejercicios Integrales de lo visto hasta la clase del 23/10/2026](Tareas/2026-10-29%20-%20Ejercicios%20Integrales%20de%20lo%20visto%20hasta%20la%20clase%20del%2023102026.md) | Todavía no se han realizado envíos | Sin calificar |
 | ❌ | 05/11/2026 23:00 | [Ejercicios de Tarea sobre Funciones 1 al 10](Tareas/2026-11-05%20-%20Ejercicios%20de%20Tarea%20sobre%20Funciones%201%20al%2010.md) | Todavía no se han realizado envíos | Sin calificar |
-| ⏳ | 13/11/2026 00:00 | [Ejercicios de Tarea Evaluados.](Tareas/2026-11-13%20-%20Ejercicios%20de%20Tarea%20Evaluados.md) | Todavía no se han realizado envíos | Sin calificar |
+| ❌ | 13/11/2026 00:00 | [Ejercicios de Tarea Evaluados.](Tareas/2026-11-13%20-%20Ejercicios%20de%20Tarea%20Evaluados.md) | Todavía no se han realizado envíos | Sin calificar |
+| ❌ | 19/11/2026 14:00 | [Simulador JavaScript](Tareas/2026-11-19%20-%20Simulador%20JavaScript.md) | Todavía no se han realizado envíos | Sin calificar |
+| ❌ | 20/11/2026 00:00 | [Ejercicios combinados de Array, Sets, Loops, Map, y Function](Tareas/2026-11-20%20-%20Ejercicios%20combinados%20de%20Array%2C%20Sets%2C%20Loops%2C%20Map%2C%20y%20Function.md) | Todavía no se han realizado envíos | Sin calificar |
+| ⏳ | 26/11/2026 00:00 | [Clases de JavaScript desde 0 hasta Objetos](Tareas/2026-11-26%20-%20Clases%20de%20JavaScript%20desde%200%20hasta%20Objetos.md) | Todavía no se han realizado envíos | Sin calificar |
 
 ## Apuntes
 

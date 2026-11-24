@@ -1,0 +1,2 @@
+id|usuario|email|hash|rol|fecha_alta|ultimo_acceso
+1|admin|admin@foro.local|$2y$10$.THqLbSNDaXEgSlG.UxHLeGTZyJu7mIsRI3vq3C8mj11.PvW95DEa|admin|2026-11-24 10:57:42|

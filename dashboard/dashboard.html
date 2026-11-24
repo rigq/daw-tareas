@@ -3,37 +3,128 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tareas DAW</title>
+  <title>Rigatony Dash</title>
+  <link rel="icon" href="icons/icon32.png">
+  <script src="tema.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>DAW</h1>
-    <nav id="pestanas" aria-label="Vistas">
-      <button data-vista="tareas" class="activa" title="Tareas (1)">Tareas</button>
-      <button data-vista="apuntes" title="Apuntes (2)">Apuntes</button>
-    </nav>
-    <span id="actualizado"></span>
-    <input id="buscar" type="search" placeholder="Buscar  ( / )" aria-label="Buscar tareas">
-    <button id="actualizar" class="primario" title="Actualizar (R)">Actualizar</button>
-    <button id="abrir-ajustes" class="icono" title="Ajustes" aria-label="Ajustes">⚙</button>
+  <header class="barra">
+    <div class="barra-int">
+      <div class="marca"><img src="icons/icon48.png" alt="" width="26" height="26"><span>Rigatony Dash</span></div>
+      <nav id="pestanas" aria-label="Vistas">
+        <button data-vista="tareas" class="activa" title="Tareas (1)">Tareas</button>
+        <button data-vista="semana" title="Semana (3)">Semana</button>
+        <button data-vista="apuntes" title="Apuntes (2)">Apuntes</button>
+      </nav>
+      <div class="barra-der">
+        <label class="buscador">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4a7 7 0 1 0 0 14a7 7 0 1 0 0-14M20 20l-4-4"/></svg>
+          <input id="buscar" type="search" placeholder="Buscar" aria-label="Buscar" aria-keyshortcuts="/">
+        </label>
+        <button id="abrir-paleta" class="atajo-k" title="Buscar y hacer cualquier cosa (Ctrl+K)" aria-label="Abrir comandos">Ctrl K</button>
+        <button id="actualizar" class="boton-barra" title="Actualizar (R)" aria-label="Actualizar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></svg>
+        </button>
+        <button id="cambiar-disposicion" class="boton-barra" title="Ver como panel (D)" aria-label="Ver como panel">
+          <svg class="ico-panel" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v4h-7zM13 10h7v10h-7zM4 13h7v7H4z"/></svg>
+          <svg class="ico-lista" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg>
+        </button>
+        <button id="cambiar-tema" class="boton-barra" title="Cambiar tema (T)" aria-label="Cambiar tema">
+          <svg class="luna" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+          <svg class="sol" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <button id="abrir-ajustes" class="boton-barra" title="Ajustes" aria-label="Ajustes">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9a3 3 0 1 0 0 6a3 3 0 1 0 0-6M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+        </button>
+      </div>
+    </div>
+    <progress id="progreso" hidden></progress>
   </header>
-  <progress id="progreso" hidden></progress>
+
+  <div class="encabezado">
+    <h1 id="titulo-vista">Tareas</h1>
+    <p id="actualizado"></p>
+  </div>
   <div id="aviso" role="status" hidden></div>
   <main id="lista"></main>
+  <section id="semana" hidden></section>
   <section id="apuntes" hidden>
     <aside id="modulos" aria-label="Asignaturas"></aside>
     <div id="contenido-apuntes"></div>
   </section>
 
-  <dialog id="ajustes">
-    <h2>Ajustes</h2>
-    <p>Carpeta DAW (para crear fichas y adjuntos): <strong id="nombre-carpeta">sin elegir</strong></p>
-    <button id="elegir-carpeta">Elegir carpeta DAW</button>
-    <label>Ruta de la carpeta en este portátil (para abrirla en VS Code)
-      <input id="ruta" type="text" spellcheck="false">
+  <div id="repaso" class="foco" role="dialog" aria-modal="true" aria-label="Repaso" hidden>
+    <div id="repaso-contenido" class="foco-caja"></div>
+  </div>
+
+  <dialog id="resumen-semana" aria-labelledby="titulo-resumen">
+    <form method="dialog" class="hoja-cab"><span></span><h2 id="titulo-resumen">Tu semana</h2><button class="texto">Listo</button></form>
+    <div id="resumen-cuerpo"></div>
+  </dialog>
+
+  <div id="foco" class="foco" role="dialog" aria-modal="true" aria-labelledby="foco-nombre" hidden>
+    <div id="foco-contenido" class="foco-caja"></div>
+  </div>
+
+  <dialog id="paleta" aria-label="Comandos">
+    <label class="paleta-campo">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4a7 7 0 1 0 0 14a7 7 0 1 0 0-14M20 20l-4-4"/></svg>
+      <input id="paleta-buscar" type="text" placeholder="Busca una tarea o un comando…" autocomplete="off" spellcheck="false"
+        role="combobox" aria-expanded="true" aria-controls="paleta-lista">
     </label>
-    <form method="dialog"><button class="primario">Listo</button></form>
+    <ul id="paleta-lista" role="listbox"></ul>
+    <p class="paleta-pie"><kbd>↵</kbd> entregar <kbd>⇧↵</kbd> modo foco <kbd>Alt↵</kbd> carpeta <kbd>Esc</kbd> cerrar</p>
+  </dialog>
+
+  <dialog id="atajos" aria-labelledby="titulo-atajos">
+    <form method="dialog" class="hoja-cab"><span></span><h2 id="titulo-atajos">Atajos de teclado</h2><button class="texto">Listo</button></form>
+    <div class="atajos-cols">
+      <div class="celdas">
+        <p class="celda"><span>Buscar y hacer cualquier cosa</span><kbd>Ctrl K</kbd></p>
+        <p class="celda"><span>Moverse por las tareas</span><kbd>J</kbd><kbd>K</kbd></p>
+        <p class="celda"><span>Entregar la tarea seleccionada</span><kbd>↵</kbd></p>
+        <p class="celda"><span>Marcar como hecha</span><kbd>X</kbd></p>
+        <p class="celda"><span>Modo foco</span><kbd>F</kbd></p>
+        <p class="celda"><span>Abrir carpeta en VS Code</span><kbd>O</kbd></p>
+        <p class="celda"><span>Ver enunciado</span><kbd>I</kbd></p>
+        <p class="celda"><span>Cambiar el esfuerzo</span><kbd>E</kbd></p>
+        <p class="celda"><span>Empezar con Claude</span><kbd>C</kbd></p>
+      </div>
+      <div class="celdas">
+        <p class="celda"><span>Actualizar</span><kbd>R</kbd></p>
+        <p class="celda"><span>Buscar</span><kbd>/</kbd></p>
+        <p class="celda"><span>Tareas / Apuntes / Semana</span><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd></p>
+        <p class="celda"><span>Repaso: ver respuesta / fallo / acierto</span><kbd>Espacio</kbd><kbd>1</kbd><kbd>2</kbd></p>
+        <p class="celda"><span>Lista o panel</span><kbd>D</kbd></p>
+        <p class="celda"><span>Claro u oscuro</span><kbd>T</kbd></p>
+        <p class="celda"><span>Pausar el temporizador (en foco)</span><kbd>Espacio</kbd></p>
+        <p class="celda"><span>Salir del foco</span><kbd>Esc</kbd></p>
+        <p class="celda"><span>Esta ayuda</span><kbd>?</kbd></p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="ajustes" aria-labelledby="titulo-ajustes">
+    <form method="dialog" class="hoja-cab">
+      <span></span>
+      <h2 id="titulo-ajustes">Ajustes</h2>
+      <button class="texto">Listo</button>
+    </form>
+    <p class="seccion-titulo">Carpeta DAW</p>
+    <div class="celdas">
+      <div class="celda"><span>Carpeta</span><strong id="nombre-carpeta">sin elegir</strong></div>
+      <button id="elegir-carpeta" class="celda accion">Elegir carpeta…</button>
+    </div>
+    <p class="seccion-pie">Aquí se crean las fichas de las tareas y se guardan los adjuntos.</p>
+    <p class="seccion-titulo">Horario de clases</p>
+    <div class="celdas" id="horario-filas"></div>
+    <p class="seccion-pie">Para ver tu próxima clase con el botón Unirse (el enlace de Teams sale del campus) y tenerla en la vista Semana.</p>
+    <p class="seccion-titulo">VS Code</p>
+    <div class="celdas">
+      <label class="celda"><span>Ruta</span><input id="ruta" type="text" spellcheck="false"></label>
+    </div>
+    <p class="seccion-pie">Dónde está la carpeta DAW en este ordenador. Se usa para abrir cada tarea en VS Code.</p>
   </dialog>
   <script type="module" src="app.js"></script>
 </body>

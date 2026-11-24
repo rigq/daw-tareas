@@ -99,4 +99,5 @@ Finalmente,Limpia por completo la estructura asociativa y verifica mediante una 
 
 ## Mi solución
 
-_Guarda aquí (en esta misma carpeta o en una subcarpeta) tu código y notas._
+- [Ejercicio 3 (Set)](2026-11-13%20-%20Ejercicios%20de%20Tarea%20Evaluados/ejercicio3.js): el caso crítico que detiene el bucle es `"root@daw.com"` (cuenta de superusuario).
+- [Ejercicio 4 (Map)](2026-11-13%20-%20Ejercicios%20de%20Tarea%20Evaluados/ejercicio4.js)

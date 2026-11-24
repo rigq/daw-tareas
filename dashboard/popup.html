@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Rigatony Dash</title>
+  <script src="tema.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body class="popup">
+  <header class="pop-cab">
+    <img src="icons/icon48.png" alt="" width="28" height="28">
+    <div>
+      <h1>Hoy</h1>
+      <p id="pop-fecha"></p>
+    </div>
+    <button id="pop-actualizar" class="boton-barra" title="Actualizar" aria-label="Actualizar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></svg>
+    </button>
+  </header>
+  <main id="pop-lista"></main>
+  <footer class="pop-pie">
+    <span id="pop-semana"></span>
+    <button id="pop-abrir" class="capsula">Abrir panel</button>
+  </footer>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
