@@ -10,11 +10,13 @@ import { planDeHoy, duracion, esfuerzoDe, minutosDe, NOMBRE_ESFUERZO, SIGUIENTE_
   fusionarLectura, puntuar, proximaClase, cuandoEmpieza, examenes, diasHasta, anillos, resumenSemana, generarIcs,
   requisitos, promptClaude, clasesDelDia, mediasPorAsignatura } from './plan.js';
 import { extraerTarjetas, sesionDeRepaso, responder, pendientesDeRepaso, buscarEnResumenes } from './estudio.js';
+import { pintarInicio, pararInicio, inicioCambiado } from './inicio.js';
+import { pintarBaos, editarTarea, editarIdea, baosCambiado } from './baos.js';
 
 const $ = s => document.querySelector(s);
 const RUTA_POR_DEFECTO = 'C:\\Users\\fabri\\Desktop\\DAW';
 const app = { datos: null, marcas: {}, carpeta: null, ruta: RUTA_POR_DEFECTO, filtro: '', ocupado: false,
-  vista: 'tareas', modulo: '761', disposicion: 'lista',
+  vista: 'inicio', modulo: '761', disposicion: 'lista',
   esfuerzos: {}, minutosHoy: 180, novedades: [], novedadesVistas: '',
   horario: [], foco: {}, repaso: {}, repasoDia: {}, checklist: {}, semanaOffset: 0, resumenes: null, repasoPendientes: null };
 const almacen = {
@@ -452,10 +454,16 @@ function pintarTodo() {
   $('#lista').hidden = app.vista !== 'tareas';
   $('#apuntes').hidden = app.vista !== 'apuntes';
   $('#semana').hidden = app.vista !== 'semana';
-  $('#titulo-vista').textContent = { apuntes: 'Apuntes', semana: 'Semana' }[app.vista] || 'Tareas';
-  $('#buscar').placeholder = app.vista === 'apuntes' ? 'Buscar en apuntes y resúmenes' : 'Buscar tareas';
+  $('#inicio').hidden = app.vista !== 'inicio';
+  $('#baos').hidden = app.vista !== 'baos';
+  $('#titulo-vista').textContent = TITULOS[app.vista] || 'Tareas';
+  $('#buscar').placeholder = { apuntes: 'Buscar en apuntes y resúmenes', baos: 'Buscar en Dr. Baos', inicio: 'Buscar tareas' }[app.vista] || 'Buscar tareas';
   document.body.classList.toggle('modo-semana', app.vista === 'semana');
-  if (app.datos) $('#actualizado').textContent = hace(app.datos.fecha).replace(/^a/, 'A');
+  document.body.classList.toggle('modo-ancho', app.vista === 'inicio' || app.vista === 'baos');
+  $('#actualizado').textContent = app.datos && !['inicio', 'baos'].includes(app.vista) ? hace(app.datos.fecha).replace(/^a/, 'A') : '';
+  if (app.vista !== 'inicio') pararInicio();
+  if (app.vista === 'inicio') { pintarInicio($('#inicio'), { datos: app.datos, marcas: app.marcas, irA: cambiarVista }).catch(e => aviso(e.message, 'error')); return; }
+  if (app.vista === 'baos') { pintarBaos($('#baos'), { filtro: app.filtro }).catch(e => aviso(e.message, 'error')); return; }
   if (app.vista === 'apuntes') { pintarApuntes().catch(e => aviso(e.message, 'error')); return; }
   if (app.vista === 'semana') { pintarSemana(); return; }
   const lista = $('#lista');
@@ -562,10 +570,37 @@ async function pintarApuntes() {
         })]))].filter(Boolean)); // replaceChildren no descarta null: se filtra aquí
 }
 
+const TITULOS = { inicio: 'Riga Dashboard', baos: 'Dr. Baos', tareas: 'Tareas', semana: 'Semana', apuntes: 'Apuntes' };
+const ORDEN_VISTAS = ['inicio', 'baos', 'tareas', 'semana', 'apuntes'];
+
 function cambiarVista(v) {
   app.vista = v;
   almacen.set('vista', v);
   pintar();
+}
+
+// ---------- copia de seguridad (Inicio y Dr. Baos viven solo en este Chrome) ----------
+const CLAVES_COPIA = ['baos', 'inicio'];
+
+async function exportarCopia() {
+  const datos = { app: 'rigatony-dash', fecha: new Date().toISOString(), ...(await chrome.storage.local.get(CLAVES_COPIA)) };
+  const url = URL.createObjectURL(new Blob([JSON.stringify(datos, null, 2)], { type: 'application/json' }));
+  el('a', { href: url, download: `rigatony-dash-${new Date().toISOString().slice(0, 10)}.json` }).click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+async function importarCopia(e) {
+  const archivo = e.target.files?.[0];
+  e.target.value = '';
+  if (!archivo) return;
+  try {
+    const datos = JSON.parse(await archivo.text());
+    if (datos.app !== 'rigatony-dash') throw new Error('Ese archivo no es una copia de Rigatony Dash.');
+    const nuevo = Object.fromEntries(CLAVES_COPIA.filter(k => datos[k]).map(k => [k, datos[k]]));
+    if (!confirm(`Esto sustituye ${Object.keys(nuevo).join(' y ')} de este Chrome por la copia del ${new Date(datos.fecha).toLocaleDateString('es-ES')}. ¿Seguir?`)) return;
+    await chrome.storage.local.set(nuevo);
+    location.reload();
+  } catch (err) { aviso(err.message, 'error'); }
 }
 
 // ---------- ajustes y arranque ----------
@@ -699,9 +734,15 @@ function comandos() {
     cmd('Actualizar desde el campus', actualizar, 'R'),
     cmd(app.disposicion === 'panel' ? 'Ver como lista' : 'Ver como panel', () => { if (app.vista !== 'tareas') cambiarVista('tareas'); alternarDisposicion(); }, 'D'),
     cmd('Cambiar entre claro y oscuro', () => $('#cambiar-tema').click(), 'T'),
-    cmd('Ir a Tareas', () => cambiarVista('tareas'), '1'),
-    cmd('Ir a Apuntes', () => cambiarVista('apuntes'), '2'),
-    cmd('Ir a Semana', () => cambiarVista('semana'), '3'),
+    cmd('Ir a Riga Dashboard (inicio)', () => cambiarVista('inicio'), '1'),
+    cmd('Ir a Dr. Baos', () => cambiarVista('baos'), '2'),
+    cmd('Dr. Baos: nueva tarea', () => { cambiarVista('baos'); editarTarea(); }, 'N'),
+    cmd('Dr. Baos: nueva idea', () => { cambiarVista('baos'); editarIdea(); }),
+    cmd('Ir a Tareas', () => cambiarVista('tareas'), '3'),
+    cmd('Ir a Semana', () => cambiarVista('semana'), '4'),
+    cmd('Ir a Apuntes', () => cambiarVista('apuntes'), '5'),
+    cmd('Copia de seguridad: exportar Inicio y Dr. Baos', exportarCopia),
+    cmd('Copia de seguridad: importar', () => $('#importar-archivo').click()),
     cmd('Repasar tarjetas de hoy', () => abrirRepaso(), 'Repaso'),
     cmd('Tu semana: resumen', abrirResumenSemana),
     cmd('Exportar entregas al calendario (.ics)', descargarIcs),
@@ -798,13 +839,12 @@ function alPulsarTecla(e) {
   if (destino.matches('input, textarea') || document.querySelector('dialog[open]') || e.ctrlKey || e.metaKey || e.altKey) return;
   if (teclaEnFila(e)) { e.preventDefault(); return; }
   const k = e.key;
-  if (k === 'j' || k === 'ArrowDown') { e.preventDefault(); moverSeleccion(1); }
-  else if (k === 'k' || k === 'ArrowUp') { e.preventDefault(); moverSeleccion(-1); }
-  else if (k === 'r' || k === 'R') { e.preventDefault(); actualizar(); }
+  if (app.vista === 'tareas' && (k === 'j' || k === 'ArrowDown')) { e.preventDefault(); moverSeleccion(1); }
+  else if (app.vista === 'tareas' && (k === 'k' || k === 'ArrowUp')) { e.preventDefault(); moverSeleccion(-1); }
+  else if ((k === 'r' || k === 'R') && !['inicio', 'baos'].includes(app.vista)) { e.preventDefault(); actualizar(); }
   else if (k === '/') { e.preventDefault(); $('#buscar').focus(); }
-  else if (k === '1') cambiarVista('tareas');
-  else if (k === '2') cambiarVista('apuntes');
-  else if (k === '3') cambiarVista('semana');
+  else if (k >= '1' && k <= '5') cambiarVista(ORDEN_VISTAS[k - 1]);
+  else if ((k === 'n' || k === 'N') && app.vista === 'baos') { e.preventDefault(); editarTarea(); }
   else if ((k === 'd' || k === 'D') && app.vista === 'tareas') alternarDisposicion();
   else if (k === '?') $('#atajos').showModal();
 }
@@ -1164,7 +1204,7 @@ async function iniciar() {
   app.marcas = (await almacen.get('marcas')) || {};
   app.ruta = (await almacen.get('ruta')) || RUTA_POR_DEFECTO;
   app.carpeta = (await fs.carpetaGuardada()) || null;
-  app.vista = (await almacen.get('vista')) || 'tareas';
+  app.vista = (await almacen.get('vista')) || 'inicio';
   app.modulo = (await almacen.get('modulo')) || app.modulo;
   app.disposicion = (await almacen.get('disposicion')) || 'lista';
   app.esfuerzos = (await almacen.get('esfuerzos')) || {};
@@ -1178,9 +1218,16 @@ async function iniciar() {
   for (const b of document.querySelectorAll('#pestanas button')) b.addEventListener('click', () => cambiarVista(b.dataset.vista));
   $('#actualizar').addEventListener('click', actualizar);
   $('#cambiar-disposicion').addEventListener('click', alternarDisposicion);
-  $('#buscar').addEventListener('input', e => { app.filtro = e.target.value; pintar(); });
+  $('#buscar').addEventListener('input', e => {
+    app.filtro = e.target.value;
+    if (app.vista === 'inicio' && app.filtro) { cambiarVista('tareas'); $('#buscar').focus(); return; }
+    pintar();
+  });
   $('#abrir-ajustes').addEventListener('click', () => { pintarAjustes(); $('#ajustes').showModal(); });
   $('#ruta').addEventListener('change', e => { app.ruta = e.target.value.trim() || RUTA_POR_DEFECTO; almacen.set('ruta', app.ruta); });
+  $('#exportar-copia').addEventListener('click', exportarCopia);
+  $('#importar-copia').addEventListener('click', () => $('#importar-archivo').click());
+  $('#importar-archivo').addEventListener('change', importarCopia);
   $('#elegir-carpeta').addEventListener('click', async () => {
     try { app.carpeta = await fs.elegirCarpeta(); await cargarDeCarpeta(); pintarAjustes(); pintar(); }
     catch (e) { if (e.name !== 'AbortError') aviso(e.message, 'error'); }
@@ -1207,6 +1254,8 @@ async function iniciar() {
     if (c.novedades) { app.novedades = c.novedades.newValue || []; cambio = true; }
     if (c.foco) { app.foco = c.foco.newValue || {}; cambio = true; }
     if (c.estadoFondo?.newValue) avisarSesion(c.estadoFondo.newValue);
+    if (c.baos) baosCambiado(c.baos.newValue);
+    if (c.inicio) inicioCambiado(c.inicio.newValue);
     if (c.marcas?.newValue && JSON.stringify(c.marcas.newValue) !== JSON.stringify(app.marcas)) { app.marcas = c.marcas.newValue; cambio = true; }
     if (cambio) pintar();
   });

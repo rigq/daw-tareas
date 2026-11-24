@@ -7,15 +7,18 @@
   <link rel="icon" href="icons/icon32.png">
   <script src="tema.js"></script>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="espacios.css">
 </head>
 <body>
   <header class="barra">
     <div class="barra-int">
       <div class="marca"><img src="icons/icon48.png" alt="" width="26" height="26"><span>Rigatony Dash</span></div>
       <nav id="pestanas" aria-label="Vistas">
-        <button data-vista="tareas" class="activa" title="Tareas (1)">Tareas</button>
-        <button data-vista="semana" title="Semana (3)">Semana</button>
-        <button data-vista="apuntes" title="Apuntes (2)">Apuntes</button>
+        <button data-vista="inicio" title="Riga Dashboard (1)">Inicio</button>
+        <button data-vista="baos" title="Dr. Baos (2)">Dr. Baos</button>
+        <button data-vista="tareas" title="Tareas (3)">Tareas</button>
+        <button data-vista="semana" title="Semana (4)">Semana</button>
+        <button data-vista="apuntes" title="Apuntes (5)">Apuntes</button>
       </nav>
       <div class="barra-der">
         <label class="buscador">
@@ -47,7 +50,9 @@
     <p id="actualizado"></p>
   </div>
   <div id="aviso" role="status" hidden></div>
-  <main id="lista"></main>
+  <section id="inicio" hidden></section>
+  <section id="baos" hidden></section>
+  <main id="lista" hidden></main>
   <section id="semana" hidden></section>
   <section id="apuntes" hidden>
     <aside id="modulos" aria-label="Asignaturas"></aside>
@@ -94,7 +99,9 @@
       <div class="celdas">
         <p class="celda"><span>Actualizar</span><kbd>R</kbd></p>
         <p class="celda"><span>Buscar</span><kbd>/</kbd></p>
-        <p class="celda"><span>Tareas / Apuntes / Semana</span><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd></p>
+        <p class="celda"><span>Inicio / Dr. Baos / Tareas / Semana / Apuntes</span><kbd>1</kbd>–<kbd>5</kbd></p>
+        <p class="celda"><span>Dr. Baos: nueva tarea</span><kbd>N</kbd></p>
+        <p class="celda"><span>Dr. Baos: mover tarjeta</span><kbd>←</kbd><kbd>→</kbd></p>
         <p class="celda"><span>Repaso: ver respuesta / fallo / acierto</span><kbd>Espacio</kbd><kbd>1</kbd><kbd>2</kbd></p>
         <p class="celda"><span>Lista o panel</span><kbd>D</kbd></p>
         <p class="celda"><span>Claro u oscuro</span><kbd>T</kbd></p>
@@ -120,6 +127,13 @@
     <p class="seccion-titulo">Horario de clases</p>
     <div class="celdas" id="horario-filas"></div>
     <p class="seccion-pie">Para ver tu próxima clase con el botón Unirse (el enlace de Teams sale del campus) y tenerla en la vista Semana.</p>
+    <p class="seccion-titulo">Copia de seguridad</p>
+    <div class="celdas">
+      <button id="exportar-copia" class="celda accion">Exportar Inicio y Dr. Baos…</button>
+      <button id="importar-copia" class="celda accion">Importar una copia…</button>
+    </div>
+    <input id="importar-archivo" type="file" accept="application/json,.json" hidden>
+    <p class="seccion-pie">Inicio y Dr. Baos se guardan solo en este Chrome. Exporta aquí y luego importa en el otro PC.</p>
     <p class="seccion-titulo">VS Code</p>
     <div class="celdas">
       <label class="celda"><span>Ruta</span><input id="ruta" type="text" spellcheck="false"></label>

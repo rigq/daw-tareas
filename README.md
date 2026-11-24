@@ -53,4 +53,7 @@ Extensión de Chrome en [`dashboard/`](dashboard/) con tus pendientes ordenadas 
 **Entregar** abre directamente el formulario de envío. 📄 enunciado · 📁 carpeta en VS Code · ✓ marcar como hecha (en papel o en clase).
 Al terminar, `git add . && git commit -m "..." && git push` para llevar las fichas nuevas y las marcas al otro portátil.
 
+**Pestañas:** `1` Inicio (Riga Dashboard: pendientes de todo, hábitos, notas, idea del día, tiempo y accesos) · `2` Dr. Baos (frentes del cliente, Kanban y muro de ideas; `N` nueva tarea, flechas para mover tarjetas) · `3` Tareas · `4` Semana · `5` Apuntes.
+Inicio y Dr. Baos se guardan solo en ese Chrome: para llevarlos al otro PC, ⚙ → **Exportar** y luego **Importar** allí.
+
 Tests: `cd dashboard && node --test`
