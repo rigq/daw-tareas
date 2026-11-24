@@ -19,7 +19,7 @@
 .boton-sobrio:hover { background: var(--texto); color: var(--lienzo); }
 
 /* ======================= INICIO ======================= */
-.hero { position: relative; min-height: 34vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+.hero { position: relative; min-height: 40vh; padding-top: 56px !important; display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 10px; padding: 8px 0 56px; color: #fff; text-align: center; text-shadow: 0 1px 24px rgb(0 0 0 / .25); }
 .hero p { margin: 0; }
 .hero-hora { font: 800 clamp(88px, 11vw, 156px)/.92 var(--sans); letter-spacing: -.045em; font-variant-numeric: tabular-nums; }
@@ -88,7 +88,7 @@
 .habito-racha { width: 30px; font-size: 11px; font-weight: 700; text-align: right; color: var(--texto-2); font-variant-numeric: tabular-nums; }
 
 .w-idea { grid-area: idea; }
-.idea-texto { margin: 0; font: 600 19px/1.45 var(--sans); letter-spacing: -.01em; }
+.idea-texto { margin: auto 0; font: 600 19px/1.45 var(--sans); letter-spacing: -.01em; }
 .idea-texto::before { content: "“"; display: block; height: 28px; font: 800 52px/1 var(--sans); color: var(--acento); }
 
 .w-novedades { grid-area: novedades; }
@@ -120,7 +120,7 @@
    Esquinas de 3 px, tarjetas blancas con línea dorada arriba, etiquetas en mayúsculas de 12 px. */
 #baos { padding-top: 0; }
 #baos, #dialogo-baos { font-family: var(--sans); }
-.boton-linea, .boton-oro { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 22px; border-radius: 3px;
+.boton-linea, .boton-oro { white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 22px; border-radius: 3px;
   font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; transition: background .2s, color .2s, transform .1s, filter .2s; }
 .boton-linea { border: 1px solid currentColor; color: var(--texto); }
 .boton-linea:hover { background: var(--texto); color: var(--banda); }
@@ -157,7 +157,7 @@
 .frente-nombre { font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--texto-2); }
 .frente-pct b { font: 300 56px/1 var(--display); font-variant-numeric: lining-nums tabular-nums; }
 .frente-pct span { margin-left: 4px; font: 300 22px var(--display); color: var(--oro-texto); }
-.frente-meta { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--texto-2); }
+.frente-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; font-size: 13px; color: var(--texto-2); }
 .barra-progreso { -webkit-appearance: none; appearance: none; width: 100%; height: 2px; margin: 6px 0; cursor: ew-resize;
   background: linear-gradient(90deg, var(--oro) var(--p), var(--separador) var(--p)); }
 .barra-progreso::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--oro);
@@ -254,9 +254,11 @@
   .hero-linea .sep { display: none; }
   .hero-clima { flex-wrap: wrap; justify-content: center; border-radius: 12px; }
   .hero-fondo { position: static; margin-top: 8px; }
-  .baos-datos { width: 100%; justify-content: space-between; }
-  .dato-baos { padding: 0 12px; }
-  .dato-baos b { font-size: 36px; }
+  .baos-datos { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .dato-baos { padding: 0 10px; }
+  .dato-baos b { font-size: 34px; }
+  .dato-baos span { font-size: 12px; letter-spacing: .08em; }
+  .boton-linea, .boton-oro { padding: 0 14px; letter-spacing: .1em; }
   .baos-acciones { width: 100%; }
   .baos-acciones > * { flex: 1; justify-content: center; }
   .frentes { grid-template-columns: repeat(2, 1fr); gap: 10px; }

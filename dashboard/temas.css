@@ -48,7 +48,7 @@ dialog::backdrop, #paleta::backdrop { background: rgb(0 0 0 / .35); -webkit-back
 
 /* Selector de modo. El menú lleva su propia paleta: no hereda la de la barra (que en Inicio y Dr. Baos es clara sobre oscuro). */
 .selector-modo { position: relative; justify-self: start; }
-#boton-modo { display: flex; align-items: center; gap: 10px; height: 36px; padding: 0 10px 0 8px; border-radius: 6px;
+#boton-modo { display: flex; align-items: center; gap: 10px; white-space: nowrap; height: 36px; padding: 0 10px 0 8px; border-radius: 6px;
   font: 700 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--texto); }
 #boton-modo:hover, #boton-modo[aria-expanded="true"] { background: var(--relleno); }
 #boton-modo svg { width: 14px; height: 14px; color: var(--texto-2); transition: transform .2s; }
@@ -116,7 +116,8 @@ dialog::backdrop, #paleta::backdrop { background: rgb(0 0 0 / .35); -webkit-back
 [data-modo="inicio"] .barra.con-scroll { --barra: rgb(14 14 13 / .55); -webkit-backdrop-filter: blur(20px) saturate(160%); backdrop-filter: blur(20px) saturate(160%); }
 [data-modo="inicio"] .barra, [data-modo="inicio"] .encabezado { color: #fff; --texto: #fff; --texto-2: rgb(255 255 255 / .72); --relleno: rgb(255 255 255 / .14); --vidrio-borde: rgb(255 255 255 / .2); }
 [data-modo="inicio"] .buscador { display: none; }
-[data-modo="inicio"] .encabezado { padding-top: 48px; }
+/* En Inicio no hay título visible: manda la hora. El h1 sigue ahí para lectores de pantalla. */
+[data-modo="inicio"] .encabezado { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 [data-modo="inicio"] .encabezado h1 { font: 500 clamp(40px, 5vw, 64px)/1 "Bodoni Moda", "Didot", Georgia, serif; letter-spacing: .14em;
   text-shadow: 0 2px 30px rgb(0 0 0 / .3); }
 [data-modo="inicio"] #aviso { display: none; }
@@ -193,8 +194,18 @@ dialog::backdrop, #paleta::backdrop { background: rgb(0 0 0 / .35); -webkit-back
 [data-modo="grado"] .encabezado h2, [data-modo="grado"] .bloque > h2 { font-family: var(--display); }
 [data-modo="grado"] .dia { border-radius: 12px; }
 
+/* Sin foto todavía: el cristal claro sobre el fondo oscuro queda gris; mejor casi opaco. */
+:root[data-modo="inicio"].sin-foto:not([data-tema="oscuro"]) { --vidrio: rgb(255 255 255 / .93); }
+
+@media (max-width: 820px) {
+  .barra-der { min-width: 0; }
+  .buscador { min-width: 0; }
+  .atajo-k { display: none; }
+}
 @media (max-width: 700px) {
-  .barra-int { padding-inline: 12px; }
+  .barra-int { padding-inline: 12px; gap: 8px; }
+  #pestanas { justify-content: center; }
+  #pestanas button { flex: 0 1 auto; padding-inline: 16px; }
   #menu-modos { width: min(300px, calc(100vw - 24px)); }
   .encabezado, body.modo-ancho .encabezado { padding: 28px 16px 4px; }
   [data-modo="baos"] .encabezado { padding: 32px 16px 20px; }

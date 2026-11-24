@@ -1,4 +1,4 @@
-// Service worker de Rigatony Dash:
+// Service worker de Riga Hub:
 // - lee el campus cada 3 horas (y al abrir Chrome) a través de un documento oculto,
 // - guarda los datos y las novedades, pone el número en el icono y programa los avisos de 24 h y 2 h.
 // No toca la carpeta DAW: las fichas y adjuntos se siguen creando al pulsar Actualizar en el panel.
@@ -15,7 +15,7 @@ async function refrescarIconoYAvisos() {
   const ins = insignia(datos?.tareas || [], marcas);
   await chrome.action.setBadgeText({ text: ins.texto });
   await chrome.action.setBadgeBackgroundColor({ color: ins.color });
-  await chrome.action.setTitle({ title: `Rigatony Dash — ${ins.titulo}` });
+  await chrome.action.setTitle({ title: `Riga Hub — ${ins.titulo}` });
 
   for (const a of await chrome.alarms.getAll()) if (a.name.startsWith('aviso|')) await chrome.alarms.clear(a.name);
   for (const a of avisos(datos?.tareas || [], marcas)) await chrome.alarms.create(a.nombre, { when: a.cuando });

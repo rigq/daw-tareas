@@ -593,6 +593,7 @@ function aplicarModo(modo) {
   document.documentElement.dataset.modo = modo;
   try { localStorage.setItem('modo', modo); } catch {}
   $('#nombre-modo').textContent = MODOS[modo].nombre;
+  document.title = { inicio: 'Riga Hub', baos: 'Dr. Baos · Riga Hub', grado: 'Grado · Riga Hub' }[modo];
   const nav = $('#pestanas');
   const vistas = Object.entries(MODOS[modo].vistas);
   if (nav.dataset.modo !== modo) {

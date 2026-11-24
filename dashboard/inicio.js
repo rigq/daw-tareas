@@ -81,6 +81,7 @@ export async function pintarFondo() {
   const capa = document.getElementById('fondo-foto');
   const foto = fotoDelDia((await almacen.get('fondos')) || []);
   capa.classList.toggle('sin-foto', !foto);
+  document.documentElement.classList.toggle('sin-foto', !foto);
   if (foto) capa.style.setProperty('--foto', `url("${foto}")`); else capa.style.removeProperty('--foto');
 }
 
