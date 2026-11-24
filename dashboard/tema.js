@@ -26,6 +26,8 @@
   }
 
   aplicar();
+  // El modo (inicio / baos / grado) también se aplica antes de pintar; app.js lo mantiene al día.
+  document.documentElement.dataset.modo = localStorage.getItem('modo') || 'inicio';
   sistema.addEventListener('change', () => { if (!elegido()) aplicar(); });
   document.addEventListener('DOMContentLoaded', () => {
     aplicar();

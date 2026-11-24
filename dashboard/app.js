@@ -10,7 +10,7 @@ import { planDeHoy, duracion, esfuerzoDe, minutosDe, NOMBRE_ESFUERZO, SIGUIENTE_
   fusionarLectura, puntuar, proximaClase, cuandoEmpieza, examenes, diasHasta, anillos, resumenSemana, generarIcs,
   requisitos, promptClaude, clasesDelDia, mediasPorAsignatura } from './plan.js';
 import { extraerTarjetas, sesionDeRepaso, responder, pendientesDeRepaso, buscarEnResumenes } from './estudio.js';
-import { pintarInicio, pararInicio, inicioCambiado } from './inicio.js';
+import { pintarInicio, pararInicio, inicioCambiado, pintarFondo, anadirFondos, quitarFondos } from './inicio.js';
 import { pintarBaos, editarTarea, editarIdea, baosCambiado } from './baos.js';
 
 const $ = s => document.querySelector(s);
@@ -450,20 +450,27 @@ function pintarTodo() {
   bd.hidden = app.vista !== 'tareas';
   bd.title = panel ? 'Ver como lista (D)' : 'Ver como panel (D)';
   bd.setAttribute('aria-label', panel ? 'Ver como lista' : 'Ver como panel');
-  for (const b of document.querySelectorAll('#pestanas button')) b.classList.toggle('activa', b.dataset.vista === app.vista);
+  const modo = modoDe(app.vista);
+  aplicarModo(modo);
   $('#lista').hidden = app.vista !== 'tareas';
   $('#apuntes').hidden = app.vista !== 'apuntes';
   $('#semana').hidden = app.vista !== 'semana';
   $('#inicio').hidden = app.vista !== 'inicio';
-  $('#baos').hidden = app.vista !== 'baos';
-  $('#titulo-vista').textContent = TITULOS[app.vista] || 'Tareas';
-  $('#buscar').placeholder = { apuntes: 'Buscar en apuntes y resúmenes', baos: 'Buscar en Dr. Baos', inicio: 'Buscar tareas' }[app.vista] || 'Buscar tareas';
+  $('#baos').hidden = modo !== 'baos';
+  $('#titulo-vista').textContent = MODOS[modo].titulo(app.vista);
+  $('#subtitulo-vista').textContent = MODOS[modo].subtitulo || '';
+  $('#buscar').placeholder = { apuntes: 'Buscar en apuntes y resúmenes', baos: 'Buscar en Dr. Baos', ideas: 'Buscar ideas' }[app.vista] || 'Buscar tareas';
   document.body.classList.toggle('modo-semana', app.vista === 'semana');
-  document.body.classList.toggle('modo-ancho', app.vista === 'inicio' || app.vista === 'baos');
-  $('#actualizado').textContent = app.datos && !['inicio', 'baos'].includes(app.vista) ? hace(app.datos.fecha).replace(/^a/, 'A') : '';
+  document.body.classList.toggle('modo-ancho', modo !== 'grado');
+  $('#actualizado').textContent = app.datos && modo === 'grado' ? hace(app.datos.fecha).replace(/^a/, 'A') : '';
+  // El aviso de primer uso es del grado: no ensuciar Inicio ni Dr. Baos.
+  if (!app.carpeta) {
+    if (modo === 'grado') { if ($('#aviso').hidden) aviso(PRIMER_USO); }
+    else if ($('#aviso').textContent === PRIMER_USO) aviso('');
+  }
   if (app.vista !== 'inicio') pararInicio();
   if (app.vista === 'inicio') { pintarInicio($('#inicio'), { datos: app.datos, marcas: app.marcas, irA: cambiarVista }).catch(e => aviso(e.message, 'error')); return; }
-  if (app.vista === 'baos') { pintarBaos($('#baos'), { filtro: app.filtro }).catch(e => aviso(e.message, 'error')); return; }
+  if (modo === 'baos') { pintarBaos($('#baos'), { filtro: app.filtro, vista: app.vista }).catch(e => aviso(e.message, 'error')); return; }
   if (app.vista === 'apuntes') { pintarApuntes().catch(e => aviso(e.message, 'error')); return; }
   if (app.vista === 'semana') { pintarSemana(); return; }
   const lista = $('#lista');
@@ -570,13 +577,72 @@ async function pintarApuntes() {
         })]))].filter(Boolean)); // replaceChildren no descarta null: se filtra aquí
 }
 
-const TITULOS = { inicio: 'Riga Dashboard', baos: 'Dr. Baos', tareas: 'Tareas', semana: 'Semana', apuntes: 'Apuntes' };
-const ORDEN_VISTAS = ['inicio', 'baos', 'tareas', 'semana', 'apuntes'];
+// ---------- modos: cada uno con sus pestañas y su estética ----------
+const PRIMER_USO = 'Primer uso: elige la carpeta DAW en Ajustes (la rueda de arriba a la derecha) y pulsa Actualizar.';
+const MODOS = {
+  inicio: { nombre: 'Inicio', desc: 'Tu día de un vistazo', vistas: { inicio: 'Inicio' }, titulo: () => 'Riga Dashboard' },
+  baos: { nombre: 'Dr. Baos', desc: 'Clínica Dental · cliente', vistas: { baos: 'Tablero', ideas: 'Ideas' },
+    titulo: () => 'Dr. Baos', subtitulo: 'Clínica Dental · Majadahonda · Argés' },
+  grado: { nombre: 'Grado', desc: 'DAW · tareas, semana y apuntes', vistas: { tareas: 'Tareas', semana: 'Semana', apuntes: 'Apuntes' },
+    titulo: v => ({ tareas: 'Tareas', semana: 'Semana', apuntes: 'Apuntes' })[v] },
+};
+const modoDe = v => Object.keys(MODOS).find(m => v in MODOS[m].vistas) || 'inicio';
+let vistasModo = {}; // última pestaña usada en cada modo
+
+function aplicarModo(modo) {
+  document.documentElement.dataset.modo = modo;
+  try { localStorage.setItem('modo', modo); } catch {}
+  $('#nombre-modo').textContent = MODOS[modo].nombre;
+  const nav = $('#pestanas');
+  const vistas = Object.entries(MODOS[modo].vistas);
+  if (nav.dataset.modo !== modo) {
+    nav.dataset.modo = modo;
+    nav.replaceChildren(...(vistas.length > 1 ? vistas.map(([v, n], i) =>
+      el('button', { 'data-vista': v, title: `${n} (${i + 1})`, onclick: () => cambiarVista(v) }, n)) : []));
+  }
+  for (const b of nav.querySelectorAll('button')) b.classList.toggle('activa', b.dataset.vista === app.vista);
+}
 
 function cambiarVista(v) {
   app.vista = v;
+  vistasModo[modoDe(v)] = v;
   almacen.set('vista', v);
+  almacen.set('vistasModo', vistasModo);
+  window.scrollTo({ top: 0 });
   pintar();
+}
+
+function cambiarModo(m) {
+  cerrarMenuModos();
+  if (modoDe(app.vista) === m) return;
+  const v = vistasModo[m] in MODOS[m].vistas ? vistasModo[m] : Object.keys(MODOS[m].vistas)[0];
+  if (document.startViewTransition && !sinMovimiento() && document.visibilityState === 'visible') document.startViewTransition(() => cambiarVista(v)).ready.catch(() => {});
+  else cambiarVista(v);
+}
+
+function abrirMenuModos() {
+  const menu = $('#menu-modos'), actual = modoDe(app.vista);
+  menu.replaceChildren(el('p', { class: 'menu-titulo' }, 'Modo'), ...Object.entries(MODOS).map(([id, m], i) =>
+    el('button', { class: 'opcion-modo', role: 'menuitemradio', 'aria-checked': String(id === actual), onclick: () => cambiarModo(id) },
+      el('span', { class: `muestra muestra-${id}`, 'aria-hidden': 'true' }, el('i'), el('i'), el('i')),
+      el('span', {}, el('b', {}, m.nombre), el('small', {}, m.desc)),
+      el('kbd', {}, String(i + 1)))));
+  menu.hidden = false;
+  $('#boton-modo').setAttribute('aria-expanded', 'true');
+  (menu.querySelector('[aria-checked="true"]') || menu.querySelector('button')).focus();
+}
+function cerrarMenuModos() {
+  if ($('#menu-modos').hidden) return;
+  $('#menu-modos').hidden = true;
+  $('#boton-modo').setAttribute('aria-expanded', 'false');
+}
+function teclaMenuModos(e) {
+  const ops = [...$('#menu-modos').querySelectorAll('.opcion-modo')];
+  const i = ops.indexOf(document.activeElement);
+  if (e.key === 'Escape') { e.preventDefault(); cerrarMenuModos(); $('#boton-modo').focus(); }
+  else if (e.key === 'ArrowDown') { e.preventDefault(); ops[(i + 1) % ops.length].focus(); }
+  else if (e.key === 'ArrowUp') { e.preventDefault(); ops[(i - 1 + ops.length) % ops.length].focus(); }
+  else if (/^[1-9]$/.test(e.key) && ops[e.key - 1]) { e.preventDefault(); ops[e.key - 1].click(); }
 }
 
 // ---------- copia de seguridad (Inicio y Dr. Baos viven solo en este Chrome) ----------
@@ -734,13 +800,14 @@ function comandos() {
     cmd('Actualizar desde el campus', actualizar, 'R'),
     cmd(app.disposicion === 'panel' ? 'Ver como lista' : 'Ver como panel', () => { if (app.vista !== 'tareas') cambiarVista('tareas'); alternarDisposicion(); }, 'D'),
     cmd('Cambiar entre claro y oscuro', () => $('#cambiar-tema').click(), 'T'),
-    cmd('Ir a Riga Dashboard (inicio)', () => cambiarVista('inicio'), '1'),
-    cmd('Ir a Dr. Baos', () => cambiarVista('baos'), '2'),
+    ...Object.entries(MODOS).map(([id, m]) => cmd(`Modo ${m.nombre}`, () => cambiarModo(id), 'M')),
     cmd('Dr. Baos: nueva tarea', () => { cambiarVista('baos'); editarTarea(); }, 'N'),
-    cmd('Dr. Baos: nueva idea', () => { cambiarVista('baos'); editarIdea(); }),
-    cmd('Ir a Tareas', () => cambiarVista('tareas'), '3'),
-    cmd('Ir a Semana', () => cambiarVista('semana'), '4'),
-    cmd('Ir a Apuntes', () => cambiarVista('apuntes'), '5'),
+    cmd('Dr. Baos: nueva idea', () => { cambiarVista('ideas'); editarIdea(); }),
+    cmd('Dr. Baos: ideas', () => cambiarVista('ideas')),
+    cmd('Ir a Tareas', () => cambiarVista('tareas')),
+    cmd('Ir a Semana', () => cambiarVista('semana')),
+    cmd('Ir a Apuntes', () => cambiarVista('apuntes')),
+    cmd('Inicio: añadir foto de fondo', anadirFondos),
     cmd('Copia de seguridad: exportar Inicio y Dr. Baos', exportarCopia),
     cmd('Copia de seguridad: importar', () => $('#importar-archivo').click()),
     cmd('Repasar tarjetas de hoy', () => abrirRepaso(), 'Repaso'),
@@ -836,15 +903,17 @@ function alPulsarTecla(e) {
     else if (e.key === ' ' && !destino.matches('button')) { e.preventDefault(); arrancarReloj(); }
     return;
   }
+  if (!$('#menu-modos').hidden) { teclaMenuModos(e); return; }
   if (destino.matches('input, textarea') || document.querySelector('dialog[open]') || e.ctrlKey || e.metaKey || e.altKey) return;
   if (teclaEnFila(e)) { e.preventDefault(); return; }
   const k = e.key;
   if (app.vista === 'tareas' && (k === 'j' || k === 'ArrowDown')) { e.preventDefault(); moverSeleccion(1); }
   else if (app.vista === 'tareas' && (k === 'k' || k === 'ArrowUp')) { e.preventDefault(); moverSeleccion(-1); }
-  else if ((k === 'r' || k === 'R') && !['inicio', 'baos'].includes(app.vista)) { e.preventDefault(); actualizar(); }
-  else if (k === '/') { e.preventDefault(); $('#buscar').focus(); }
-  else if (k >= '1' && k <= '5') cambiarVista(ORDEN_VISTAS[k - 1]);
-  else if ((k === 'n' || k === 'N') && app.vista === 'baos') { e.preventDefault(); editarTarea(); }
+  else if ((k === 'r' || k === 'R') && modoDe(app.vista) === 'grado') { e.preventDefault(); actualizar(); }
+  else if (k === '/' && app.vista !== 'inicio') { e.preventDefault(); $('#buscar').focus(); }
+  else if (k === 'm' || k === 'M') { e.preventDefault(); abrirMenuModos(); }
+  else if (/^[1-9]$/.test(k)) { const v = Object.keys(MODOS[modoDe(app.vista)].vistas)[k - 1]; if (v) cambiarVista(v); }
+  else if ((k === 'n' || k === 'N') && modoDe(app.vista) === 'baos') { e.preventDefault(); app.vista === 'ideas' ? editarIdea() : editarTarea(); }
   else if ((k === 'd' || k === 'D') && app.vista === 'tareas') alternarDisposicion();
   else if (k === '?') $('#atajos').showModal();
 }
@@ -1205,6 +1274,8 @@ async function iniciar() {
   app.ruta = (await almacen.get('ruta')) || RUTA_POR_DEFECTO;
   app.carpeta = (await fs.carpetaGuardada()) || null;
   app.vista = (await almacen.get('vista')) || 'inicio';
+  if (!Object.values(MODOS).some(m => app.vista in m.vistas)) app.vista = 'inicio';
+  vistasModo = (await almacen.get('vistasModo')) || {};
   app.modulo = (await almacen.get('modulo')) || app.modulo;
   app.disposicion = (await almacen.get('disposicion')) || 'lista';
   app.esfuerzos = (await almacen.get('esfuerzos')) || {};
@@ -1215,12 +1286,17 @@ async function iniciar() {
   if (app.carpeta && await fs.tienePermiso(app.carpeta)) await cargarDeCarpeta();
   pintar();
 
-  for (const b of document.querySelectorAll('#pestanas button')) b.addEventListener('click', () => cambiarVista(b.dataset.vista));
+  $('#boton-modo').addEventListener('click', () => $('#menu-modos').hidden ? abrirMenuModos() : cerrarMenuModos());
+  document.addEventListener('click', e => { if (!e.target.closest('.selector-modo')) cerrarMenuModos(); });
+  $('#anadir-fondo').addEventListener('click', anadirFondos);
+  $('#quitar-fondos').addEventListener('click', () => { if (confirm('¿Quitar todas las fotos de fondo?')) quitarFondos(); });
+  pintarFondo();
+  // En Inicio la barra es transparente sobre la foto; al bajar se vuelve sólida.
+  addEventListener('scroll', () => $('.barra').classList.toggle('con-scroll', scrollY > 40), { passive: true });
   $('#actualizar').addEventListener('click', actualizar);
   $('#cambiar-disposicion').addEventListener('click', alternarDisposicion);
   $('#buscar').addEventListener('input', e => {
     app.filtro = e.target.value;
-    if (app.vista === 'inicio' && app.filtro) { cambiarVista('tareas'); $('#buscar').focus(); return; }
     pintar();
   });
   $('#abrir-ajustes').addEventListener('click', () => { pintarAjustes(); $('#ajustes').showModal(); });
@@ -1260,8 +1336,7 @@ async function iniciar() {
     if (cambio) pintar();
   });
   setInterval(() => app.datos && ($('#actualizado').textContent = hace(app.datos.fecha).replace(/^a/, 'A')), 60000);
-  if (!app.carpeta) aviso('Primer uso: elige la carpeta DAW en Ajustes (la rueda de arriba a la derecha) y pulsa Actualizar.');
-  else avisarSesion(await almacen.get('estadoFondo'));
+  if (app.carpeta) avisarSesion(await almacen.get('estadoFondo'));
   for (const d of ['#resumen-semana']) $(d).addEventListener('click', e => { if (e.target === $(d)) $(d).close(); });
   // El domingo y el lunes, el resumen de la semana se abre solo una vez.
   const dia = new Date().getDay();

@@ -8,17 +8,20 @@
   <script src="tema.js"></script>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="espacios.css">
+  <link rel="stylesheet" href="temas.css">
 </head>
 <body>
+  <div class="fondo-foto sin-foto" id="fondo-foto" aria-hidden="true"></div>
   <header class="barra">
     <div class="barra-int">
-      <div class="marca"><img src="icons/icon48.png" alt="" width="26" height="26"><span>Rigatony Dash</span></div>
+      <div class="selector-modo">
+        <button id="boton-modo" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-modos" title="Cambiar de modo (M)">
+          <span class="modo-punto" aria-hidden="true"></span><span id="nombre-modo">Inicio</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div id="menu-modos" role="menu" aria-label="Modos" hidden></div>
+      </div>
       <nav id="pestanas" aria-label="Vistas">
-        <button data-vista="inicio" title="Riga Dashboard (1)">Inicio</button>
-        <button data-vista="baos" title="Dr. Baos (2)">Dr. Baos</button>
-        <button data-vista="tareas" title="Tareas (3)">Tareas</button>
-        <button data-vista="semana" title="Semana (4)">Semana</button>
-        <button data-vista="apuntes" title="Apuntes (5)">Apuntes</button>
       </nav>
       <div class="barra-der">
         <label class="buscador">
@@ -47,6 +50,7 @@
 
   <div class="encabezado">
     <h1 id="titulo-vista">Tareas</h1>
+    <p class="subtitulo" id="subtitulo-vista"></p>
     <p id="actualizado"></p>
   </div>
   <div id="aviso" role="status" hidden></div>
@@ -99,7 +103,8 @@
       <div class="celdas">
         <p class="celda"><span>Actualizar</span><kbd>R</kbd></p>
         <p class="celda"><span>Buscar</span><kbd>/</kbd></p>
-        <p class="celda"><span>Inicio / Dr. Baos / Tareas / Semana / Apuntes</span><kbd>1</kbd>–<kbd>5</kbd></p>
+        <p class="celda"><span>Cambiar de modo (Inicio, Dr. Baos, Grado)</span><kbd>M</kbd></p>
+        <p class="celda"><span>Pestañas del modo</span><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd></p>
         <p class="celda"><span>Dr. Baos: nueva tarea</span><kbd>N</kbd></p>
         <p class="celda"><span>Dr. Baos: mover tarjeta</span><kbd>←</kbd><kbd>→</kbd></p>
         <p class="celda"><span>Repaso: ver respuesta / fallo / acierto</span><kbd>Espacio</kbd><kbd>1</kbd><kbd>2</kbd></p>
@@ -127,6 +132,12 @@
     <p class="seccion-titulo">Horario de clases</p>
     <div class="celdas" id="horario-filas"></div>
     <p class="seccion-pie">Para ver tu próxima clase con el botón Unirse (el enlace de Teams sale del campus) y tenerla en la vista Semana.</p>
+    <p class="seccion-titulo">Fondo de Inicio</p>
+    <div class="celdas">
+      <button id="anadir-fondo" class="celda accion">Añadir fotos…</button>
+      <button id="quitar-fondos" class="celda accion">Quitar todas las fotos</button>
+    </div>
+    <p class="seccion-pie">Si subes varias, cambian cada día. Se guardan solo en este Chrome.</p>
     <p class="seccion-titulo">Copia de seguridad</p>
     <div class="celdas">
       <button id="exportar-copia" class="celda accion">Exportar Inicio y Dr. Baos…</button>

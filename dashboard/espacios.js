@@ -200,4 +200,11 @@ export function tiempoDe(codigo, esDia = true) {
   return { icono: '🌡️', texto: '' };
 }
 
+// Con varias fotos de fondo, una distinta cada día (la misma todo el día).
+export function fotoDelDia(fotos, hoy = new Date()) {
+  if (!fotos?.length) return null;
+  const n = Math.floor(new Date(diaIso(hoy) + 'T00:00').getTime() / 86400000);
+  return fotos[((n % fotos.length) + fotos.length) % fotos.length];
+}
+
 export const dominioDe = url => { try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return ''; } };

@@ -1,8 +1,8 @@
-// Pestaña Inicio (Riga Dashboard): lo pendiente de todo de un vistazo y widgets para un rato tranquilo.
+// Modo Inicio (Riga Dashboard): tu foto de fondo, la hora, lo pendiente de todo y widgets para un rato tranquilo.
 import { el, almacen, icono, ICONOS } from './dom.js';
 import { agrupar, modDe, cuentaAtras } from './logica.js';
 import { FRENTES, baosParaInicio, estadoFecha, saludo, alternarHabito, racha, ultimosDias, podarHabitos,
-  HABITOS_INICIALES, ACCESOS_INICIALES, normalizarUrl, ideaDelDia, tiempoDe, dominioDe, nuevoId, diaIso } from './espacios.js';
+  HABITOS_INICIALES, ACCESOS_INICIALES, normalizarUrl, ideaDelDia, tiempoDe, dominioDe, nuevoId, diaIso, fotoDelDia } from './espacios.js';
 import { cargarBaos, editarTarea } from './baos.js';
 
 // Madrid centro. Open-Meteo es gratis, sin cuenta y sin clave.
@@ -11,6 +11,24 @@ const URL_TIEMPO = 'https://api.open-meteo.com/v1/forecast?latitude=40.4168&long
   + '&timezone=Europe%2FMadrid&forecast_days=1';
 const HN = 'https://hacker-news.firebaseio.com/v0';
 const MEDIA_HORA = 30 * 60000;
+const MAX_FOTOS = 8;
+
+// Iconos de línea para el tiempo (nada de emojis).
+const CIELO = {
+  sol: 'M12 7a5 5 0 1 0 0 10a5 5 0 1 0 0-10M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4',
+  luna: 'M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z',
+  nubes: 'M7 18h10a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.1 11 3.5 3.5 0 0 0 7 18z',
+  claros: 'M8 3v1.5M3.6 4.6l1 1M2 9h1.5M12.5 6.3A4 4 0 0 0 5 9M9 20h8a3.5 3.5 0 0 0 .5-6.96A5 5 0 0 0 8 13.5 3.25 3.25 0 0 0 9 20z',
+  lluvia: 'M7 14h10a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.1 7 3.5 3.5 0 0 0 7 14zM8 17l-1 3M12 17l-1 3M16 17l-1 3',
+  nieve: 'M7 14h10a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.1 7 3.5 3.5 0 0 0 7 14zM8 18h.01M12 20h.01M16 18h.01',
+  tormenta: 'M7 14h10a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.1 7 3.5 3.5 0 0 0 7 14zM12 15l-2 4h4l-2 4',
+  niebla: 'M4 9h16M2 13h20M5 17h14',
+};
+const iconoCielo = (codigo, esDia) => {
+  const t = tiempoDe(codigo, esDia).texto;
+  return { 'Despejado': esDia ? CIELO.sol : CIELO.luna, 'Algo nuboso': CIELO.claros, 'Nublado': CIELO.nubes, 'Niebla': CIELO.niebla,
+    'Llovizna': CIELO.lluvia, 'Lluvia': CIELO.lluvia, 'Nieve': CIELO.nieve, 'Tormenta': CIELO.tormenta }[t] || CIELO.nubes;
+};
 
 const est = { datos: null, cont: null, ctx: null, reloj: null, editandoAccesos: false, editandoHabitos: false, ideaDesp: 0 };
 
@@ -42,15 +60,15 @@ export async function pintarInicio(cont, ctx) {
   est.cont = cont; est.ctx = ctx;
   await cargar();
   const baos = await cargarBaos();
-  cont.replaceChildren(el('div', { class: 'bento' },
+  cont.replaceChildren(
     widgetHola(),
-    widgetPendientes(ctx, baos),
-    widgetHabitos(),
-    widgetIdea(),
-    widgetNotas(),
-    widgetNovedades(),
-    widgetAccesos(),
-  ));
+    el('div', { class: 'rejilla' },
+      widgetPendientes(ctx, baos),
+      widgetHabitos(),
+      widgetIdea(),
+      widgetNovedades(),
+      widgetNotas(),
+      widgetAccesos()));
   arrancarReloj();
   pintarTiempo();
   pintarNoticias();
@@ -58,14 +76,45 @@ export async function pintarInicio(cont, ctx) {
 
 export function pararInicio() { clearInterval(est.reloj); est.reloj = null; }
 
+// ---------- foto de fondo ----------
+export async function pintarFondo() {
+  const capa = document.getElementById('fondo-foto');
+  const foto = fotoDelDia((await almacen.get('fondos')) || []);
+  capa.classList.toggle('sin-foto', !foto);
+  capa.style.backgroundImage = foto ? `url("${foto}")` : '';
+}
+
+// Reduce la foto (máx. 2400 px, JPEG) para que quepa holgada en el almacenamiento de la extensión.
+async function comprimir(archivo) {
+  const img = await createImageBitmap(archivo);
+  const escala = Math.min(1, 2400 / Math.max(img.width, img.height));
+  const c = new OffscreenCanvas(Math.round(img.width * escala), Math.round(img.height * escala));
+  c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+  const blob = await c.convertToBlob({ type: 'image/jpeg', quality: 0.84 });
+  return new Promise((ok, mal) => { const r = new FileReader(); r.onload = () => ok(r.result); r.onerror = mal; r.readAsDataURL(blob); });
+}
+
+export function anadirFondos() {
+  const input = el('input', { type: 'file', accept: 'image/*', multiple: true });
+  input.addEventListener('change', async () => {
+    const nuevas = await Promise.all([...input.files].map(comprimir));
+    const fotos = [...nuevas, ...((await almacen.get('fondos')) || [])].slice(0, MAX_FOTOS);
+    await almacen.set('fondos', fotos);
+    pintarFondo();
+  });
+  input.click();
+}
+
+export async function quitarFondos() { await almacen.set('fondos', []); pintarFondo(); }
+
 // ---------- reloj, saludo y tiempo ----------
 function widgetHola() {
-  return el('section', { class: 'widget w-hola vidrio' },
-    el('div', {},
-      el('p', { class: 'hola-saludo', id: 'hola-saludo' }),
-      el('p', { class: 'hola-hora', id: 'hola-hora' }),
-      el('p', { class: 'hola-fecha', id: 'hola-fecha' })),
-    el('div', { class: 'clima', id: 'tiempo', 'aria-live': 'polite' }, el('p', { class: 'clima-cargando' }, 'Mirando el cielo…')));
+  return el('section', { class: 'hero', 'aria-label': 'Hoy' },
+    el('p', { class: 'hero-hora', id: 'hola-hora' }),
+    el('p', { class: 'hero-linea' }, el('span', { id: 'hola-saludo' }), el('span', { class: 'sep', 'aria-hidden': 'true' }, '·'), el('span', { id: 'hola-fecha' })),
+    el('div', { class: 'hero-clima', id: 'tiempo', 'aria-live': 'polite' }),
+    el('button', { class: 'hero-fondo', title: 'Añadir tu foto de fondo', onclick: anadirFondos },
+      icono('M4 7h3l2-2h6l2 2h3v12H4zM12 10a3 3 0 1 0 0 6a3 3 0 1 0 0-6'), 'Fondo'));
 }
 
 function tic() {
@@ -106,61 +155,67 @@ async function pintarTiempo() {
       return r.json();
     });
     const c = t.current, d = t.daily;
-    const { icono: ic, texto } = tiempoDe(c.weather_code, c.is_day);
     const lluvia = d.precipitation_probability_max?.[0];
     caja.replaceChildren(
-      el('p', { class: 'clima-temp' }, el('span', { 'aria-hidden': 'true' }, ic), ` ${Math.round(c.temperature_2m)}°`),
-      el('p', { class: 'clima-texto' }, `${texto} en Madrid`),
-      el('p', { class: 'clima-rango' }, `${Math.round(d.temperature_2m_min[0])}° / ${Math.round(d.temperature_2m_max[0])}°`,
-        lluvia >= 30 ? ` · ☔ ${lluvia} %` : ''));
+      icono(iconoCielo(c.weather_code, c.is_day)),
+      el('b', {}, `${Math.round(c.temperature_2m)}°`),
+      el('span', {}, `${tiempoDe(c.weather_code, c.is_day).texto} en Madrid`),
+      el('span', { class: 'tenue' }, `${Math.round(d.temperature_2m_min[0])}° / ${Math.round(d.temperature_2m_max[0])}°`),
+      lluvia >= 30 ? el('span', { class: 'tenue' }, `Lluvia ${lluvia} %`) : null);
   } catch {
-    caja.replaceChildren(el('p', { class: 'clima-texto' }, 'Sin datos del tiempo'));
+    caja.replaceChildren(el('span', { class: 'tenue' }, 'Sin datos del tiempo'));
   }
 }
 
-// ---------- pendientes ----------
+// ---------- pendientes (a todo el ancho, en tres columnas) ----------
+const cabecera = (titulo, ...extra) => el('header', { class: 'w-cab' }, el('h2', {}, titulo), ...extra);
+
 function widgetPendientes(ctx, baos) {
   const ahora = new Date();
-  // Grado: vencidas sin entregar, hoy, mañana y esta semana.
   let grado = [];
   if (ctx.datos) {
     const g = agrupar(ctx.datos.tareas, ctx.marcas, ahora);
-    grado = [...g.hoy, ...g.manana, ...g.semana].slice(0, 4);
+    grado = [...g.hoy, ...g.manana, ...g.semana].slice(0, 5);
   }
-  const deBaos = baosParaInicio(baos, ahora, 4);
+  const deBaos = baosParaInicio(baos, ahora, 5);
   const mias = est.datos.pendientes;
 
-  const grupo = (titulo, color, vista, items, vacio) => el('div', { class: 'pend-grupo' },
-    el('h3', { style: `--c:${color}` }, vista ? el('button', { onclick: () => ctx.irA(vista), title: `Ir a ${titulo}` }, titulo, icono(ICONOS.der)) : titulo),
-    items.length ? el('ul', {}, ...items) : el('p', { class: 'pend-vacio' }, vacio));
+  const columna = (titulo, vista, items, vacio, pie = null) => el('div', { class: 'pend-col' },
+    el('h3', {}, vista ? el('button', { onclick: () => ctx.irA(vista), title: `Abrir ${titulo}` }, titulo, icono(ICONOS.der)) : titulo,
+      el('span', { class: 'pend-n' }, String(items.length))),
+    items.length ? el('ul', {}, ...items) : el('p', { class: 'pend-vacio' }, vacio),
+    pie);
 
-  return el('section', { class: 'widget w-pendientes vidrio' },
-    el('h2', {}, 'Pendiente'),
-    grupo('Dr. Baos', '#007aff', 'baos', deBaos.map(t => {
-      const f = FRENTES[t.frente] || FRENTES.otros, fecha = estadoFecha(t.fecha, ahora);
-      return el('li', { class: 'pend', style: `--c:${f.color}` },
-        el('button', { class: 'pend-texto', onclick: () => editarTarea(t) }, t.urgente ? '🔥 ' : '', t.titulo),
-        el('span', { class: `pend-meta ${fecha?.clase || ''}` }, fecha?.texto || (t.col === 'marcha' ? 'en marcha' : f.nombre)));
-    }), 'Nada urgente 🙌'),
-    grupo('Grado', '#e5352b', 'tareas', grado.map(t => {
-      const m = modDe(t);
-      return el('li', { class: 'pend', style: `--c:${m.color}` },
-        el('button', { class: 'pend-texto', onclick: () => ctx.irA('tareas') }, el('span', { class: 'mod', style: `--c:${m.color}` }, m.corto), ' ', t.nombre),
-        el('span', { class: 'pend-meta' }, cuentaAtras(t.cierre, ahora)));
-    }), ctx.datos ? 'Semana libre de entregas' : 'Abre Tareas y pulsa Actualizar'),
-    grupo('Mis cosas', '#af52de', null, mias.map(p => el('li', { class: `pend mia${p.hecho ? ' hecho' : ''}` },
-      el('label', {}, el('input', { type: 'checkbox', checked: p.hecho,
-        onchange: () => cambiar(d => { d.pendientes = d.pendientes.map(x => x.id === p.id ? { ...x, hecho: !x.hecho } : x); }) }),
-        el('span', {}, p.texto)),
-      el('button', { class: 'quitar', title: 'Quitar', 'aria-label': `Quitar ${p.texto}`,
-        onclick: () => cambiar(d => { d.pendientes = d.pendientes.filter(x => x.id !== p.id); }) }, '×'))), 'Nada apuntado'),
-    el('input', { class: 'pend-nuevo', type: 'text', placeholder: '+ Apuntar algo (Enter)', 'aria-label': 'Apuntar algo pendiente',
-      onkeydown: e => {
-        if (e.key !== 'Enter' || !e.target.value.trim()) return;
-        const texto = e.target.value.trim();
-        cambiar(d => { d.pendientes = [...d.pendientes.filter(x => !x.hecho || x.dia === diaIso()), { id: nuevoId(), texto, hecho: false, dia: diaIso() }]; });
-        document.querySelector('#inicio .pend-nuevo')?.focus();
-      } }));
+  return el('section', { class: 'w w-pendientes' },
+    cabecera('Pendiente'),
+    el('div', { class: 'pend-cols' },
+      columna('Dr. Baos', 'baos', deBaos.map(t => {
+        const fecha = estadoFecha(t.fecha, ahora);
+        return el('li', { class: 'pend' },
+          el('button', { class: 'pend-texto', onclick: () => editarTarea(t) }, t.titulo),
+          el('span', { class: 'pend-meta' },
+            t.urgente ? el('span', { class: 'marca-urgente' }, 'Urgente') : null,
+            el('span', { class: fecha?.clase || '' }, fecha?.texto || (t.col === 'marcha' ? 'En marcha' : (FRENTES[t.frente] || FRENTES.otros).nombre))));
+      }), 'Nada urgente'),
+      columna('Grado', 'tareas', grado.map(t => {
+        const m = modDe(t);
+        return el('li', { class: 'pend' },
+          el('button', { class: 'pend-texto', onclick: () => ctx.irA('tareas') }, el('span', { class: 'pend-mod' }, m.corto), t.nombre),
+          el('span', { class: 'pend-meta' }, cuentaAtras(t.cierre, ahora)));
+      }), ctx.datos ? 'Semana libre de entregas' : 'Abre el modo Grado y pulsa Actualizar'),
+      columna('Mis cosas', null, mias.map(p => el('li', { class: `pend mia${p.hecho ? ' hecho' : ''}` },
+        el('label', {}, el('input', { type: 'checkbox', checked: p.hecho,
+          onchange: () => cambiar(d => { d.pendientes = d.pendientes.map(x => x.id === p.id ? { ...x, hecho: !x.hecho } : x); }) }),
+          el('span', {}, p.texto)),
+        el('button', { class: 'quitar', title: 'Quitar', 'aria-label': `Quitar ${p.texto}`,
+          onclick: () => cambiar(d => { d.pendientes = d.pendientes.filter(x => x.id !== p.id); }) }, '×'))), 'Nada apuntado',
+        el('input', { class: 'campo-linea', type: 'text', placeholder: 'Apuntar algo y pulsar Enter', 'aria-label': 'Apuntar algo pendiente',
+          onkeydown: e => {
+            if (e.key !== 'Enter' || !e.target.value.trim()) return;
+            const texto = e.target.value.trim();
+            cambiar(d => { d.pendientes = [...d.pendientes.filter(x => !x.hecho || x.dia === diaIso()), { id: nuevoId(), texto, hecho: false, dia: diaIso() }]; });
+            document.querySelector('#inicio .pend-col .campo-linea')?.focus();
+          } }))));
 }
 
 // ---------- hábitos ----------
@@ -168,43 +223,42 @@ function widgetHabitos() {
   const h = est.datos.habitos, hoy = diaIso();
   const hechosHoy = new Set(h.hechos[hoy] || []);
   const n = h.lista.filter(x => hechosHoy.has(x.id)).length;
-  return el('section', { class: 'widget w-habitos vidrio' },
-    el('div', { class: 'widget-cab' }, el('h2', {}, 'Hábitos'),
-      el('span', { class: 'contador' }, `${n}/${h.lista.length}`),
-      el('button', { class: 'texto-boton', onclick: () => { est.editandoHabitos = !est.editandoHabitos; repintar(); } }, est.editandoHabitos ? 'Listo' : 'Editar')),
+  return el('section', { class: 'w w-habitos' },
+    cabecera('Hábitos', el('span', { class: 'w-dato' }, `${n} de ${h.lista.length}`),
+      el('button', { class: 'w-accion', onclick: () => { est.editandoHabitos = !est.editandoHabitos; repintar(); } }, est.editandoHabitos ? 'Listo' : 'Editar')),
     el('ul', { class: 'habitos' }, ...h.lista.map(x => {
-      const r = racha(h, x.id, hoy);
-      return el('li', { class: `habito${hechosHoy.has(x.id) ? ' hecho' : ''}` },
-        el('button', { class: 'habito-check', 'aria-pressed': String(hechosHoy.has(x.id)), title: 'Hecho hoy',
+      const r = racha(h, x.id, hoy), hecho = hechosHoy.has(x.id);
+      return el('li', { class: `habito${hecho ? ' hecho' : ''}` },
+        el('button', { class: 'habito-check', role: 'checkbox', 'aria-checked': String(hecho), title: 'Hecho hoy',
           onclick: () => cambiar(d => { d.habitos = alternarHabito(d.habitos, x.id, hoy); }) },
-          el('span', { class: 'habito-emoji', 'aria-hidden': 'true' }, x.emoji), el('span', {}, x.nombre)),
-        el('span', { class: 'puntos', 'aria-label': 'Últimos 7 días' }, ...ultimosDias(h, x.id, 7, hoy).map(d => el('i', { class: d.hecho ? 'si' : '' }))),
-        el('span', { class: 'habito-racha', title: 'Días seguidos' }, r ? `🔥${r}` : ''),
+          el('span', { class: 'circulo', 'aria-hidden': 'true' }, icono(ICONOS.check)), el('span', {}, x.nombre)),
+        el('span', { class: 'puntos', title: 'Últimos 7 días' }, ...ultimosDias(h, x.id, 7, hoy).map(d => el('i', { class: d.hecho ? 'si' : '' }))),
+        el('span', { class: 'habito-racha', title: 'Días seguidos' }, r ? `${r} d` : ''),
         est.editandoHabitos ? el('button', { class: 'quitar', 'aria-label': `Quitar ${x.nombre}`,
           onclick: () => cambiar(d => { d.habitos = { ...d.habitos, lista: d.habitos.lista.filter(y => y.id !== x.id) }; }) }, '×') : null);
     })),
-    est.editandoHabitos ? el('input', { class: 'pend-nuevo', type: 'text', placeholder: '+ Nuevo hábito, p. ej. "🧘 Meditar"',
+    est.editandoHabitos ? el('input', { class: 'campo-linea', type: 'text', placeholder: 'Nuevo hábito y Enter',
       onkeydown: e => {
         if (e.key !== 'Enter' || !e.target.value.trim()) return;
-        const m = e.target.value.trim().match(/^(\p{Extended_Pictographic}️?)\s*(.+)$/u);
-        cambiar(d => { d.habitos = { ...d.habitos, lista: [...d.habitos.lista, { id: nuevoId(), emoji: m?.[1] || '✅', nombre: m?.[2] || e.target.value.trim() }] }; });
+        const nombre = e.target.value.trim();
+        cambiar(d => { d.habitos = { ...d.habitos, lista: [...d.habitos.lista, { id: nuevoId(), nombre }] }; });
       } }) : null);
 }
 
 // ---------- idea del día ----------
 function widgetIdea() {
   const idea = ideaDelDia(new Date(), est.ideaDesp);
-  return el('section', { class: 'widget w-idea vidrio' },
-    el('div', { class: 'widget-cab' }, el('h2', {}, '💡 Idea del día'), el('span', { class: 'etiqueta' }, idea.tema),
-      el('button', { class: 'texto-boton', onclick: () => { est.ideaDesp++; repintar(); } }, 'Otra')),
-    el('p', { class: 'idea-texto' }, idea.texto));
+  return el('section', { class: 'w w-idea' },
+    cabecera('Idea del día', el('span', { class: 'w-dato' }, idea.tema),
+      el('button', { class: 'w-accion', onclick: () => { est.ideaDesp++; repintar(); } }, 'Otra')),
+    el('blockquote', { class: 'idea-texto' }, idea.texto));
 }
 
 // ---------- notas ----------
 let temporizadorNotas;
 function widgetNotas() {
-  return el('section', { class: 'widget w-notas vidrio' },
-    el('div', { class: 'widget-cab' }, el('h2', {}, 'Notas'), el('span', { class: 'guardado', id: 'notas-estado' })),
+  return el('section', { class: 'w w-notas' },
+    cabecera('Notas', el('span', { class: 'w-dato', id: 'notas-estado' })),
     el('textarea', { placeholder: 'Lo que se te pase por la cabeza…', 'aria-label': 'Notas rápidas', spellcheck: 'true',
       oninput: e => {
         clearTimeout(temporizadorNotas);
@@ -215,8 +269,8 @@ function widgetNotas() {
 
 // ---------- novedades ----------
 function widgetNovedades() {
-  return el('section', { class: 'widget w-novedades vidrio' },
-    el('div', { class: 'widget-cab' }, el('h2', {}, 'Novedades tech'), el('span', { class: 'etiqueta' }, 'Hacker News')),
+  return el('section', { class: 'w w-novedades' },
+    cabecera('Novedades tech', el('span', { class: 'w-dato' }, 'Hacker News')),
     el('ol', { class: 'noticias', id: 'noticias' }, el('li', { class: 'pend-vacio' }, 'Cargando…')));
 }
 
@@ -225,10 +279,10 @@ async function pintarNoticias() {
   try {
     const items = await conCache('cacheNoticias', 2 * MEDIA_HORA, async () => {
       const ids = await (await fetch(`${HN}/topstories.json`)).json();
-      const it = await Promise.all(ids.slice(0, 6).map(id => fetch(`${HN}/item/${id}.json`).then(r => r.json())));
+      const it = await Promise.all(ids.slice(0, 5).map(id => fetch(`${HN}/item/${id}.json`).then(r => r.json())));
       return it.filter(Boolean).map(x => ({ titulo: x.title, url: x.url || `https://news.ycombinator.com/item?id=${x.id}`, puntos: x.score }));
     });
-    lista.replaceChildren(...items.map(n => el('li', {},
+    lista.replaceChildren(...items.slice(0, 5).map(n => el('li', {},
       el('a', { href: n.url, target: '_blank', rel: 'noopener' }, n.titulo),
       el('span', { class: 'noticia-meta' }, `${dominioDe(n.url)} · ${n.puntos} pts`))));
   } catch {
@@ -241,12 +295,11 @@ const favicon = url => chrome.runtime.getURL(`/_favicon/?pageUrl=${encodeURIComp
 
 function widgetAccesos() {
   const editando = est.editandoAccesos;
-  return el('section', { class: 'widget w-accesos vidrio' },
-    el('div', { class: 'widget-cab' }, el('h2', {}, 'Accesos'),
-      el('button', { class: 'texto-boton', onclick: () => { est.editandoAccesos = !editando; repintar(); } }, editando ? 'Listo' : 'Editar')),
+  return el('section', { class: 'w w-accesos' },
+    cabecera('Accesos', el('button', { class: 'w-accion', onclick: () => { est.editandoAccesos = !editando; repintar(); } }, editando ? 'Listo' : 'Editar')),
     el('ul', { class: 'accesos' }, ...est.datos.accesos.map(a => el('li', {},
       el('a', { href: a.url, class: 'acceso', title: a.url, onclick: e => { if (editando) e.preventDefault(); } },
-        el('img', { src: favicon(a.url), alt: '', width: '32', height: '32' }),
+        el('img', { src: favicon(a.url), alt: '', width: '20', height: '20' }),
         el('span', {}, a.nombre)),
       editando ? el('button', { class: 'quitar', 'aria-label': `Quitar ${a.nombre}`,
         onclick: () => cambiar(d => { d.accesos = d.accesos.filter(x => x.id !== a.id); }) }, '×') : null))),
@@ -256,8 +309,7 @@ function widgetAccesos() {
       if (!url) { e.target.url.setCustomValidity('Esa dirección no parece válida'); e.target.url.reportValidity(); return; }
       cambiar(d => { d.accesos = [...d.accesos, { id: nuevoId(), nombre: (f.get('nombre') || '').trim() || dominioDe(url), url }]; });
     } },
-      el('input', { name: 'nombre', placeholder: 'Nombre', 'aria-label': 'Nombre' }),
-      el('input', { name: 'url', placeholder: 'web.com', 'aria-label': 'Dirección', required: true, oninput: e => e.target.setCustomValidity('') }),
-      el('button', { class: 'capsula', type: 'submit' }, 'Añadir')) : null);
+      el('input', { class: 'campo-linea', name: 'nombre', placeholder: 'Nombre', 'aria-label': 'Nombre' }),
+      el('input', { class: 'campo-linea', name: 'url', placeholder: 'web.com', 'aria-label': 'Dirección', required: true, oninput: e => e.target.setCustomValidity('') }),
+      el('button', { class: 'boton-sobrio', type: 'submit' }, 'Añadir')) : null);
 }
-

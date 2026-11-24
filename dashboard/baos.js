@@ -1,10 +1,10 @@
-// Pestaña Dr. Baos: frentes del cliente con su progreso, tablero Kanban y muro de ideas.
+// Modo Dr. Baos: frentes del cliente con su progreso, tablero Kanban (pestaña Tablero) y muro de ideas (pestaña Ideas).
 import { el, almacen, icono, ICONOS, abrirExterno } from './dom.js';
 import { FRENTES, CLINICAS, COLUMNAS, baosInicial, ordenarTareas, filtrarTareas, moverTarea, columnaVecina,
   ideaATarea, resumenFrentes, estadoFecha, nuevoId, diaIso } from './espacios.js';
 
 const WEB = 'https://clinicadentaldrbaos.com';
-const est = { baos: null, frente: '', filtro: '', cont: null, arrastrando: null };
+const est = { baos: null, frente: '', filtro: '', vista: 'baos', cont: null, arrastrando: null };
 
 export async function cargarBaos() {
   if (!est.baos) {
@@ -23,93 +23,97 @@ async function guardar(nuevo) {
 // Otra pestaña abierta cambió los datos: recoger el cambio.
 export function baosCambiado(valor) { if (valor) { est.baos = valor; repintar(); } }
 
-function repintar() { if (est.cont && !est.cont.hidden) pintarBaos(est.cont, { filtro: est.filtro }); }
+function repintar() { if (est.cont && !est.cont.hidden) pintarBaos(est.cont, { filtro: est.filtro, vista: est.vista }); }
 
-export async function pintarBaos(cont, { filtro = '' } = {}) {
-  est.cont = cont; est.filtro = filtro;
+// vista: 'baos' (tablero) | 'ideas'
+export async function pintarBaos(cont, { filtro = '', vista = 'baos' } = {}) {
+  est.cont = cont; est.filtro = filtro; est.vista = vista;
   const baos = await cargarBaos();
+  cont.dataset.vista = vista;
+  cont.replaceChildren(
+    pintarResumen(baos),
+    vista === 'ideas' ? pintarIdeas(baos) : el('div', {}, pintarFrentes(baos), pintarTablero(baos)));
+}
+
+// ---------- franja de resumen y acciones ----------
+function pintarResumen(baos) {
   const pendientes = baos.tareas.filter(t => t.col !== 'hecho');
   const urgentes = pendientes.filter(t => t.urgente).length;
-  cont.replaceChildren(
-    el('div', { class: 'baos-cab' },
-      el('div', { class: 'baos-cliente' },
-        el('span', { class: 'baos-logo', 'aria-hidden': 'true' }, '🦷'),
-        el('div', {},
-          el('p', { class: 'baos-nombre' }, 'Clínica Dental Dr. Baos'),
-          el('p', { class: 'baos-sub' }, `Majadahonda · Argés (Toledo) — ${pendientes.length} pendientes`,
-            urgentes ? el('span', { class: 'etiqueta urgente' }, `${urgentes} urgente${urgentes > 1 ? 's' : ''}`) : null))),
-      el('div', { class: 'baos-acciones' },
-        el('button', { class: 'capsula', onclick: () => abrirExterno(WEB) }, 'Ver web'),
-        el('button', { class: 'capsula', onclick: () => editarIdea() }, icono(ICONOS.bombilla), 'Idea'),
-        el('button', { class: 'capsula principal', onclick: () => editarTarea() }, icono(ICONOS.mas), 'Tarea'))),
-    pintarFrentes(baos),
-    pintarTablero(baos),
-  );
+  const enMarcha = pendientes.filter(t => t.col === 'marcha').length;
+  const dato = (n, texto, clase = '') => el('div', { class: `dato-baos ${clase}` }, el('b', {}, String(n)), el('span', {}, texto));
+  return el('div', { class: 'baos-resumen' },
+    el('div', { class: 'baos-datos' },
+      dato(pendientes.length, 'Pendientes'),
+      dato(urgentes, urgentes === 1 ? 'Urgente' : 'Urgentes', urgentes ? 'alerta' : ''),
+      dato(enMarcha, 'En marcha'),
+      dato(baos.ideas.length, baos.ideas.length === 1 ? 'Idea' : 'Ideas')),
+    el('div', { class: 'baos-acciones' },
+      el('button', { class: 'boton-linea', onclick: () => abrirExterno(WEB) }, 'Ver web'),
+      est.vista === 'ideas'
+        ? el('button', { class: 'boton-oro', onclick: () => editarIdea() }, icono(ICONOS.mas), 'Nueva idea')
+        : el('button', { class: 'boton-oro', onclick: () => editarTarea() }, icono(ICONOS.mas), 'Nueva tarea')));
 }
 
 // ---------- frentes ----------
 function pintarFrentes(baos) {
-  return el('div', { class: 'frentes', role: 'list' }, ...resumenFrentes(baos).map(f => {
+  return el('div', { class: 'frentes', role: 'list', 'aria-label': 'Frentes' }, ...resumenFrentes(baos).map(f => {
     const activo = est.frente === f.id;
     const barra = el('input', { type: 'range', min: '0', max: '100', step: '5', value: String(f.progreso), class: 'barra-progreso',
-      style: `--c:${f.color};--p:${f.progreso}%`, 'aria-label': `Progreso de ${f.nombre}`,
+      style: `--p:${f.progreso}%`, 'aria-label': `Progreso de ${f.nombre}`,
       onclick: e => e.stopPropagation(),
-      oninput: e => { e.target.style.setProperty('--p', `${e.target.value}%`); e.target.closest('.frente').querySelector('.frente-pct').textContent = `${e.target.value} %`; },
+      oninput: e => { e.target.style.setProperty('--p', `${e.target.value}%`); e.target.closest('.frente').querySelector('.frente-pct b').textContent = e.target.value; },
       onchange: e => guardar({ ...baos, progreso: { ...baos.progreso, [f.id]: Number(e.target.value) } }) });
-    return el('div', { class: `frente vidrio${activo ? ' activo' : ''}`, role: 'listitem', style: `--c:${f.color}`, tabindex: '0',
+    return el('div', { class: `frente${activo ? ' activo' : ''}`, role: 'listitem', tabindex: '0',
       title: activo ? 'Ver todos los frentes' : `Ver solo ${f.nombre}`,
       onclick: () => { est.frente = activo ? '' : f.id; repintar(); },
       onkeydown: e => { if (e.key === 'Enter' && e.target === e.currentTarget) e.currentTarget.click(); } },
-      el('div', { class: 'frente-cab' },
-        el('span', { class: 'frente-emoji', 'aria-hidden': 'true' }, f.emoji),
-        el('span', { class: 'frente-nombre' }, f.nombre),
-        el('span', { class: 'frente-pct' }, `${f.progreso} %`)),
+      el('p', { class: 'frente-nombre' }, f.nombre),
+      el('p', { class: 'frente-pct' }, el('b', {}, String(f.progreso)), el('span', {}, '%')),
       barra,
       el('p', { class: 'frente-meta' }, f.pendientes ? `${f.pendientes} pendiente${f.pendientes > 1 ? 's' : ''}` : 'Al día',
-        f.urgentes ? el('span', { class: 'etiqueta urgente' }, '¡urgente!') : null));
+        f.urgentes ? el('span', { class: 'marca-urgente' }, 'Urgente') : null));
   }));
 }
 
 // ---------- tablero ----------
 function pintarTablero(baos) {
   const visibles = filtrarTareas(baos.tareas, { texto: est.filtro, frente: est.frente });
-  const columnas = Object.entries(COLUMNAS).map(([col, nombre]) => {
+  return el('div', { class: 'kanban' }, ...Object.entries(COLUMNAS).map(([col, nombre]) => {
     let ts = ordenarTareas(visibles.filter(t => t.col === col));
     if (col === 'hecho') ts = ts.sort((a, b) => (b.hecha || '').localeCompare(a.hecha || ''));
     const lista = el('ul', { class: 'kanban-lista' }, ...ts.map(t => tarjeta(t)));
-    if (!ts.length) lista.append(el('li', { class: 'kanban-vacio' }, col === 'hecho' ? 'Aquí irá lo terminado 💪' : 'Nada por aquí'));
+    if (!ts.length) lista.append(el('li', { class: 'kanban-vacio' }, col === 'hecho' ? 'Aquí irá lo terminado' : 'Nada por aquí'));
     const colEl = el('section', { class: `kanban-col col-${col}`, 'aria-label': nombre, 'data-col': col,
       ondragover: e => { if (est.arrastrando) { e.preventDefault(); colEl.classList.add('encima'); } },
       ondragleave: e => { if (!colEl.contains(e.relatedTarget)) colEl.classList.remove('encima'); },
       ondrop: e => { e.preventDefault(); colEl.classList.remove('encima'); const id = est.arrastrando; est.arrastrando = null;
         if (id && baos.tareas.find(t => t.id === id)?.col !== col) guardar(moverTarea(baos, id, col)); } },
       el('header', { class: 'kanban-cab' }, el('h2', {}, nombre), el('span', { class: 'contador' }, String(ts.length)),
-        col === 'hecho' && ts.length ? el('button', { class: 'texto-boton', title: 'Borrar las tareas hechas',
+        col === 'hecho' && ts.length ? el('button', { class: 'w-accion', title: 'Borrar las tareas hechas',
           onclick: () => { if (confirm(`¿Borrar ${ts.length} tareas hechas?`)) guardar({ ...baos, tareas: baos.tareas.filter(t => !ts.includes(t)) }); } }, 'Limpiar') : null),
       lista,
       col !== 'hecho' ? anadirRapido(baos, col) : null);
     return colEl;
-  });
-  return el('div', { class: 'kanban' }, ...columnas, pintarIdeas(baos));
+  }));
 }
 
 function anadirRapido(baos, col) {
-  const input = el('input', { type: 'text', placeholder: '+ Añadir tarea', 'aria-label': `Añadir tarea en ${COLUMNAS[col]}`,
+  return el('input', { class: 'campo-linea anadir', type: 'text', placeholder: 'Añadir tarea', 'aria-label': `Añadir tarea en ${COLUMNAS[col]}`,
     onkeydown: e => {
       if (e.key !== 'Enter' || !e.target.value.trim()) return;
       guardar({ ...baos, tareas: [...baos.tareas, { id: nuevoId(), titulo: e.target.value.trim(), frente: est.frente || 'otros', col,
         clinica: 'ambas', urgente: false, fecha: '', notas: '', creada: diaIso() }] })
-        .then(() => est.cont.querySelector(`.col-${col} .anadir input`)?.focus());
+        .then(() => est.cont.querySelector(`.col-${col} .anadir`)?.focus());
     } });
-  return el('div', { class: 'anadir' }, input);
 }
 
 function tarjeta(t) {
   const f = FRENTES[t.frente] || FRENTES.otros;
   const fecha = t.col !== 'hecho' ? estadoFecha(t.fecha) : null;
+  const urgente = t.urgente && t.col !== 'hecho';
   const mover = paso => { const col = columnaVecina(t.col, paso); if (col !== t.col) guardar(moverTarea(est.baos, t.id, col)); };
-  return el('li', { class: `tarjeta${t.urgente && t.col !== 'hecho' ? ' es-urgente' : ''}${t.col === 'hecho' ? ' hecha' : ''}`,
-    style: `--c:${f.color}`, draggable: 'true', tabindex: '0', 'data-id': t.id,
+  return el('li', { class: `tarjeta${urgente ? ' es-urgente' : ''}${t.col === 'hecho' ? ' hecha' : ''}`,
+    draggable: 'true', tabindex: '0', 'data-id': t.id,
     'aria-label': `${t.titulo}. ${f.nombre}. Enter para editar, flechas izquierda y derecha para mover.`,
     ondragstart: e => { est.arrastrando = t.id; e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', t.id); e.currentTarget.classList.add('arrastrando'); },
     ondragend: e => { e.currentTarget.classList.remove('arrastrando'); est.arrastrando = null; },
@@ -120,12 +124,12 @@ function tarjeta(t) {
       else if (e.key === 'ArrowRight') { e.preventDefault(); mover(1); }
       else if (e.key === 'ArrowLeft') { e.preventDefault(); mover(-1); }
     } },
-    el('p', { class: 'tarjeta-titulo' }, t.urgente && t.col !== 'hecho' ? '🔥 ' : '', t.titulo),
+    el('p', { class: 'tarjeta-frente' }, f.nombre, t.clinica && t.clinica !== 'ambas' ? ` · ${CLINICAS[t.clinica]}` : ''),
+    el('p', { class: 'tarjeta-titulo' }, t.titulo),
     t.notas ? el('p', { class: 'tarjeta-notas' }, t.notas) : null,
     el('div', { class: 'tarjeta-meta' },
-      el('span', { class: 'etiqueta frente-tag' }, f.emoji, ' ', f.nombre),
-      t.clinica && t.clinica !== 'ambas' ? el('span', { class: 'etiqueta' }, CLINICAS[t.clinica]) : null,
-      fecha ? el('span', { class: `etiqueta fecha ${fecha.clase}` }, fecha.texto) : null,
+      urgente ? el('span', { class: 'marca-urgente' }, 'Urgente') : null,
+      fecha ? el('span', { class: `marca-fecha ${fecha.clase}` }, fecha.texto) : null,
       el('span', { class: 'tarjeta-mover' },
         t.col !== 'hacer' ? el('button', { title: 'Mover a la izquierda', 'aria-label': 'Mover a la izquierda', onclick: () => mover(-1) }, icono(ICONOS.izq)) : null,
         t.col !== 'hecho' ? el('button', { title: t.col === 'marcha' ? 'Marcar como hecha' : 'Empezar', 'aria-label': 'Mover a la derecha', onclick: () => mover(1) },
@@ -136,29 +140,29 @@ function tarjeta(t) {
 function pintarIdeas(baos) {
   const q = est.filtro.trim().toLowerCase();
   const ideas = baos.ideas.filter(i => (!est.frente || i.frente === est.frente) && (!q || i.texto.toLowerCase().includes(q)));
-  return el('section', { class: 'kanban-col col-ideas', 'aria-label': 'Ideas' },
-    el('header', { class: 'kanban-cab' }, el('h2', {}, '💡 Ideas'), el('span', { class: 'contador' }, String(ideas.length))),
-    el('div', { class: 'anadir' }, el('input', { type: 'text', placeholder: '+ Apunta una idea', 'aria-label': 'Nueva idea',
+  return el('section', { class: 'ideas-muro', 'aria-label': 'Ideas' },
+    el('input', { class: 'campo-idea', type: 'text', placeholder: 'Apunta una idea y pulsa Enter', 'aria-label': 'Nueva idea',
       onkeydown: e => {
         if (e.key !== 'Enter' || !e.target.value.trim()) return;
         guardar({ ...baos, ideas: [{ id: nuevoId(), texto: e.target.value.trim(), frente: est.frente || 'otros', creada: diaIso() }, ...baos.ideas] })
-          .then(() => est.cont.querySelector('.col-ideas .anadir input')?.focus());
-      } })),
-    el('ul', { class: 'ideas' }, ...ideas.map(i => {
+          .then(() => est.cont.querySelector('.campo-idea')?.focus());
+      } }),
+    ideas.length ? el('ul', { class: 'ideas' }, ...ideas.map((i, n) => {
       const f = FRENTES[i.frente] || FRENTES.otros;
-      return el('li', { class: 'postit', style: `--c:${f.color}` },
-        el('p', {}, i.texto),
-        el('div', { class: 'postit-pie' },
-          el('span', { class: 'postit-frente' }, f.emoji, ' ', f.nombre),
+      return el('li', { class: 'idea' },
+        el('p', { class: 'idea-num' }, String(n + 1).padStart(2, '0')),
+        el('p', { class: 'idea-cuerpo' }, i.texto),
+        el('div', { class: 'idea-pie' },
+          el('span', { class: 'tarjeta-frente' }, f.nombre),
           el('button', { title: 'Editar', 'aria-label': 'Editar idea', onclick: () => editarIdea(i) }, icono(ICONOS.editar)),
           el('button', { title: 'Borrar', 'aria-label': 'Borrar idea', onclick: () => guardar({ ...baos, ideas: baos.ideas.filter(x => x.id !== i.id) }) }, icono(ICONOS.borrar)),
-          el('button', { class: 'a-tarea', title: 'Convertir en tarea', onclick: () => guardar(ideaATarea(baos, i.id)) }, 'A tarea', icono(ICONOS.flecha))));
-    }), ideas.length ? null : el('li', { class: 'kanban-vacio' }, 'Sin ideas todavía')));
+          el('button', { class: 'a-tarea', title: 'Convertir en tarea del tablero', onclick: () => guardar(ideaATarea(baos, i.id)) }, 'Pasar a tarea', icono(ICONOS.flecha))));
+    })) : el('p', { class: 'kanban-vacio' }, 'Sin ideas todavía. Apunta la primera arriba.'));
 }
 
 // ---------- diálogos ----------
 function opciones(obj, sel) {
-  return Object.entries(obj).map(([v, n]) => el('option', { value: v, selected: v === sel }, typeof n === 'string' ? n : `${n.emoji} ${n.nombre}`));
+  return Object.entries(obj).map(([v, n]) => el('option', { value: v, selected: v === sel }, typeof n === 'string' ? n : n.nombre));
 }
 
 function dialogo(titulo, campos, { alGuardar, alBorrar }) {
@@ -197,7 +201,7 @@ export async function editarTarea(t = null) {
     el('div', { class: 'campos-fila' },
       campo('Estado', el('select', { name: 'col' }, ...opciones(COLUMNAS, t.col))),
       campo('Fecha límite', el('input', { type: 'date', name: 'fecha', value: t.fecha || '' }))),
-    el('label', { class: 'campo-check' }, el('input', { type: 'checkbox', name: 'urgente', checked: t.urgente }), '🔥 Urgente'),
+    el('label', { class: 'campo-check' }, el('input', { type: 'checkbox', name: 'urgente', checked: t.urgente }), 'Urgente'),
     campo('Notas', el('textarea', { name: 'notas', rows: '3' }, t.notas || '')),
   ], {
     alGuardar: d => {

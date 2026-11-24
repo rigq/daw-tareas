@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { baosInicial, ordenarTareas, filtrarTareas, moverTarea, columnaVecina, ideaATarea, resumenFrentes, estadoFecha,
-  baosParaInicio, saludo, alternarHabito, racha, ultimosDias, podarHabitos, normalizarUrl, ideaDelDia, IDEAS, tiempoDe } from '../espacios.js';
+  baosParaInicio, saludo, fotoDelDia, alternarHabito, racha, ultimosDias, podarHabitos, normalizarUrl, ideaDelDia, IDEAS, tiempoDe } from '../espacios.js';
 
 const hoy = new Date(2026, 10, 24, 10, 0); // martes 24/11/2026
 
@@ -108,4 +108,12 @@ test('códigos del tiempo', () => {
   assert.equal(tiempoDe(0, 0).icono, '🌙');
   assert.equal(tiempoDe(63).texto, 'Lluvia');
   assert.equal(tiempoDe(95).texto, 'Tormenta');
+});
+
+test('foto del día: ninguna, una o rotando por días', () => {
+  assert.equal(fotoDelDia([], hoy), null);
+  assert.equal(fotoDelDia(['a'], hoy), 'a');
+  const f = ['a', 'b', 'c'];
+  assert.equal(fotoDelDia(f, hoy), fotoDelDia(f, new Date(2026, 10, 24, 22)));
+  assert.notEqual(fotoDelDia(f, hoy), fotoDelDia(f, new Date(2026, 10, 25)));
 });

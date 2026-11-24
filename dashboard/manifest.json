@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Rigatony Dash",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Tu panel de inicio: Dr. Baos, el grado y tu día, de un vistazo.",
   "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
   "action": {
@@ -11,6 +11,6 @@
   },
   "chrome_url_overrides": { "newtab": "dashboard.html" },
   "background": { "service_worker": "background.js", "type": "module" },
-  "permissions": ["storage", "alarms", "notifications", "offscreen", "favicon"],
+  "permissions": ["storage", "alarms", "notifications", "offscreen", "favicon", "unlimitedStorage"],
   "host_permissions": ["https://campus.digitechfp.com/*"]
 }
