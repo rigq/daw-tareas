@@ -141,3 +141,7 @@ export function agrupar(tareas, marcas = {}, ahora = new Date(), filtro = '') {
   g.entregadas.reverse();
   return g;
 }
+
+// Quita los manejadores en línea (onclick="…") del HTML del campus antes de analizarlo con DOMParser.
+// No se ejecutarían nunca, pero Chrome registra cada uno como infracción de la CSP en la lista de errores de la extensión.
+export const sinManejadores = html => (html || '').replace(/\s+on[a-z]+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, '');

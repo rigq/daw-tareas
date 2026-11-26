@@ -1,5 +1,5 @@
 // Lee el campus con la sesión de Chrome del usuario. Solo navegador.
-import { CAMPUS, parseFecha, esPaginaLogin, esDescargaValida, nombreArchivo } from './logica.js';
+import { CAMPUS, parseFecha, esPaginaLogin, esDescargaValida, nombreArchivo, sinManejadores } from './logica.js';
 import { parseNota } from './plan.js';
 
 export class ErrorCampus extends Error {
@@ -15,7 +15,8 @@ async function pedir(url, opciones = {}) {
   if (!r.ok) throw new ErrorCampus('HTTP', `El campus respondió con un error ${r.status}.`);
   return r;
 }
-const pagina = async url => new DOMParser().parseFromString(await (await pedir(url)).text(), 'text/html');
+const analizar = html => new DOMParser().parseFromString(sinManejadores(html), 'text/html');
+const pagina = async url => analizar(await (await pedir(url)).text());
 const limpio = s => (s || '').replace(/\s+/g, ' ').trim();
 const absoluta = href => new URL(href, CAMPUS).href;
 
@@ -124,7 +125,7 @@ export async function descargar(url) {
   const nombre = nombreArchivo(r.url);
   if (/text\/html/i.test(tipo || '') && !/\.html?$/i.test(nombre)) {
     // Recurso mostrado dentro de una página: buscar el enlace o la imagen al archivo real.
-    const doc = new DOMParser().parseFromString(await r.text(), 'text/html');
+    const doc = analizar(await r.text());
     const enlace = doc.querySelector('.resourceworkaround a, .resourcecontent a, .resourcecontent img, .resourceimage, [role="main"] a[href*="pluginfile.php"]');
     const href = enlace?.getAttribute('href') || enlace?.getAttribute('src');
     return href && href.includes('pluginfile.php') ? descargar(absoluta(href)) : null;

@@ -148,3 +148,12 @@ test('fmt formatea fechas o devuelve una raya', () => {
   assert.equal(fmt(new Date(2026, 10, 10, 9, 5)), '10/11/2026 09:05');
   assert.equal(fmt(null), '—');
 });
+
+test('sinManejadores quita onclick y similares sin tocar el resto', async () => {
+  const { sinManejadores } = await import('../logica.js');
+  assert.equal(sinManejadores('<a href="x" onclick="go()">Hola</a>'), '<a href="x">Hola</a>');
+  assert.equal(sinManejadores("<body onload='init()' class=\"c\">"), '<body class="c">');
+  assert.equal(sinManejadores('<img src=a.png onerror=fallo()>'), '<img src=a.png>');
+  assert.equal(sinManejadores('<p>Haz online el test</p>'), '<p>Haz online el test</p>');
+  assert.equal(sinManejadores(null), '');
+});
